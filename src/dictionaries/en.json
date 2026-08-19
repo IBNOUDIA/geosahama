@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Home",
+    "geoloc": "Geolocation",
+    "security": "Security",
+    "prevention": "Prevention",
+    "epuration": "Purification & Tracking",
+    "contact": "Contact",
+    "clientSpace": "Client Portal"
+  },
+  "hero": {
+    "badge": "Active in West Africa & Expanding Soon to Montreal",
+    "title1": "Precision Geolocation & ",
+    "title2": "Intelligent Ecological Tracking",
+    "subtitle": "From fleet security in West Africa to environmental tracking of the purification process in Montreal: end-to-end traceability from prevention to landfill disposal.",
+    "ctaPrimary": "Explore Solutions",
+    "ctaSecondary": "Montreal Water Project"
+  },
+  "services": {
+    "geolocTitle": "Geolocation & Fleets",
+    "geolocDesc": "Real-time tracking of industrial assets and vehicles powered by high-definition Google Maps & Earth.",
+    "securityTitle": "Security & Monitoring",
+    "securityDesc": "Preventive alerts, risk management, and advanced telemetry to secure critical assets.",
+    "preventionTitle": "Prevention & Risk Control",
+    "preventionDesc": "Predictive analytics for equipment failures and operational anomalies to minimize downtime.",
+    "epurationTitle": "Ecological Purification Tracking",
+    "epurationDesc": "Complete environmental process traceability in Montreal, from initial prevention to controlled landfilling."
+  },
+  "contact": {
+    "title": "Contact Sahama Services",
+    "subtitle": "Have a question or project? Our teams in West Africa and Montreal are at your service.",
+    "emailLabel": "Direct Email Contact:",
+    "formName": "Full Name",
+    "formEmail": "Email Address",
+    "formMessage": "Your Message",
+    "formSend": "Send Message"
+  },
+  "ai": {
+    "title": "Sahama AI Assistant",
+    "placeholder": "Ask a question to the assistant...",
+    "welcome": "Hello! I am the Sahama Services AI agent. How can I assist you today?"
+  }
+}

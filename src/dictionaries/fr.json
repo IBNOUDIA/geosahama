@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "geoloc": "Géolocalisation",
+    "security": "Sécurité",
+    "prevention": "Prévention",
+    "epuration": "Épuration & Suivi",
+    "contact": "Contact",
+    "clientSpace": "Espace Client"
+  },
+  "hero": {
+    "badge": "Opérationnel en Afrique de l'Ouest & Prochainement à Montréal",
+    "title1": "Géolocalisation de précision & ",
+    "title2": "Suivi Écologique Intelligent",
+    "subtitle": "De la sécurité des flottes en Afrique de l'Ouest jusqu'au suivi environnemental du processus d'épuration à Montréal : une traçabilité totale, de la prévention jusqu'à l'enfouissement.",
+    "ctaPrimary": "Découvrir nos solutions",
+    "ctaSecondary": "Projet Épuration Montréal"
+  },
+  "services": {
+    "geolocTitle": "Géolocalisation & Flottes",
+    "geolocDesc": "Suivi en temps réel de vos actifs industriels et véhicules avec cartographie haute définition Google Maps & Earth.",
+    "securityTitle": "Sécurité & Surveillance",
+    "securityDesc": "Alertes préventives, gestion des risques et télémétrie avancée pour sécuriser vos installations.",
+    "preventionTitle": "Prévention & Anticipation",
+    "preventionDesc": "Analyse prédictive des pannes et anomalies pour éviter les pertes et accidents sur le terrain.",
+    "epurationTitle": "Suivi Écologique d'Épuration",
+    "epurationDesc": "Traçabilité complète des processus environnementaux à Montréal, de la prévention initiale jusqu'à l'enfouissement contrôlé."
+  },
+  "contact": {
+    "title": "Contactez Sahama Services",
+    "subtitle": "Une question ou un projet ? Nos équipes en Afrique de l'Ouest et à Montréal sont à votre écoute.",
+    "emailLabel": "Courriel de contact direct :",
+    "formName": "Nom complet",
+    "formEmail": "Adresse courriel",
+    "formMessage": "Votre message",
+    "formSend": "Envoyer le message"
+  },
+  "ai": {
+    "title": "Assistant Sahama IA",
+    "placeholder": "Posez une question à l'assistant...",
+    "welcome": "Bonjour ! Je suis l'agent IA de Sahama Services. Comment puis-je vous aider aujourd'hui ?"
+  }
+}
