@@ -1,36 +1,66 @@
 "use client";
 
 import { useState } from "react";
-import { Bot, X, Send, Sparkles } from "lucide-react";
+import { Bot, X, Send, Sparkles, Loader2 } from "lucide-react";
 
 interface AIAgentWidgetProps {
   dict: any;
 }
 
+type ChatMessage = { sender: "user" | "bot"; text: string };
+
 export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<Array<{ sender: "user" | "bot"; text: string }>>([
+  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
     { sender: "bot", text: dict.ai.welcome },
   ]);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
-    const userMsg = input;
+    const userMsg = input.trim();
+    const history = messages.map((m) => ({
+      role: (m.sender === "user" ? "user" : "model") as "user" | "model",
+      text: m.text,
+    }));
+
     setMessages((prev) => [...prev, { sender: "user", text: userMsg }]);
     setInput("");
+    setIsLoading(true);
 
-    // Simulated AI response
-    setTimeout(() => {
-      let reply = "Merci pour votre message. Je suis l'agent Sahama IA. Je peux vous informer sur nos services de géolocalisation en Afrique de l'Ouest ou le suivi d'épuration à Montréal.";
-      if (userMsg.toLowerCase().includes("contact") || userMsg.toLowerCase().includes("email")) {
-        reply = "Vous pouvez contacter directement M. Souleymane Diallo à l'adresse : Souleymane.Diallo@sahama-services.com";
-      } else if (userMsg.toLowerCase().includes("montreal") || userMsg.toLowerCase().includes("epuration")) {
-        reply = "À Montréal, Sahama Services déploie une technologie de suivi écologique couvrant le processus complet d'épuration, de la prévention jusqu'à l'enfouissement.";
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMsg, history }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.reply) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: "bot",
+            text: "Désolé, je ne peux pas répondre pour le moment. Contactez-nous directement à Souleymane.Diallo@sahama-services.com.",
+          },
+        ]);
+      } else {
+        setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
       }
-      setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
-    }, 1000);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: "Une erreur de connexion est survenue. Contactez-nous à Souleymane.Diallo@sahama-services.com.",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -77,6 +107,14 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-zinc-800 text-gray-400 border border-zinc-700 px-3.5 py-2.5 rounded-xl flex items-center gap-2">
+                  <Loader2 size={14} className="animate-spin" />
+                  <span>...</span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Input Bar */}
@@ -87,11 +125,13 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder={dict.ai.placeholder}
-              className="flex-1 bg-black border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-sahamaOrange"
+              disabled={isLoading}
+              className="flex-1 bg-black border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-sahamaOrange disabled:opacity-50"
             />
             <button
               onClick={handleSend}
-              className="bg-sahamaOrange hover:bg-sahamaOrange/90 text-black p-2 rounded-lg transition"
+              disabled={isLoading}
+              className="bg-sahamaOrange hover:bg-sahamaOrange/90 text-black p-2 rounded-lg transition disabled:opacity-50"
             >
               <Send size={16} />
             </button>
