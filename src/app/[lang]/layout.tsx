@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import AIAgentWidget from "@/components/AIAgentWidget";
+import SocialLinks from "@/components/SocialLinks";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 
 export default async function LangLayout({
@@ -27,7 +28,21 @@ export default async function LangLayout({
             Souleymane.Diallo@sahama-services.com
           </a>
         </p>
-        <p className="mt-2">© {new Date().getFullYear()} Sahama Services (sahama-services.com). All rights reserved.</p>
+
+        <SocialLinks className="mt-5" />
+
+        <p className="mt-5">© {new Date().getFullYear()} Sahama Services (sahama-services.com). All rights reserved.</p>
+        <p className="mt-1.5 text-gray-600">
+          Développé par{" "}
+          <a
+            href="https://amardia.ca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-sahamaYellow hover:underline"
+          >
+            amardia.ca
+          </a>
+        </p>
       </footer>
     </div>
   );

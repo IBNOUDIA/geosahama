@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import Logo from "./Logo";
 
 interface NavbarProps {
   lang: "fr" | "en";
@@ -27,6 +28,7 @@ export default function Navbar({ lang, dict }: NavbarProps) {
     { name: dict.nav.security, href: `/${lang}/securite` },
     { name: dict.nav.prevention, href: `/${lang}/prevention` },
     { name: dict.nav.epuration, href: `/${lang}/epuration` },
+    { name: dict.nav.news, href: `/${lang}/actualites` },
     { name: dict.nav.contact, href: `/${lang}/contact` },
   ];
 
@@ -36,7 +38,8 @@ export default function Navbar({ lang, dict }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
-          <Link href={`/${lang}`} className="flex items-center gap-2">
+          <Link href={`/${lang}`} className="flex items-center gap-2.5">
+            <Logo size={34} />
             <span className="text-2xl font-bold tracking-wider text-white">
               SAHAMA<span className="text-sahamaOrange">.SERVICES</span>
             </span>

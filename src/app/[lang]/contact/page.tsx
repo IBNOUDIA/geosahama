@@ -1,11 +1,12 @@
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import ContactForm from "@/components/ContactForm";
 
 export default async function ContactPage({ params }: { params: { lang: "fr" | "en" } }) {
   const dict = await getDictionary(params.lang);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
+    <div className="max-w-6xl mx-auto px-4 pt-12 pb-28">
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-4">{dict.contact.title}</h1>
         <p className="text-gray-400">{dict.contact.subtitle}</p>
@@ -48,23 +49,7 @@ export default async function ContactPage({ params }: { params: { lang: "fr" | "
         </div>
 
         {/* Contact Form */}
-        <form className="bg-cardBg p-8 rounded-2xl border border-zinc-800 space-y-4">
-          <div>
-            <label className="block text-xs font-semibold text-gray-300 mb-1">{dict.contact.formName}</label>
-            <input type="text" className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none" />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-gray-300 mb-1">{dict.contact.formEmail}</label>
-            <input type="email" className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none" />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-gray-300 mb-1">{dict.contact.formMessage}</label>
-            <textarea rows={4} className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none" />
-          </div>
-          <button className="w-full bg-sahamaOrange hover:bg-sahamaOrange/90 text-black font-bold py-3 rounded-lg transition flex items-center justify-center gap-2">
-            {dict.contact.formSend} <Send size={18} />
-          </button>
-        </form>
+        <ContactForm dict={dict} />
       </div>
     </div>
   );
