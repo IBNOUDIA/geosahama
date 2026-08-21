@@ -25,18 +25,19 @@ export default function ContactForm({ dict }: { dict: any }) {
     setStatus("loading");
 
     try {
+      const formData = new FormData();
+      formData.append("access_key", accessKey);
+      formData.append("subject", `Nouveau message de ${name} - Site Sahama Services`);
+      formData.append("from_name", name);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("message", message);
+      formData.append("botcheck", "");
+
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `Nouveau message de ${name} - Site Sahama Services`,
-          from_name: name,
-          name,
-          email,
-          message,
-          botcheck: "",
-        }),
+        headers: { Accept: "application/json" },
+        body: formData,
       });
 
       const data = await res.json();
