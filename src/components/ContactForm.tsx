@@ -1,24 +1,74 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
 const CONTACT_EMAIL = "Souleymane.Diallo@sahama-services.com";
+
+type Status = "idle" | "loading" | "success" | "error";
 
 export default function ContactForm({ dict }: { dict: any }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-    const subject = `Nouveau message de ${name} - Site Sahama Services`;
-    const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (!accessKey) {
+      setStatus("error");
+      return;
+    }
 
-    window.location.href = mailtoUrl;
+    setStatus("loading");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Nouveau message de ${name} - Site Sahama Services`,
+          from_name: name,
+          name,
+          email,
+          message,
+          botcheck: "",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
+
+  if (status === "success") {
+    return (
+      <div className="bg-cardBg p-8 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center text-center gap-3 min-h-[320px]">
+        <CheckCircle2 size={40} className="text-green-400" />
+        <h3 className="text-lg font-bold text-white">Message envoyé !</h3>
+        <p className="text-gray-400 text-sm">Merci, nous vous répondrons dans les plus brefs délais.</p>
+        <button
+          onClick={() => setStatus("idle")}
+          className="text-sahamaYellow text-sm font-semibold hover:underline mt-2"
+        >
+          Envoyer un autre message
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="bg-cardBg p-8 rounded-2xl border border-zinc-800 space-y-4">
@@ -64,15 +114,28 @@ export default function ContactForm({ dict }: { dict: any }) {
           className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
         />
       </div>
+
+      {status === "error" && (
+        <p className="text-red-400 text-xs">
+          Une erreur est survenue lors de l'envoi. Réessayez, ou écrivez-nous directement à {CONTACT_EMAIL}.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="w-full bg-sahamaOrange hover:bg-sahamaOrange/90 text-black font-bold py-3 rounded-lg transition flex items-center justify-center gap-2"
+        disabled={status === "loading"}
+        className="w-full bg-sahamaOrange hover:bg-sahamaOrange/90 text-black font-bold py-3 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-60"
       >
-        {dict.contact.formSend} <Send size={18} />
+        {status === "loading" ? (
+          <>
+            Envoi en cours <Loader2 size={18} className="animate-spin" />
+          </>
+        ) : (
+          <>
+            {dict.contact.formSend} <Send size={18} />
+          </>
+        )}
       </button>
-      <p className="text-gray-500 text-xs text-center">
-        Ouvre votre application de messagerie avec le message pré-rempli à destination de {CONTACT_EMAIL}.
-      </p>
     </form>
   );
 }
