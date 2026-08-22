@@ -15,34 +15,18 @@ export default function ContactForm({ dict }: { dict: any }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-
-    if (!accessKey) {
-      setStatus("error");
-      return;
-    }
-
     setStatus("loading");
 
     try {
-      const formData = new FormData();
-      formData.append("access_key", accessKey);
-      formData.append("subject", `Nouveau message de ${name} - Site Sahama Services`);
-      formData.append("from_name", name);
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("message", message);
-      formData.append("botcheck", "");
-
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
       });
 
       const data = await res.json();
 
-      if (data.success) {
+      if (res.ok && data.success) {
         setStatus("success");
         setName("");
         setEmail("");
