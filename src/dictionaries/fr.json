@@ -95,7 +95,18 @@
     "mapFallbackTitle": "Google Earth & Maps API Connected",
     "mapFallbackBefore": "Insérez votre clé",
     "mapFallbackMiddle": "dans le fichier",
-    "mapFallbackAfter": "pour charger la carte interactive."
+    "mapFallbackAfter": "pour charger la carte interactive.",
+    "searchPlaceholder": "Rechercher une adresse...",
+    "searchButton": "OK",
+    "searchError": "Adresse introuvable.",
+    "myLocationTitle": "Ma position",
+    "locateError": "Impossible d'obtenir votre position.",
+    "geoNotSupported": "La géolocalisation n'est pas supportée par votre navigateur.",
+    "nearestHubLabel": "Hub le plus proche :",
+    "coordinatesLabel": "Coordonnées",
+    "copyLabel": "Copier",
+    "copiedLabel": "Copié",
+    "youAreHere": "Votre position"
   },
   "espaceClientPage": {
     "title": "Portail Client Sécurisé",

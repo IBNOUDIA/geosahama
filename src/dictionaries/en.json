@@ -95,7 +95,18 @@
     "mapFallbackTitle": "Google Earth & Maps API Connected",
     "mapFallbackBefore": "Insert your",
     "mapFallbackMiddle": "key in the",
-    "mapFallbackAfter": "file to load the interactive map."
+    "mapFallbackAfter": "file to load the interactive map.",
+    "searchPlaceholder": "Search an address...",
+    "searchButton": "Go",
+    "searchError": "Address not found.",
+    "myLocationTitle": "My location",
+    "locateError": "Unable to get your location.",
+    "geoNotSupported": "Geolocation is not supported by your browser.",
+    "nearestHubLabel": "Nearest hub:",
+    "coordinatesLabel": "Coordinates",
+    "copyLabel": "Copy",
+    "copiedLabel": "Copied",
+    "youAreHere": "Your location"
   },
   "espaceClientPage": {
     "title": "Secure Client Portal",

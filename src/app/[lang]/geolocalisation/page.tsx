@@ -33,7 +33,7 @@ export default async function GeolocalisationPage({ params }: { params: { lang: 
       <div className="max-w-7xl mx-auto px-4 pb-12">
         <div className="w-full h-96 bg-cardBg rounded-2xl border border-zinc-800 relative overflow-hidden">
           {hasKey ? (
-            <GoogleMapView apiKey={apiKey as string} />
+            <GoogleMapView apiKey={apiKey as string} t={t} />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-6 relative">
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#FF7A00_1px,transparent_1px)] [background-size:16px_16px]" />
