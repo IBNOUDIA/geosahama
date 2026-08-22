@@ -83,6 +83,9 @@
     "statusTitle": "Surveillance active 24/7",
     "statusDesc": "Télémétrie en temps réel sur l'ensemble de vos sites et actifs sensibles.",
     "statusBadge": "Réseau opérationnel",
+    "panelTitle": "Surveillance Réseau",
+    "panelStatus": "Actif",
+    "panelFooter": "Télémétrie & alertes en temps réel",
     "features": [
       { "title": "Surveillance en temps réel", "desc": "Suivi continu des installations et des zones à risque via capteurs connectés et caméras." },
       { "title": "Alertes préventives", "desc": "Notifications immédiates en cas d'intrusion, d'anomalie ou de dépassement de seuil critique." },

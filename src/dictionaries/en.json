@@ -83,6 +83,9 @@
     "statusTitle": "24/7 Active Monitoring",
     "statusDesc": "Real-time telemetry across all your sites and sensitive assets.",
     "statusBadge": "Network Operational",
+    "panelTitle": "Network Surveillance",
+    "panelStatus": "Active",
+    "panelFooter": "Real-time telemetry & alerts",
     "features": [
       { "title": "Real-Time Monitoring", "desc": "Continuous tracking of facilities and risk zones via connected sensors and cameras." },
       { "title": "Preventive Alerts", "desc": "Immediate notifications for intrusions, anomalies, or critical threshold breaches." },
