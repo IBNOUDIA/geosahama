@@ -34,7 +34,18 @@
     "formName": "Nom complet",
     "formEmail": "Adresse courriel",
     "formMessage": "Votre message",
-    "formSend": "Envoyer le message"
+    "formSend": "Envoyer le message",
+    "bridge": {
+      "badge": "Coordination Canada ⇄ Afrique de l'Ouest",
+      "title1": "Le Pont Technologique ",
+      "title2": "Canada ⇄ Sahel & Ouest Africain",
+      "subtitle": "Notre plateforme relie la supervision de flottes et la sécurité industrielle en Afrique de l'Ouest au suivi écologique du processus d'épuration à Montréal — une seule équipe, deux continents.",
+      "cta1": "Espace Client",
+      "cta2": "Nous écrire",
+      "panelTitle": "Réseau Sahama",
+      "panelStatus": "Opérationnel",
+      "panelFooter": "Coordination continue entre nos équipes"
+    }
   },
   "ai": {
     "title": "Assistant Sahama IA",

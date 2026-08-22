@@ -34,7 +34,18 @@
     "formName": "Full Name",
     "formEmail": "Email Address",
     "formMessage": "Your Message",
-    "formSend": "Send Message"
+    "formSend": "Send Message",
+    "bridge": {
+      "badge": "Canada ⇄ West Africa Coordination",
+      "title1": "The Technology Bridge ",
+      "title2": "Between Canada & the Sahel",
+      "subtitle": "Our platform connects fleet supervision and industrial security in West Africa with ecological tracking of the purification process in Montreal — one team, two continents.",
+      "cta1": "Client Portal",
+      "cta2": "Write to Us",
+      "panelTitle": "Sahama Network",
+      "panelStatus": "Operational",
+      "panelFooter": "Continuous coordination between our teams"
+    }
   },
   "ai": {
     "title": "Sahama AI Assistant",
