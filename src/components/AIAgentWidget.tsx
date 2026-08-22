@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Bot, X, Send, Sparkles, Loader2 } from "lucide-react";
+import { Truck, X, Send, Sparkles, Loader2 } from "lucide-react";
 
 interface AIAgentWidgetProps {
   dict: any;
@@ -65,12 +65,23 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
+      <style>{`
+        @keyframes chatbotFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-7px); }
+        }
+        .chatbot-float { animation: chatbotFloat 3s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .chatbot-float { animation: none; }
+        }
+      `}</style>
+
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2 bg-gradient-to-r from-sahamaOrange to-sahamaYellow text-black font-bold px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all"
+          className="chatbot-float flex items-center gap-2 bg-gradient-to-r from-green-500 via-yellow-400 to-red-500 text-black font-bold px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all"
         >
-          <Bot size={22} />
+          <Truck size={22} />
           <span className="hidden sm:inline">Sahama AI</span>
           <Sparkles size={16} />
         </button>
@@ -78,10 +89,17 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
 
       {isOpen && (
         <div className="w-80 sm:w-96 bg-cardBg border border-zinc-800 rounded-2xl shadow-2xl flex flex-col h-[480px] overflow-hidden">
+          {/* Flag stripe accent */}
+          <div className="flex h-1.5 shrink-0">
+            <div className="flex-1 bg-green-500" />
+            <div className="flex-1 bg-yellow-400" />
+            <div className="flex-1 bg-red-500" />
+          </div>
+
           {/* Header */}
           <div className="bg-zinc-900 px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
             <div className="flex items-center gap-2 text-white font-bold text-sm">
-              <Bot className="text-sahamaOrange" size={20} />
+              <Truck className="text-sahamaOrange" size={20} />
               <span>{dict.ai.title}</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
