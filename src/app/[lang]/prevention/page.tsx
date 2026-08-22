@@ -1,6 +1,7 @@
 import { Activity, AlertTriangle, BarChart3, Bell, ShieldAlert, Wrench } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
+import PredictiveAnalysisPanel from "@/components/PredictiveAnalysisPanel";
 
 const ICONS = [AlertTriangle, Wrench, Bell, BarChart3, Activity, ShieldAlert];
 
@@ -29,12 +30,19 @@ export default async function PreventionPage({ params }: { params: { lang: "fr" 
           <SatelliteOrbit className="w-full h-full" showSatellite={false} />
           <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/70 to-darkBg/30" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-            {t.title1}
-            <span className="text-sahamaYellow">{t.title2}</span>
-          </h1>
-          <p className="text-gray-300 max-w-2xl mx-auto">{t.subtitle}</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 grid md:grid-cols-[1.3fr,1fr] gap-10 items-center">
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
+              {t.title1}
+              <span className="text-sahamaYellow">{t.title2}</span>
+            </h1>
+            <p className="text-gray-300 max-w-2xl mx-auto md:mx-0">{t.subtitle}</p>
+          </div>
+          <PredictiveAnalysisPanel
+            title={t.panelTitle}
+            status={t.panelStatus}
+            footer={t.panelFooter}
+          />
         </div>
       </section>
 

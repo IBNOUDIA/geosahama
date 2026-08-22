@@ -112,7 +112,10 @@
       { "title": "Risk Reports", "desc": "Consolidated dashboards to track the evolution of material and environmental risks." },
       { "title": "Continuous Analysis", "desc": "Ongoing monitoring of key indicators to adjust alert thresholds in real time." },
       { "title": "Incident Prevention", "desc": "Reducing material, human, and environmental losses through anticipation." }
-    ]
+    ],
+    "panelTitle": "Predictive Analysis",
+    "panelStatus": "Monitoring active",
+    "panelFooter": "Continuous monitoring of key indicators"
   },
   "epurationPage": {
     "badge": "Montreal Ecological Project",
@@ -124,7 +127,10 @@
       { "num": "02", "title": "Purification Treatment", "desc": "Real-time monitoring of basins and clarification filters." },
       { "num": "03", "title": "Secure Transport", "desc": "GPS geolocation tracking of purification residues and sludge." },
       { "num": "04", "title": "Landfill & Recovery", "desc": "Final traceability at the disposal site and carbon footprint reporting." }
-    ]
+    ],
+    "panelTitle": "Ecological Treatment",
+    "panelBadge": "Montreal, QC",
+    "panelFooter": "From prevention to controlled landfill"
   },
   "geolocalisationPage": {
     "title1": "Geolocation & ",
@@ -170,6 +176,11 @@
   "actualitesPage": {
     "kicker": "Sahama Media & News",
     "title": "Our Activities & News",
+    "panelTitle": "Sahama Media",
+    "panelStatus": "Updated",
+    "reportagesLabel": "Reports",
+    "photosLabel": "Photos",
+    "categoriesLabel": "Categories",
     "filters": {
       "all": "View All",
       "geolocalisation": "Geolocation",
