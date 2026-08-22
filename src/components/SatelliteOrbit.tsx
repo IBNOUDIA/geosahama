@@ -1,4 +1,10 @@
-export default function SatelliteOrbit({ className }: { className?: string }) {
+export default function SatelliteOrbit({
+  className,
+  showSatellite = true,
+}: {
+  className?: string;
+  showSatellite?: boolean;
+}) {
   return (
     <svg
       viewBox="0 0 1600 900"
@@ -66,18 +72,20 @@ export default function SatelliteOrbit({ className }: { className?: string }) {
       </g>
 
       {/* Orbit path */}
-      <ellipse
-        cx="980"
-        cy="260"
-        rx="620"
-        ry="160"
-        fill="none"
-        stroke="#FFC700"
-        strokeOpacity="0.28"
-        strokeWidth="1.5"
-        strokeDasharray="3 9"
-        className="orbit-dash"
-      />
+      {showSatellite && (
+        <ellipse
+          cx="980"
+          cy="260"
+          rx="620"
+          ry="160"
+          fill="none"
+          stroke="#FFC700"
+          strokeOpacity="0.28"
+          strokeWidth="1.5"
+          strokeDasharray="3 9"
+          className="orbit-dash"
+        />
+      )}
 
       {/* Earth */}
       <circle cx="360" cy="1360" r="1080" fill="url(#earthOcean)" />
@@ -162,25 +170,27 @@ export default function SatelliteOrbit({ className }: { className?: string }) {
       />
 
       {/* Orbiting satellite */}
-      <g className="satellite-orbit">
-        <g transform="rotate(24)">
-          <circle r="36" fill="url(#satGlow)" filter="url(#blurWide)" />
-          <g stroke="#0c2233" strokeWidth="1">
-            <rect x="-58" y="-10" width="34" height="20" fill="#12354a" />
-            <rect x="-56" y="-8" width="7" height="16" fill="#1B4A63" />
-            <rect x="-47" y="-8" width="7" height="16" fill="#1B4A63" />
-            <rect x="-38" y="-8" width="7" height="16" fill="#1B4A63" />
-            <rect x="24" y="-10" width="34" height="20" fill="#12354a" />
-            <rect x="26" y="-8" width="7" height="16" fill="#1B4A63" />
-            <rect x="35" y="-8" width="7" height="16" fill="#1B4A63" />
-            <rect x="44" y="-8" width="7" height="16" fill="#1B4A63" />
+      {showSatellite && (
+        <g className="satellite-orbit">
+          <g transform="rotate(24)">
+            <circle r="36" fill="url(#satGlow)" filter="url(#blurWide)" />
+            <g stroke="#0c2233" strokeWidth="1">
+              <rect x="-58" y="-10" width="34" height="20" fill="#12354a" />
+              <rect x="-56" y="-8" width="7" height="16" fill="#1B4A63" />
+              <rect x="-47" y="-8" width="7" height="16" fill="#1B4A63" />
+              <rect x="-38" y="-8" width="7" height="16" fill="#1B4A63" />
+              <rect x="24" y="-10" width="34" height="20" fill="#12354a" />
+              <rect x="26" y="-8" width="7" height="16" fill="#1B4A63" />
+              <rect x="35" y="-8" width="7" height="16" fill="#1B4A63" />
+              <rect x="44" y="-8" width="7" height="16" fill="#1B4A63" />
+            </g>
+            <rect x="-11" y="-11" width="22" height="22" rx="3" fill="#E7ECEF" />
+            <rect x="-11" y="-11" width="22" height="22" rx="3" fill="none" stroke="#8b98a3" strokeWidth="1" />
+            <line x1="0" y1="-11" x2="0" y2="-26" stroke="#E7ECEF" strokeWidth="1.5" />
+            <circle cx="0" cy="-28" r="2.5" fill="#FFC700" />
           </g>
-          <rect x="-11" y="-11" width="22" height="22" rx="3" fill="#E7ECEF" />
-          <rect x="-11" y="-11" width="22" height="22" rx="3" fill="none" stroke="#8b98a3" strokeWidth="1" />
-          <line x1="0" y1="-11" x2="0" y2="-26" stroke="#E7ECEF" strokeWidth="1.5" />
-          <circle cx="0" cy="-28" r="2.5" fill="#FFC700" />
         </g>
-      </g>
+      )}
 
       <style>{`
         .hub-pulse {

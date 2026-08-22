@@ -62,14 +62,9 @@ export default function NewsSection({ dict }: { dict: any }) {
 
   return (
     <section className="py-8">
-      {/* En-tête + filtres */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-zinc-800 pb-6">
-        <div>
-          <span className="text-sahamaOrange font-semibold text-sm uppercase tracking-widest">{t.kicker}</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold mt-2">{t.title}</h2>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
+      {/* Filtres */}
+      <div className="flex flex-col md:flex-row justify-end items-start md:items-end mb-12 border-b border-zinc-800 pb-6">
+        <div className="flex flex-wrap gap-2">
           {FILTER_ORDER.map((key) => {
             const Icon = FILTER_ICONS[key];
             const label = t.filters[key];
