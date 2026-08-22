@@ -40,5 +40,120 @@
     "title": "Sahama AI Assistant",
     "placeholder": "Ask a question to the assistant...",
     "welcome": "Hello! I am the Sahama Services AI agent. How can I assist you today?"
+  },
+  "securitePage": {
+    "title1": "Security & ",
+    "title2": "Asset Monitoring",
+    "subtitle": "Telemetry and industrial facility security solutions, designed to protect your sites, teams, and equipment around the clock.",
+    "statusTitle": "24/7 Active Monitoring",
+    "statusDesc": "Real-time telemetry across all your sites and sensitive assets.",
+    "statusBadge": "Network Operational",
+    "features": [
+      { "title": "Real-Time Monitoring", "desc": "Continuous tracking of facilities and risk zones via connected sensors and cameras." },
+      { "title": "Preventive Alerts", "desc": "Immediate notifications for intrusions, anomalies, or critical threshold breaches." },
+      { "title": "Industrial Telemetry", "desc": "Continuous collection and transmission of field data for centralized risk management." },
+      { "title": "Access Control", "desc": "Access management for sensitive sites and traceability of personnel and equipment movements." },
+      { "title": "Connected Video Surveillance", "desc": "Cameras integrated into the telemetry network for instant visual verification of alerts." },
+      { "title": "Facility Security", "desc": "Protocols tailored to each industrial site to reduce material and human risks." }
+    ]
+  },
+  "preventionPage": {
+    "title1": "Risk Prevention & ",
+    "title2": "Predictive Analytics",
+    "subtitle": "Rapid alert systems and prevention of material or environmental incidents, anticipating issues before they happen.",
+    "steps": [
+      { "num": "01", "title": "Detection", "desc": "Sensors and field data continuously monitored to spot the earliest warning signs." },
+      { "num": "02", "title": "Predictive Analysis", "desc": "Cross-referencing history and trends to estimate the likelihood of a failure or incident." },
+      { "num": "03", "title": "Rapid Alert", "desc": "Immediate notification to the relevant teams as soon as a risk threshold is crossed." },
+      { "num": "04", "title": "Corrective Action", "desc": "Targeted intervention before the incident occurs, with full traceability of measures taken." }
+    ],
+    "features": [
+      { "title": "Anomaly Detection", "desc": "Automatic identification of behavioral deviations in equipment and facilities." },
+      { "title": "Predictive Maintenance", "desc": "Scheduling interventions before failure occurs, reducing unplanned downtime." },
+      { "title": "Early Alerts", "desc": "Notifications sent to relevant teams at the first signs of risk." },
+      { "title": "Risk Reports", "desc": "Consolidated dashboards to track the evolution of material and environmental risks." },
+      { "title": "Continuous Analysis", "desc": "Ongoing monitoring of key indicators to adjust alert thresholds in real time." },
+      { "title": "Incident Prevention", "desc": "Reducing material, human, and environmental losses through anticipation." }
+    ]
+  },
+  "epurationPage": {
+    "badge": "Montreal Ecological Project",
+    "title1": "Ecological Tracking of the ",
+    "title2": "Purification Process",
+    "subtitle": "A complete platform to monitor every stage of water and industrial waste treatment in Montreal, ensuring flawless environmental compliance.",
+    "steps": [
+      { "num": "01", "title": "Prevention & Capture", "desc": "Source detection of pollutants and effluent monitoring." },
+      { "num": "02", "title": "Purification Treatment", "desc": "Real-time monitoring of basins and clarification filters." },
+      { "num": "03", "title": "Secure Transport", "desc": "GPS geolocation tracking of purification residues and sludge." },
+      { "num": "04", "title": "Landfill & Recovery", "desc": "Final traceability at the disposal site and carbon footprint reporting." }
+    ]
+  },
+  "geolocalisationPage": {
+    "title1": "Geolocation & ",
+    "title2": "Fleet Management",
+    "subtitle": "Our traceability solutions in West Africa enable real-time tracking connected to the Google Maps & Earth APIs.",
+    "mapFallbackTitle": "Google Earth & Maps API Connected",
+    "mapFallbackBefore": "Insert your",
+    "mapFallbackMiddle": "key in the",
+    "mapFallbackAfter": "file to load the interactive map."
+  },
+  "espaceClientPage": {
+    "title": "Secure Client Portal",
+    "subtitleBefore": "Track your vehicles and assets in real time on our partner platform",
+    "subtitleBrand": "Wialon",
+    "hint": "Your Wialon credentials were provided by your Sahama Services account manager.",
+    "loginButton": "Log in to my account",
+    "noAccess": "Don't have access yet?",
+    "contactLink": "Contact us",
+    "activation": "to activate your account."
+  },
+  "actualitesPage": {
+    "kicker": "Sahama Media & News",
+    "title": "Our Activities & News",
+    "filters": {
+      "all": "View All",
+      "geolocalisation": "Geolocation",
+      "epuration": "Montreal Purification",
+      "evenement": "Events",
+      "video": "Videos"
+    },
+    "emptyState": "Content coming soon in this category.",
+    "reportage": "Report",
+    "photoSuffix": "photo(s)",
+    "galleryTitle": "Field Photo Gallery",
+    "closeLabel": "Close",
+    "videoLabel": "Video",
+    "enlargeAlt": "Enlarged view",
+    "photoPending": "Photo coming soon",
+    "articles": [
+      {
+        "title": "Launch of the ecological traceability project for the purification process",
+        "location": "Montreal, QC",
+        "excerpt": "Deployment of our smart sensors to track the process from prevention through to landfill."
+      },
+      {
+        "title": "Acquisition and commissioning of new GPS equipment",
+        "location": "West Africa",
+        "excerpt": "Expanding our geographic coverage for high-precision fleet tracking."
+      },
+      {
+        "title": "Sahama Services at the West Africa Logistics Trade Show",
+        "location": "Dakar, Senegal",
+        "excerpt": "Meeting with our partners and presenting our telemetry solutions at the regional trade show."
+      }
+    ],
+    "gallery": [
+      { "title": "GPS Beacon Installation" },
+      { "title": "Ecological Tracking Sensor" },
+      { "title": "Technical Team Intervention" },
+      { "title": "On-Site Telemetry Test" }
+    ]
+  },
+  "testimonialsSection": {
+    "kicker": "Trusted By",
+    "title": "Client Testimonials",
+    "subtitle": "Feedback from our partners in West Africa and Montreal on our geolocation and ecological tracking solutions.",
+    "placeholderLabel": "Client Testimonial",
+    "placeholderSub": "Contact Details"
   }
 }

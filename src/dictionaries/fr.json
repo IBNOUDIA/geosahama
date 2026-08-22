@@ -40,5 +40,120 @@
     "title": "Assistant Sahama IA",
     "placeholder": "Posez une question à l'assistant...",
     "welcome": "Bonjour ! Je suis l'agent IA de Sahama Services. Comment puis-je vous aider aujourd'hui ?"
+  },
+  "securitePage": {
+    "title1": "Sécurité & ",
+    "title2": "Surveillance d'Actifs",
+    "subtitle": "Solutions de télémétrie et de sécurisation des installations industrielles, pensées pour protéger vos sites, vos équipes et vos équipements en continu.",
+    "statusTitle": "Surveillance active 24/7",
+    "statusDesc": "Télémétrie en temps réel sur l'ensemble de vos sites et actifs sensibles.",
+    "statusBadge": "Réseau opérationnel",
+    "features": [
+      { "title": "Surveillance en temps réel", "desc": "Suivi continu des installations et des zones à risque via capteurs connectés et caméras." },
+      { "title": "Alertes préventives", "desc": "Notifications immédiates en cas d'intrusion, d'anomalie ou de dépassement de seuil critique." },
+      { "title": "Télémétrie industrielle", "desc": "Collecte et transmission continue des données terrain pour un pilotage centralisé des risques." },
+      { "title": "Contrôle d'accès", "desc": "Gestion des accès aux sites sensibles et traçabilité des mouvements de personnel et de matériel." },
+      { "title": "Vidéosurveillance connectée", "desc": "Caméras intégrées au réseau de télémétrie pour une vérification visuelle instantanée des alertes." },
+      { "title": "Sécurisation des installations", "desc": "Protocoles adaptés à chaque site industriel pour réduire les risques matériels et humains." }
+    ]
+  },
+  "preventionPage": {
+    "title1": "Prévention des Risques & ",
+    "title2": "Analyse Prédictive",
+    "subtitle": "Systèmes d'alerte rapide et prévention des incidents matériels ou environnementaux, pour anticiper avant que l'incident ne survienne.",
+    "steps": [
+      { "num": "01", "title": "Détection", "desc": "Capteurs et données terrain surveillés en continu pour repérer les premiers signaux faibles." },
+      { "num": "02", "title": "Analyse prédictive", "desc": "Croisement des historiques et des tendances pour estimer la probabilité d'une panne ou d'un incident." },
+      { "num": "03", "title": "Alerte rapide", "desc": "Notification immédiate des équipes concernées dès qu'un seuil de risque est franchi." },
+      { "num": "04", "title": "Action corrective", "desc": "Intervention ciblée avant l'incident, avec traçabilité complète des mesures prises." }
+    ],
+    "features": [
+      { "title": "Détection d'anomalies", "desc": "Identification automatique des écarts de comportement sur les équipements et installations." },
+      { "title": "Maintenance prédictive", "desc": "Planification des interventions avant la panne, pour réduire les arrêts non programmés." },
+      { "title": "Alertes précoces", "desc": "Notifications envoyées aux équipes concernées dès les premiers signaux de risque." },
+      { "title": "Rapports de risques", "desc": "Tableaux de bord consolidés pour suivre l'évolution des risques matériels et environnementaux." },
+      { "title": "Analyse en continu", "desc": "Suivi permanent des indicateurs clés pour ajuster les seuils d'alerte en temps réel." },
+      { "title": "Prévention des incidents", "desc": "Réduction des pertes matérielles, humaines et environnementales grâce à l'anticipation." }
+    ]
+  },
+  "epurationPage": {
+    "badge": "Projet Écologique Montréal",
+    "title1": "Suivi Écologique du ",
+    "title2": "Processus d'Épuration",
+    "subtitle": "Une plateforme complète pour surveiller chaque étape du traitement des eaux et des déchets industriels à Montréal, assurant une conformité environnementale irréprochable.",
+    "steps": [
+      { "num": "01", "title": "Prévention & Captage", "desc": "Détection à la source des polluants et surveillance des effluents." },
+      { "num": "02", "title": "Traitement d'Épuration", "desc": "Monitoring en temps réel des bassins et filtres de clarification." },
+      { "num": "03", "title": "Transport Sécurisé", "desc": "Suivi par géolocalisation GPS des résidus et boues d'épuration." },
+      { "num": "04", "title": "Enfouissement & Valorisation", "desc": "Traçabilité finale sur le site de dépôt et bilan carbone." }
+    ]
+  },
+  "geolocalisationPage": {
+    "title1": "Géolocalisation & ",
+    "title2": "Gestion de Flottes",
+    "subtitle": "Nos solutions de traçabilité en Afrique de l'Ouest permettent un suivi temps réel connecté aux API Google Maps & Earth.",
+    "mapFallbackTitle": "Google Earth & Maps API Connected",
+    "mapFallbackBefore": "Insérez votre clé",
+    "mapFallbackMiddle": "dans le fichier",
+    "mapFallbackAfter": "pour charger la carte interactive."
+  },
+  "espaceClientPage": {
+    "title": "Portail Client Sécurisé",
+    "subtitleBefore": "Suivez vos véhicules et actifs en temps réel sur notre plateforme partenaire",
+    "subtitleBrand": "Wialon",
+    "hint": "Vos identifiants Wialon vous ont été transmis par votre gestionnaire de compte Sahama Services.",
+    "loginButton": "Se connecter à mon espace",
+    "noAccess": "Pas encore d'accès ?",
+    "contactLink": "Contactez-nous",
+    "activation": "pour l'activation de votre compte."
+  },
+  "actualitesPage": {
+    "kicker": "Sahama Media & News",
+    "title": "Nos activités & actualités",
+    "filters": {
+      "all": "Tout voir",
+      "geolocalisation": "Géolocalisation",
+      "epuration": "Épuration Montréal",
+      "evenement": "Événements",
+      "video": "Vidéos"
+    },
+    "emptyState": "Contenu à venir dans cette catégorie.",
+    "reportage": "Reportage",
+    "photoSuffix": "photo(s)",
+    "galleryTitle": "Galerie photos de terrain",
+    "closeLabel": "Fermer",
+    "videoLabel": "Vidéo",
+    "enlargeAlt": "Agrandissement",
+    "photoPending": "Photo à venir",
+    "articles": [
+      {
+        "title": "Lancement du projet de traçabilité écologique du processus d'épuration",
+        "location": "Montréal, QC",
+        "excerpt": "Déploiement de nos capteurs intelligents pour le suivi de la prévention jusqu'à l'enfouissement."
+      },
+      {
+        "title": "Acquisition et mise en service de nouveaux équipements GPS",
+        "location": "Afrique de l'Ouest",
+        "excerpt": "Extension de notre couverture géographique pour un suivi haute précision des flottes."
+      },
+      {
+        "title": "Sahama Services au Salon de la Logistique en Afrique de l'Ouest",
+        "location": "Dakar, Sénégal",
+        "excerpt": "Rencontre avec nos partenaires et présentation de nos solutions de télémétrie sur le salon régional."
+      }
+    ],
+    "gallery": [
+      { "title": "Installation balise GPS" },
+      { "title": "Capteur de suivi écologique" },
+      { "title": "Intervention équipe technique" },
+      { "title": "Test télémétrie sur site" }
+    ]
+  },
+  "testimonialsSection": {
+    "kicker": "Ils nous font confiance",
+    "title": "Témoignages clients",
+    "subtitle": "Retours de nos partenaires en Afrique de l'Ouest et à Montréal sur nos solutions de géolocalisation et de suivi écologique.",
+    "placeholderLabel": "Témoignage client",
+    "placeholderSub": "Coordonnées"
   }
 }

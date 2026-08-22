@@ -9,9 +9,11 @@ const ICONS: Record<string, LucideIcon> = {
 
 export default function MediaPlaceholder({
   category,
+  label = "Photo à venir",
   className,
 }: {
   category?: string;
+  label?: string;
   className?: string;
 }) {
   const Icon = (category && ICONS[category]) || ImageIcon;
@@ -22,7 +24,7 @@ export default function MediaPlaceholder({
     >
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FF7A00_1px,transparent_1px)] [background-size:14px_14px]" />
       <Icon size={30} className="text-sahamaOrange relative z-10" />
-      <span className="text-[10px] uppercase tracking-wider text-gray-500 relative z-10">Photo à venir</span>
+      <span className="text-[10px] uppercase tracking-wider text-gray-500 relative z-10">{label}</span>
     </div>
   );
 }

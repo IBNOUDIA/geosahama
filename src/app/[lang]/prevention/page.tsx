@@ -1,90 +1,57 @@
 import { Activity, AlertTriangle, BarChart3, Bell, ShieldAlert, Wrench } from "lucide-react";
+import { getDictionary } from "@/dictionaries/get-dictionary";
 
-export default function PreventionPage() {
+const STEP_COLORS = ["text-sahamaOrange", "text-sahamaOrange", "text-sahamaYellow", "text-sahamaYellow"];
+
+const ICONS = [AlertTriangle, Wrench, Bell, BarChart3, Activity, ShieldAlert];
+const CARD_STYLES = [
+  { border: "hover:border-sahamaOrange/50", chip: "bg-sahamaOrange/10 text-sahamaOrange" },
+  { border: "hover:border-sahamaYellow/50", chip: "bg-sahamaYellow/10 text-sahamaYellow" },
+];
+
+export default async function PreventionPage({ params }: { params: { lang: "fr" | "en" } }) {
+  const dict = await getDictionary(params.lang);
+  const t = dict.preventionPage;
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="mb-12 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-          Prévention des Risques & <span className="text-sahamaYellow">Analyse Prédictive</span>
+          {t.title1}
+          <span className="text-sahamaYellow">{t.title2}</span>
         </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Systèmes d'alerte rapide et prévention des incidents matériels ou environnementaux, pour anticiper avant que l'incident ne survienne.
-        </p>
+        <p className="text-gray-400 max-w-2xl mx-auto">{t.subtitle}</p>
       </div>
 
       {/* Prediction Flow */}
       <div className="grid md:grid-cols-4 gap-6 mb-16">
-        <div className="bg-cardBg p-6 rounded-xl border border-zinc-800">
-          <span className="text-sahamaOrange font-bold text-2xl">01</span>
-          <h3 className="text-lg font-bold mt-2 mb-2">Détection</h3>
-          <p className="text-gray-400 text-xs">Capteurs et données terrain surveillés en continu pour repérer les premiers signaux faibles.</p>
-        </div>
-        <div className="bg-cardBg p-6 rounded-xl border border-zinc-800">
-          <span className="text-sahamaOrange font-bold text-2xl">02</span>
-          <h3 className="text-lg font-bold mt-2 mb-2">Analyse prédictive</h3>
-          <p className="text-gray-400 text-xs">Croisement des historiques et des tendances pour estimer la probabilité d'une panne ou d'un incident.</p>
-        </div>
-        <div className="bg-cardBg p-6 rounded-xl border border-zinc-800">
-          <span className="text-sahamaYellow font-bold text-2xl">03</span>
-          <h3 className="text-lg font-bold mt-2 mb-2">Alerte rapide</h3>
-          <p className="text-gray-400 text-xs">Notification immédiate des équipes concernées dès qu'un seuil de risque est franchi.</p>
-        </div>
-        <div className="bg-cardBg p-6 rounded-xl border border-zinc-800">
-          <span className="text-sahamaYellow font-bold text-2xl">04</span>
-          <h3 className="text-lg font-bold mt-2 mb-2">Action corrective</h3>
-          <p className="text-gray-400 text-xs">Intervention ciblée avant l'incident, avec traçabilité complète des mesures prises.</p>
-        </div>
+        {t.steps.map((step: { num: string; title: string; desc: string }, i: number) => (
+          <div key={i} className="bg-cardBg p-6 rounded-xl border border-zinc-800">
+            <span className={`font-bold text-2xl ${STEP_COLORS[i]}`}>{step.num}</span>
+            <h3 className="text-lg font-bold mt-2 mb-2">{step.title}</h3>
+            <p className="text-gray-400 text-xs">{step.desc}</p>
+          </div>
+        ))}
       </div>
 
       {/* Feature Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/50 transition-all">
-          <div className="p-3 bg-sahamaOrange/10 rounded-xl w-fit text-sahamaOrange mb-4">
-            <AlertTriangle size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Détection d'anomalies</h3>
-          <p className="text-gray-400 text-sm">Identification automatique des écarts de comportement sur les équipements et installations.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaYellow/50 transition-all">
-          <div className="p-3 bg-sahamaYellow/10 rounded-xl w-fit text-sahamaYellow mb-4">
-            <Wrench size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Maintenance prédictive</h3>
-          <p className="text-gray-400 text-sm">Planification des interventions avant la panne, pour réduire les arrêts non programmés.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/50 transition-all">
-          <div className="p-3 bg-sahamaOrange/10 rounded-xl w-fit text-sahamaOrange mb-4">
-            <Bell size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Alertes précoces</h3>
-          <p className="text-gray-400 text-sm">Notifications envoyées aux équipes concernées dès les premiers signaux de risque.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaYellow/50 transition-all">
-          <div className="p-3 bg-sahamaYellow/10 rounded-xl w-fit text-sahamaYellow mb-4">
-            <BarChart3 size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Rapports de risques</h3>
-          <p className="text-gray-400 text-sm">Tableaux de bord consolidés pour suivre l'évolution des risques matériels et environnementaux.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/50 transition-all">
-          <div className="p-3 bg-sahamaOrange/10 rounded-xl w-fit text-sahamaOrange mb-4">
-            <Activity size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Analyse en continu</h3>
-          <p className="text-gray-400 text-sm">Suivi permanent des indicateurs clés pour ajuster les seuils d'alerte en temps réel.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaYellow/50 transition-all">
-          <div className="p-3 bg-sahamaYellow/10 rounded-xl w-fit text-sahamaYellow mb-4">
-            <ShieldAlert size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Prévention des incidents</h3>
-          <p className="text-gray-400 text-sm">Réduction des pertes matérielles, humaines et environnementales grâce à l'anticipation.</p>
-        </div>
+        {t.features.map((feature: { title: string; desc: string }, i: number) => {
+          const Icon = ICONS[i];
+          const style = CARD_STYLES[i % 2];
+          return (
+            <div
+              key={i}
+              className={`bg-cardBg p-6 rounded-2xl border border-zinc-800 transition-all ${style.border}`}
+            >
+              <div className={`p-3 rounded-xl w-fit mb-4 ${style.chip}`}>
+                <Icon size={28} />
+              </div>
+              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+              <p className="text-gray-400 text-sm">{feature.desc}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

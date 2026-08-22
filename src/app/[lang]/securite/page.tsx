@@ -1,15 +1,25 @@
 import { ShieldCheck, Eye, Bell, Radio, Lock, Camera } from "lucide-react";
+import { getDictionary } from "@/dictionaries/get-dictionary";
 
-export default function SecuritePage() {
+const ICONS = [Eye, Bell, Radio, Lock, Camera, ShieldCheck];
+
+const CARD_STYLES = [
+  { border: "hover:border-sahamaOrange/50", chip: "bg-sahamaOrange/10 text-sahamaOrange" },
+  { border: "hover:border-sahamaYellow/50", chip: "bg-sahamaYellow/10 text-sahamaYellow" },
+];
+
+export default async function SecuritePage({ params }: { params: { lang: "fr" | "en" } }) {
+  const dict = await getDictionary(params.lang);
+  const t = dict.securitePage;
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="mb-12 text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-          Sécurité & <span className="text-sahamaOrange">Surveillance d'Actifs</span>
+          {t.title1}
+          <span className="text-sahamaOrange">{t.title2}</span>
         </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Solutions de télémétrie et de sécurisation des installations industrielles, pensées pour protéger vos sites, vos équipes et vos équipements en continu.
-        </p>
+        <p className="text-gray-400 max-w-2xl mx-auto">{t.subtitle}</p>
       </div>
 
       {/* Status Panel */}
@@ -19,65 +29,34 @@ export default function SecuritePage() {
             <ShieldCheck size={28} />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">Surveillance active 24/7</h3>
-            <p className="text-gray-400 text-sm">Télémétrie en temps réel sur l'ensemble de vos sites et actifs sensibles.</p>
+            <h3 className="text-lg font-bold text-white">{t.statusTitle}</h3>
+            <p className="text-gray-400 text-sm">{t.statusDesc}</p>
           </div>
         </div>
         <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Réseau opérationnel
+          {t.statusBadge}
         </span>
       </div>
 
       {/* Feature Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/50 transition-all">
-          <div className="p-3 bg-sahamaOrange/10 rounded-xl w-fit text-sahamaOrange mb-4">
-            <Eye size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Surveillance en temps réel</h3>
-          <p className="text-gray-400 text-sm">Suivi continu des installations et des zones à risque via capteurs connectés et caméras.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaYellow/50 transition-all">
-          <div className="p-3 bg-sahamaYellow/10 rounded-xl w-fit text-sahamaYellow mb-4">
-            <Bell size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Alertes préventives</h3>
-          <p className="text-gray-400 text-sm">Notifications immédiates en cas d'intrusion, d'anomalie ou de dépassement de seuil critique.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/50 transition-all">
-          <div className="p-3 bg-sahamaOrange/10 rounded-xl w-fit text-sahamaOrange mb-4">
-            <Radio size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Télémétrie industrielle</h3>
-          <p className="text-gray-400 text-sm">Collecte et transmission continue des données terrain pour un pilotage centralisé des risques.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaYellow/50 transition-all">
-          <div className="p-3 bg-sahamaYellow/10 rounded-xl w-fit text-sahamaYellow mb-4">
-            <Lock size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Contrôle d'accès</h3>
-          <p className="text-gray-400 text-sm">Gestion des accès aux sites sensibles et traçabilité des mouvements de personnel et de matériel.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/50 transition-all">
-          <div className="p-3 bg-sahamaOrange/10 rounded-xl w-fit text-sahamaOrange mb-4">
-            <Camera size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Vidéosurveillance connectée</h3>
-          <p className="text-gray-400 text-sm">Caméras intégrées au réseau de télémétrie pour une vérification visuelle instantanée des alertes.</p>
-        </div>
-
-        <div className="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-sahamaYellow/50 transition-all">
-          <div className="p-3 bg-sahamaYellow/10 rounded-xl w-fit text-sahamaYellow mb-4">
-            <ShieldCheck size={28} />
-          </div>
-          <h3 className="text-lg font-bold mb-2">Sécurisation des installations</h3>
-          <p className="text-gray-400 text-sm">Protocoles adaptés à chaque site industriel pour réduire les risques matériels et humains.</p>
-        </div>
+        {t.features.map((feature: { title: string; desc: string }, i: number) => {
+          const Icon = ICONS[i];
+          const style = CARD_STYLES[i % 2];
+          return (
+            <div
+              key={i}
+              className={`bg-cardBg p-6 rounded-2xl border border-zinc-800 transition-all ${style.border}`}
+            >
+              <div className={`p-3 rounded-xl w-fit mb-4 ${style.chip}`}>
+                <Icon size={28} />
+              </div>
+              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+              <p className="text-gray-400 text-sm">{feature.desc}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
