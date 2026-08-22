@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Mail, MapPin, Radio } from "lucide-react";
+import { Mail, MapPin, Radio, FileText } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import ContactForm from "@/components/ContactForm";
+import QuoteForm from "@/components/QuoteForm";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 
 const HUBS = ["Dakar", "Abidjan", "Conakry", "Bamako", "Montréal"];
@@ -72,6 +73,18 @@ export default async function ContactPage({ params }: { params: { lang: "fr" | "
           </div>
         </div>
       </section>
+
+      {/* Quote Request */}
+      <div id="devis" className="max-w-3xl mx-auto px-4 pt-4 pb-16">
+        <div className="text-center mb-10">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sahamaOrange/10 border border-sahamaOrange/30 text-sahamaOrange text-xs font-semibold uppercase tracking-wider mb-4">
+            <FileText size={12} /> {dict.contact.quote.badge}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">{dict.contact.quote.title}</h2>
+          <p className="text-gray-400">{dict.contact.quote.subtitle}</p>
+        </div>
+        <QuoteForm dict={dict} />
+      </div>
 
       <div id="formulaire" className="max-w-6xl mx-auto px-4 pt-4 pb-28">
       <div className="text-center mb-12">

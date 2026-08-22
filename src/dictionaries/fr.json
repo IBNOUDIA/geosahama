@@ -45,6 +45,30 @@
       "panelTitle": "Réseau Sahama",
       "panelStatus": "Opérationnel",
       "panelFooter": "Coordination continue entre nos équipes"
+    },
+    "quote": {
+      "badge": "Devis personnalisé",
+      "title": "Demander un devis",
+      "subtitle": "Décrivez votre projet, notre équipe vous répond avec un devis personnalisé sous 48h.",
+      "servicesLabel": "Services qui vous intéressent",
+      "nameLabel": "Nom complet",
+      "companyLabel": "Entreprise",
+      "emailLabel": "Adresse courriel",
+      "phoneLabel": "Téléphone (optionnel)",
+      "fleetSizeLabel": "Nombre approximatif de véhicules / actifs à suivre",
+      "zoneLabel": "Zone géographique",
+      "zoneOptions": {
+        "westAfrica": "Afrique de l'Ouest",
+        "montreal": "Montréal",
+        "both": "Les deux"
+      },
+      "messageLabel": "Détails supplémentaires (optionnel)",
+      "submitButton": "Envoyer ma demande de devis",
+      "sendingLabel": "Envoi en cours",
+      "successTitle": "Demande envoyée !",
+      "successDesc": "Merci, notre équipe vous contactera avec un devis personnalisé sous peu.",
+      "resetButton": "Envoyer une autre demande",
+      "errorMessage": "Une erreur est survenue lors de l'envoi. Réessayez, ou écrivez-nous directement à"
     }
   },
   "ai": {

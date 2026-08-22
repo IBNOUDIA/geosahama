@@ -45,6 +45,30 @@
       "panelTitle": "Sahama Network",
       "panelStatus": "Operational",
       "panelFooter": "Continuous coordination between our teams"
+    },
+    "quote": {
+      "badge": "Custom Quote",
+      "title": "Request a Quote",
+      "subtitle": "Describe your project and our team will get back to you with a personalized quote within 48 hours.",
+      "servicesLabel": "Services you're interested in",
+      "nameLabel": "Full Name",
+      "companyLabel": "Company",
+      "emailLabel": "Email Address",
+      "phoneLabel": "Phone (optional)",
+      "fleetSizeLabel": "Approximate number of vehicles / assets to track",
+      "zoneLabel": "Geographic Zone",
+      "zoneOptions": {
+        "westAfrica": "West Africa",
+        "montreal": "Montreal",
+        "both": "Both"
+      },
+      "messageLabel": "Additional details (optional)",
+      "submitButton": "Send My Quote Request",
+      "sendingLabel": "Sending",
+      "successTitle": "Request sent!",
+      "successDesc": "Thank you, our team will contact you with a personalized quote shortly.",
+      "resetButton": "Send another request",
+      "errorMessage": "An error occurred while sending. Please try again, or email us directly at"
     }
   },
   "ai": {
