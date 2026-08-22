@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   APIProvider,
   Map,
@@ -9,7 +9,7 @@ import {
   useMapsLibrary,
   type MapMouseEvent,
 } from "@vis.gl/react-google-maps";
-import { MapPin, Search, Crosshair, Copy, Check, Loader2 } from "lucide-react";
+import { MapPin, Search, Crosshair, Copy, Check, Loader2, Navigation, List, X } from "lucide-react";
 
 const HUBS = [
   { name: "Dakar", lat: 14.6928, lng: -17.4467 },
@@ -47,6 +47,10 @@ function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
 function MapWithControls({ t }: { t: any }) {
   const map = useMap();
   const geocodingLib = useMapsLibrary("geocoding");
+  const routesLib = useMapsLibrary("routes");
+  const rendererRef = useRef<google.maps.DirectionsRenderer | null>(null);
+
+  const [mode, setMode] = useState<"address" | "route">("address");
 
   const [searchValue, setSearchValue] = useState("");
   const [searchError, setSearchError] = useState("");
@@ -59,6 +63,32 @@ function MapWithControls({ t }: { t: any }) {
   const [nearestHub, setNearestHub] = useState<{ name: string; distanceKm: number } | null>(null);
   const [locating, setLocating] = useState(false);
   const [locateError, setLocateError] = useState("");
+
+  const [fromText, setFromText] = useState("");
+  const [fromCoords, setFromCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [toText, setToText] = useState("");
+  const [routeResult, setRouteResult] = useState<google.maps.DirectionsResult | null>(null);
+  const [routeError, setRouteError] = useState("");
+  const [calculatingRoute, setCalculatingRoute] = useState(false);
+  const [showSteps, setShowSteps] = useState(false);
+
+  // Create the DirectionsRenderer once the routes library and map are ready
+  useEffect(() => {
+    if (!routesLib || !map) return;
+    const renderer = new routesLib.DirectionsRenderer({
+      map,
+      suppressMarkers: false,
+      polylineOptions: { strokeColor: "#FF7A00", strokeWeight: 5 },
+    });
+    rendererRef.current = renderer;
+    return () => renderer.setMap(null);
+  }, [routesLib, map]);
+
+  const clearOtherOverlays = () => {
+    setMarkedPoint(null);
+    setUserLocation(null);
+    setNearestHub(null);
+  };
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,9 +103,10 @@ function MapWithControls({ t }: { t: any }) {
         const point = { lat: loc.lat(), lng: loc.lng() };
         map.panTo(point);
         map.setZoom(11);
+        rendererRef.current?.setDirections(null);
+        setRouteResult(null);
+        clearOtherOverlays();
         setMarkedPoint(point);
-        setUserLocation(null);
-        setNearestHub(null);
       } else {
         setSearchError(t.searchError);
       }
@@ -89,9 +120,10 @@ function MapWithControls({ t }: { t: any }) {
   const handleMapClick = (event: MapMouseEvent) => {
     const latLng = event.detail.latLng;
     if (!latLng) return;
+    rendererRef.current?.setDirections(null);
+    setRouteResult(null);
+    clearOtherOverlays();
     setMarkedPoint({ lat: latLng.lat, lng: latLng.lng });
-    setUserLocation(null);
-    setNearestHub(null);
     setCopied(false);
   };
 
@@ -106,8 +138,10 @@ function MapWithControls({ t }: { t: any }) {
       (pos) => {
         const { latitude, longitude } = pos.coords;
         const point = { lat: latitude, lng: longitude };
-        setUserLocation(point);
+        rendererRef.current?.setDirections(null);
+        setRouteResult(null);
         setMarkedPoint(null);
+        setUserLocation(point);
         map?.panTo(point);
         map?.setZoom(6);
 
@@ -133,6 +167,81 @@ function MapWithControls({ t }: { t: any }) {
     setTimeout(() => setCopied(false), 1500);
   };
 
+  const calculateRoute = async (
+    origin: string | { lat: number; lng: number },
+    destination: string | { lat: number; lng: number }
+  ) => {
+    if (!routesLib) return;
+    setCalculatingRoute(true);
+    setRouteError("");
+    try {
+      const directionsService = new routesLib.DirectionsService();
+      const result = await directionsService.route({ origin, destination, travelMode: "DRIVING" });
+      rendererRef.current?.setDirections(result);
+      clearOtherOverlays();
+      setRouteResult(result);
+    } catch {
+      setRouteError(t.routeError);
+      setRouteResult(null);
+      rendererRef.current?.setDirections(null);
+    } finally {
+      setCalculatingRoute(false);
+    }
+  };
+
+  const handleRouteSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const origin = fromCoords || fromText.trim();
+    const destination = toText.trim();
+    if (!origin || !destination) return;
+    calculateRoute(origin, destination);
+  };
+
+  const handleUseMyLocationForOrigin = () => {
+    if (fromCoords) {
+      setFromCoords(null);
+      setFromText("");
+      return;
+    }
+    if (userLocation) {
+      setFromCoords(userLocation);
+      setFromText(t.youAreHere);
+      return;
+    }
+    if (!navigator.geolocation) {
+      setLocateError(t.geoNotSupported);
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const point = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setFromCoords(point);
+        setFromText(t.youAreHere);
+      },
+      () => setLocateError(t.locateError)
+    );
+  };
+
+  const handleRouteToNearestHub = () => {
+    if (!userLocation || !nearestHub) return;
+    const hub = HUBS.find((h) => h.name === nearestHub.name);
+    if (!hub) return;
+    setMode("route");
+    setFromCoords(userLocation);
+    setFromText(t.youAreHere);
+    setToText(hub.name);
+    calculateRoute(userLocation, { lat: hub.lat, lng: hub.lng });
+  };
+
+  const handleClearRoute = () => {
+    rendererRef.current?.setDirections(null);
+    setRouteResult(null);
+    setRouteError("");
+    setShowSteps(false);
+  };
+
+  const leg = routeResult?.routes[0]?.legs[0];
+
   return (
     <>
       <Map
@@ -147,32 +256,128 @@ function MapWithControls({ t }: { t: any }) {
         {HUBS.map((hub) => (
           <Marker key={hub.name} position={{ lat: hub.lat, lng: hub.lng }} title={hub.name} />
         ))}
-        {markedPoint && <Marker position={markedPoint} title={t.coordinatesLabel} />}
-        {userLocation && <Marker position={userLocation} title={t.youAreHere} />}
+        {markedPoint && !routeResult && <Marker position={markedPoint} title={t.coordinatesLabel} />}
+        {userLocation && !routeResult && <Marker position={userLocation} title={t.youAreHere} />}
       </Map>
 
-      {/* Search bar */}
-      <form onSubmit={handleSearch} className="absolute top-4 left-4 right-16 md:right-auto md:w-80 z-10 flex gap-2">
-        <div className="relative flex-1">
-          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-          <input
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder={t.searchPlaceholder}
-            className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg pl-9 pr-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
-          />
+      {/* Mode tabs + search / route form */}
+      <div className="absolute top-4 left-4 right-16 md:right-auto md:w-80 z-10">
+        <div className="flex gap-1.5 mb-2">
+          <button
+            type="button"
+            onClick={() => setMode("address")}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
+              mode === "address" ? "bg-sahamaOrange text-black" : "bg-black/70 text-gray-300 border border-zinc-700"
+            }`}
+          >
+            <Search size={11} /> {t.tabAddress}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("route")}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
+              mode === "route" ? "bg-sahamaOrange text-black" : "bg-black/70 text-gray-300 border border-zinc-700"
+            }`}
+          >
+            <Navigation size={11} /> {t.tabRoute}
+          </button>
         </div>
-        <button
-          type="submit"
-          disabled={searching}
-          className="bg-sahamaOrange text-black px-3 rounded-lg text-sm font-semibold shrink-0 disabled:opacity-60 flex items-center justify-center"
-        >
-          {searching ? <Loader2 size={15} className="animate-spin" /> : t.searchButton}
-        </button>
-      </form>
-      {searchError && (
+
+        {mode === "address" && (
+          <form onSubmit={handleSearch} className="flex gap-2">
+            <div className="relative flex-1">
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+              <input
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder={t.searchPlaceholder}
+                className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg pl-9 pr-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={searching}
+              className="bg-sahamaOrange text-black px-3 rounded-lg text-sm font-semibold shrink-0 disabled:opacity-60 flex items-center justify-center"
+            >
+              {searching ? <Loader2 size={15} className="animate-spin" /> : t.searchButton}
+            </button>
+          </form>
+        )}
+
+        {mode === "route" && !routeResult && (
+          <form onSubmit={handleRouteSubmit} className="flex flex-col gap-2">
+            <div className="relative">
+              <input
+                value={fromText}
+                onChange={(e) => setFromText(e.target.value)}
+                readOnly={!!fromCoords}
+                placeholder={t.fromPlaceholder}
+                className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg pl-3 pr-9 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
+              />
+              <button
+                type="button"
+                onClick={handleUseMyLocationForOrigin}
+                title={t.useMyLocationLabel}
+                className={`absolute right-2 top-1/2 -translate-y-1/2 ${fromCoords ? "text-sahamaYellow" : "text-gray-400 hover:text-sahamaYellow"}`}
+              >
+                <Crosshair size={15} />
+              </button>
+            </div>
+            <input
+              value={toText}
+              onChange={(e) => setToText(e.target.value)}
+              placeholder={t.toPlaceholder}
+              className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
+            />
+            <button
+              type="submit"
+              disabled={calculatingRoute}
+              className="bg-sahamaOrange text-black px-3 py-2 rounded-lg text-sm font-semibold disabled:opacity-60 flex items-center justify-center gap-2"
+            >
+              {calculatingRoute ? <Loader2 size={15} className="animate-spin" /> : <Navigation size={14} />}
+              {t.routeButton}
+            </button>
+          </form>
+        )}
+
+        {mode === "route" && routeResult && leg && (
+          <div className="bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center justify-between gap-2 text-xs text-gray-200">
+            <div className="flex items-center gap-2 min-w-0">
+              <Navigation size={14} className="text-sahamaOrange shrink-0" />
+              <span className="truncate">
+                {leg.distance?.text} · {leg.duration?.text}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setShowSteps((s) => !s)}
+                title={showSteps ? t.stepsToggleHide : t.stepsToggleShow}
+                className="text-gray-400 hover:text-sahamaYellow transition"
+              >
+                <List size={15} />
+              </button>
+              <button
+                type="button"
+                onClick={handleClearRoute}
+                title={t.clearRoute}
+                className="text-gray-400 hover:text-red-400 transition"
+              >
+                <X size={15} />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {searchError && mode === "address" && (
         <div className="absolute top-16 left-4 z-10 bg-red-950/90 border border-red-900 text-red-300 text-xs px-3 py-1.5 rounded-lg">
           {searchError}
+        </div>
+      )}
+      {routeError && mode === "route" && (
+        <div className="absolute top-24 left-4 z-10 bg-red-950/90 border border-red-900 text-red-300 text-xs px-3 py-1.5 rounded-lg max-w-[260px]">
+          {routeError}
         </div>
       )}
 
@@ -210,9 +415,33 @@ function MapWithControls({ t }: { t: any }) {
 
       {/* Nearest hub panel */}
       {nearestHub && (
-        <div className="absolute bottom-4 left-4 z-10 bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-xs text-gray-200">
-          {t.nearestHubLabel} <span className="text-sahamaYellow font-semibold">{nearestHub.name}</span> —{" "}
-          {Math.round(nearestHub.distanceKm)} km
+        <div className="absolute bottom-4 left-4 z-10 bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-xs text-gray-200 flex items-center gap-3">
+          <span>
+            {t.nearestHubLabel} <span className="text-sahamaYellow font-semibold">{nearestHub.name}</span> —{" "}
+            {Math.round(nearestHub.distanceKm)} km
+          </span>
+          <button
+            type="button"
+            onClick={handleRouteToNearestHub}
+            className="flex items-center gap-1 text-sahamaOrange hover:text-sahamaYellow font-semibold shrink-0"
+          >
+            <Navigation size={12} /> {t.routeToHub}
+          </button>
+        </div>
+      )}
+
+      {/* Turn-by-turn steps drawer */}
+      {showSteps && routeResult && leg && (
+        <div className="absolute bottom-4 left-4 right-4 z-10 max-h-40 overflow-y-auto bg-black/85 backdrop-blur border border-zinc-700 rounded-lg p-3 text-xs text-gray-200 space-y-2">
+          {leg.steps.map((step, i) => (
+            <div key={i} className="flex items-start gap-2 border-b border-zinc-800 last:border-0 pb-2 last:pb-0">
+              <span className="text-sahamaYellow font-mono shrink-0">{i + 1}.</span>
+              <div className="flex-1 min-w-0">
+                <span dangerouslySetInnerHTML={{ __html: step.instructions }} />
+                {step.distance?.text && <div className="text-gray-500 mt-0.5">{step.distance.text}</div>}
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </>

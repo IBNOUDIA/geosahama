@@ -106,7 +106,18 @@
     "coordinatesLabel": "Coordonnées",
     "copyLabel": "Copier",
     "copiedLabel": "Copié",
-    "youAreHere": "Votre position"
+    "youAreHere": "Votre position",
+    "tabAddress": "Adresse",
+    "tabRoute": "Itinéraire",
+    "fromPlaceholder": "Départ",
+    "toPlaceholder": "Destination",
+    "routeButton": "Calculer l'itinéraire",
+    "useMyLocationLabel": "Utiliser ma position",
+    "routeError": "Itinéraire introuvable.",
+    "routeToHub": "Itinéraire",
+    "stepsToggleShow": "Voir les étapes",
+    "stepsToggleHide": "Masquer les étapes",
+    "clearRoute": "Effacer l'itinéraire"
   },
   "espaceClientPage": {
     "title": "Portail Client Sécurisé",

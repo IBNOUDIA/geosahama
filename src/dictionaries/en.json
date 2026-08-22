@@ -106,7 +106,18 @@
     "coordinatesLabel": "Coordinates",
     "copyLabel": "Copy",
     "copiedLabel": "Copied",
-    "youAreHere": "Your location"
+    "youAreHere": "Your location",
+    "tabAddress": "Address",
+    "tabRoute": "Directions",
+    "fromPlaceholder": "From",
+    "toPlaceholder": "Destination",
+    "routeButton": "Get directions",
+    "useMyLocationLabel": "Use my location",
+    "routeError": "Route not found.",
+    "routeToHub": "Directions",
+    "stepsToggleShow": "Show steps",
+    "stepsToggleHide": "Hide steps",
+    "clearRoute": "Clear route"
   },
   "espaceClientPage": {
     "title": "Secure Client Portal",
