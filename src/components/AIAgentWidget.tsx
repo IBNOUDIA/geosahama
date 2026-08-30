@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { Truck, X, Send, Sparkles, Loader2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Truck, X, Send, Sparkles, Loader2, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 interface AIAgentWidgetProps {
   dict: any;
+  lang: "fr" | "en";
 }
 
 type ChatMessage = { sender: "user" | "bot"; text: string };
 
-export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
+export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,10 +18,39 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
     { sender: "bot", text: dict.ai.welcome },
   ]);
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [voiceEnabled, setVoiceEnabled] = useState(true);
+  const [micSupported, setMicSupported] = useState(false);
+  const [voiceError, setVoiceError] = useState("");
 
-    const userMsg = input.trim();
+  const recognitionRef = useRef<any>(null);
+  const speechLang = lang === "fr" ? "fr-FR" : "en-US";
+
+  useEffect(() => {
+    const SpeechRecognitionCtor = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    setMicSupported(Boolean(SpeechRecognitionCtor) && typeof window.speechSynthesis !== "undefined");
+    return () => {
+      recognitionRef.current?.stop();
+      window.speechSynthesis?.cancel();
+    };
+  }, []);
+
+  const speak = (text: string) => {
+    if (!voiceEnabled || typeof window === "undefined" || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = speechLang;
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const sendMessage = async (rawMsg: string) => {
+    const userMsg = rawMsg.trim();
+    if (!userMsg || isLoading) return;
+
     const history = messages.map((m) => ({
       role: (m.sender === "user" ? "user" : "model") as "user" | "model",
       text: m.text,
@@ -40,27 +70,83 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
       const data = await res.json();
 
       if (!res.ok || !data.reply) {
-        setMessages((prev) => [
-          ...prev,
-          {
-            sender: "bot",
-            text: "Désolé, je ne peux pas répondre pour le moment. Contactez-nous directement à Souleymane.Diallo@sahama-services.com.",
-          },
-        ]);
+        const fallback =
+          "Désolé, je ne peux pas répondre pour le moment. Contactez-nous directement à Souleymane.Diallo@sahama-services.com.";
+        setMessages((prev) => [...prev, { sender: "bot", text: fallback }]);
+        speak(fallback);
       } else {
         setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
+        speak(data.reply);
       }
     } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "Une erreur de connexion est survenue. Contactez-nous à Souleymane.Diallo@sahama-services.com.",
-        },
-      ]);
+      const fallback = "Une erreur de connexion est survenue. Contactez-nous à Souleymane.Diallo@sahama-services.com.";
+      setMessages((prev) => [...prev, { sender: "bot", text: fallback }]);
+      speak(fallback);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSend = () => sendMessage(input);
+
+  const handleMicClick = () => {
+    if (!micSupported) {
+      setVoiceError(dict.ai.micUnsupported);
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current?.stop();
+      return;
+    }
+
+    window.speechSynthesis?.cancel();
+    setIsSpeaking(false);
+    setVoiceError("");
+
+    const SpeechRecognitionCtor = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SpeechRecognitionCtor();
+    recognition.lang = speechLang;
+    recognition.continuous = false;
+    recognition.interimResults = true;
+
+    recognition.onstart = () => setIsListening(true);
+
+    recognition.onresult = (event: any) => {
+      let transcript = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      setInput(transcript);
+
+      const last = event.results[event.results.length - 1];
+      if (last.isFinal) {
+        sendMessage(transcript);
+      }
+    };
+
+    recognition.onerror = () => {
+      setVoiceError(dict.ai.micError);
+      setIsListening(false);
+    };
+
+    recognition.onend = () => setIsListening(false);
+
+    recognitionRef.current = recognition;
+    recognition.start();
+  };
+
+  const toggleVoice = () => {
+    setVoiceEnabled((prev) => {
+      if (prev) window.speechSynthesis?.cancel();
+      return !prev;
+    });
+  };
+
+  const handleClose = () => {
+    recognitionRef.current?.stop();
+    window.speechSynthesis?.cancel();
+    setIsOpen(false);
   };
 
   return (
@@ -102,9 +188,20 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
               <Truck className="text-sahamaOrange" size={20} />
               <span>{dict.ai.title}</span>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
-              <X size={20} />
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={toggleVoice}
+                title={voiceEnabled ? dict.ai.muteTitle : dict.ai.unmuteTitle}
+                className={`transition ${
+                  isSpeaking ? "text-sahamaYellow animate-pulse" : voiceEnabled ? "text-gray-300" : "text-gray-600"
+                } hover:text-white`}
+              >
+                {voiceEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+              </button>
+              <button onClick={handleClose} className="text-gray-400 hover:text-white">
+                <X size={20} />
+              </button>
+            </div>
           </div>
 
           {/* Messages Container */}
@@ -136,16 +233,31 @@ export default function AIAgentWidget({ dict }: AIAgentWidgetProps) {
           </div>
 
           {/* Input Bar */}
+          {voiceError && <p className="text-red-400 text-[11px] px-3 pt-2">{voiceError}</p>}
           <div className="p-3 bg-zinc-900 border-t border-zinc-800 flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder={dict.ai.placeholder}
+              placeholder={isListening ? dict.ai.listeningLabel : dict.ai.placeholder}
               disabled={isLoading}
               className="flex-1 bg-black border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-sahamaOrange disabled:opacity-50"
             />
+            {micSupported && (
+              <button
+                onClick={handleMicClick}
+                disabled={isLoading}
+                title={dict.ai.micTitle}
+                className={`p-2 rounded-lg transition disabled:opacity-50 ${
+                  isListening
+                    ? "bg-red-500 text-white animate-pulse"
+                    : "bg-black border border-zinc-800 text-gray-300 hover:text-white"
+                }`}
+              >
+                {isListening ? <MicOff size={16} /> : <Mic size={16} />}
+              </button>
+            )}
             <button
               onClick={handleSend}
               disabled={isLoading}

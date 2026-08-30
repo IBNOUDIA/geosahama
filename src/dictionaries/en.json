@@ -74,7 +74,13 @@
   "ai": {
     "title": "Sahama AI Assistant",
     "placeholder": "Ask a question to the assistant...",
-    "welcome": "Hello! I am the Sahama Services AI agent. How can I assist you today?"
+    "welcome": "Hello! I am the Sahama Services AI agent. How can I assist you today?",
+    "micTitle": "Talk to the assistant",
+    "listeningLabel": "Listening...",
+    "micUnsupported": "Voice recognition is not supported by this browser.",
+    "micError": "Microphone unavailable or permission denied.",
+    "muteTitle": "Mute voice",
+    "unmuteTitle": "Enable voice"
   },
   "securitePage": {
     "title1": "Security & ",

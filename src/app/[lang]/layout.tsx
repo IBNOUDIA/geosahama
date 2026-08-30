@@ -17,7 +17,7 @@ export default async function LangLayout({
     <div className="min-h-screen flex flex-col justify-between relative">
       <Navbar lang={params.lang} dict={dictionary} />
       <div className="pt-20 flex-1">{children}</div>
-      <AIAgentWidget dict={dictionary} />
+      <AIAgentWidget dict={dictionary} lang={params.lang} />
       <footer className="border-t border-zinc-800 py-8 text-center text-gray-500 text-xs sm:text-sm">
         <p>
           {dictionary.contact.emailLabel}{" "}

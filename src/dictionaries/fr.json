@@ -74,7 +74,13 @@
   "ai": {
     "title": "Assistant Sahama IA",
     "placeholder": "Posez une question à l'assistant...",
-    "welcome": "Bonjour ! Je suis l'agent IA de Sahama Services. Comment puis-je vous aider aujourd'hui ?"
+    "welcome": "Bonjour ! Je suis l'agent IA de Sahama Services. Comment puis-je vous aider aujourd'hui ?",
+    "micTitle": "Parler à l'assistant",
+    "listeningLabel": "Écoute en cours...",
+    "micUnsupported": "La reconnaissance vocale n'est pas supportée par ce navigateur.",
+    "micError": "Micro indisponible ou permission refusée.",
+    "muteTitle": "Couper la voix",
+    "unmuteTitle": "Activer la voix"
   },
   "securitePage": {
     "title1": "Sécurité & ",
