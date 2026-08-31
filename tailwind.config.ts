@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        darkBg: "#0B0B0B",
-        cardBg: "#141414",
+        darkBg: "#0D1526",
+        cardBg: "#16223A",
         sahamaOrange: "#FF7A00",
         sahamaYellow: "#FFC700",
       },
