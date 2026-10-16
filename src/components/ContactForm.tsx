@@ -24,7 +24,7 @@ export default function ContactForm({ dict }: { dict: any }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, website }),
+        body: JSON.stringify({ name, email, message, website, lang: document.documentElement.lang }),
       });
 
       const data = await res.json();

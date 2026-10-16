@@ -36,7 +36,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, phone, services, fleetSize, zone, message, website }),
+        body: JSON.stringify({ name, company, email, phone, services, fleetSize, zone, message, website, lang: document.documentElement.lang }),
       });
 
       const data = await res.json();

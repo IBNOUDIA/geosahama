@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { clean, isEmail, isRateLimited } from "@/lib/api-guard";
-
-// TODO: revert to "Souleymane.Diallo@sahama-services.com" once the
-// sahama-services.com domain is verified on Resend (resend.com/domains) —
-// until then, Resend's unverified-domain mode only allows sending to the
-// account's own address.
-const CONTACT_EMAIL = "diaamar757@gmail.com";
+import { recipients, sendAcknowledgement, sendEmail } from "@/lib/mail";
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;
@@ -43,27 +38,18 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const resp = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "Site Sahama Services <onboarding@resend.dev>",
-        to: [CONTACT_EMAIL],
-        reply_to: email,
-        subject: `Nouveau message de ${name} - Site Sahama Services`,
-        text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      }),
+    const sent = await sendEmail(apiKey, {
+      to: recipients(),
+      replyTo: email,
+      subject: `Nouveau message de ${name} - Site Sahama Services`,
+      text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
 
-    if (!resp.ok) {
-      const errText = await resp.text();
-      console.error("Resend API error:", resp.status, errText);
+    if (!sent) {
       return NextResponse.json({ error: "upstream_error" }, { status: 502 });
     }
 
+    await sendAcknowledgement(apiKey, email, name, clean(body.lang, 2), "contact");
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact route error:", err);
