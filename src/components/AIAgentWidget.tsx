@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Truck, X, Send, Sparkles, Loader2, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
+import { CONTACT_EMAIL } from "@/i18n";
+import ChatMessageText, { stripMarkdown } from "./ChatMessageText";
 
 interface AIAgentWidgetProps {
   dict: any;
@@ -9,6 +11,8 @@ interface AIAgentWidgetProps {
 }
 
 type ChatMessage = { sender: "user" | "bot"; text: string };
+
+const noopSubscribe = () => () => {};
 
 export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,15 +25,20 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
-  const [micSupported, setMicSupported] = useState(false);
+  // Browser capability: false during server render, real value once hydrated.
+  const micSupported = useSyncExternalStore(
+    noopSubscribe,
+    () =>
+      Boolean((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) &&
+      typeof window.speechSynthesis !== "undefined",
+    () => false
+  );
   const [voiceError, setVoiceError] = useState("");
 
   const recognitionRef = useRef<any>(null);
   const speechLang = lang === "fr" ? "fr-FR" : "en-US";
 
   useEffect(() => {
-    const SpeechRecognitionCtor = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    setMicSupported(Boolean(SpeechRecognitionCtor) && typeof window.speechSynthesis !== "undefined");
     return () => {
       recognitionRef.current?.stop();
       window.speechSynthesis?.cancel();
@@ -39,7 +48,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
   const speak = (text: string) => {
     if (!voiceEnabled || typeof window === "undefined" || !window.speechSynthesis) return;
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
+    const utterance = new SpeechSynthesisUtterance(stripMarkdown(text));
     utterance.lang = speechLang;
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
@@ -70,8 +79,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
       const data = await res.json();
 
       if (!res.ok || !data.reply) {
-        const fallback =
-          "Désolé, je ne peux pas répondre pour le moment. Contactez-nous directement à Souleymane.Diallo@sahama-services.com.";
+        const fallback = `${dict.ai.errorReply} ${CONTACT_EMAIL}.`;
         setMessages((prev) => [...prev, { sender: "bot", text: fallback }]);
         speak(fallback);
       } else {
@@ -79,7 +87,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
         speak(data.reply);
       }
     } catch {
-      const fallback = "Une erreur de connexion est survenue. Contactez-nous à Souleymane.Diallo@sahama-services.com.";
+      const fallback = `${dict.ai.connectionError} ${CONTACT_EMAIL}.`;
       setMessages((prev) => [...prev, { sender: "bot", text: fallback }]);
       speak(fallback);
     } finally {
@@ -165,6 +173,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          aria-label={dict.ai.openLabel}
           className="chatbot-float flex items-center gap-2 bg-gradient-to-r from-green-500 via-yellow-400 to-red-500 text-black font-bold px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all"
         >
           <Truck size={22} />
@@ -192,13 +201,14 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
               <button
                 onClick={toggleVoice}
                 title={voiceEnabled ? dict.ai.muteTitle : dict.ai.unmuteTitle}
+                aria-label={voiceEnabled ? dict.ai.muteTitle : dict.ai.unmuteTitle}
                 className={`transition ${
                   isSpeaking ? "text-sahamaYellow animate-pulse" : voiceEnabled ? "text-gray-300" : "text-gray-600"
                 } hover:text-white`}
               >
                 {voiceEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
               </button>
-              <button onClick={handleClose} className="text-gray-400 hover:text-white">
+              <button onClick={handleClose} aria-label={dict.ai.closeLabel} className="text-gray-400 hover:text-white">
                 <X size={20} />
               </button>
             </div>
@@ -218,7 +228,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
                       : "bg-zinc-800 text-gray-200 border border-zinc-700"
                   }`}
                 >
-                  {msg.text}
+                  {msg.sender === "bot" ? <ChatMessageText text={msg.text} /> : msg.text}
                 </div>
               </div>
             ))}
@@ -241,6 +251,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder={isListening ? dict.ai.listeningLabel : dict.ai.placeholder}
+              aria-label={dict.ai.placeholder}
               disabled={isLoading}
               className="flex-1 bg-black border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-sahamaOrange disabled:opacity-50"
             />
@@ -249,6 +260,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
                 onClick={handleMicClick}
                 disabled={isLoading}
                 title={dict.ai.micTitle}
+                aria-label={dict.ai.micTitle}
                 className={`p-2 rounded-lg transition disabled:opacity-50 ${
                   isListening
                     ? "bg-red-500 text-white animate-pulse"
@@ -261,6 +273,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
             <button
               onClick={handleSend}
               disabled={isLoading}
+              aria-label={dict.ai.sendLabel}
               className="bg-sahamaOrange hover:bg-sahamaOrange/90 text-black p-2 rounded-lg transition disabled:opacity-50"
             >
               <Send size={16} />

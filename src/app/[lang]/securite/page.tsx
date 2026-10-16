@@ -1,5 +1,8 @@
 import { ShieldCheck, Eye, Bell, Radio, Lock, Camera } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 
 const ICONS = [Eye, Bell, Radio, Lock, Camera, ShieldCheck];
@@ -11,8 +14,15 @@ const CARD_STYLES = [
 
 const WATCHED_SITES = ["Dakar", "Abidjan", "Conakry", "Bamako"];
 
-export default async function SecuritePage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/securite", dict.nav.security, dict.securitePage.subtitle);
+}
+
+export default async function SecuritePage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const t = dict.securitePage;
 
   return (

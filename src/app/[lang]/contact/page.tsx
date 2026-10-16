@@ -1,15 +1,26 @@
 import Link from "next/link";
 import { Mail, MapPin, Radio, FileText } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import { CONTACT_EMAIL, type Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 import ContactForm from "@/components/ContactForm";
 import QuoteForm from "@/components/QuoteForm";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 
 const HUBS = ["Dakar", "Abidjan", "Conakry", "Bamako", "Montréal"];
 
-export default async function ContactPage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/contact", dict.nav.contact, dict.contact.subtitle);
+}
+
+export default async function ContactPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const b = dict.contact.bridge;
+  const info = dict.contact.info;
 
   return (
     <div>
@@ -35,7 +46,7 @@ export default async function ContactPage({ params }: { params: { lang: "fr" | "
             <p className="text-gray-300 mb-8 max-w-lg">{b.subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href={`/${params.lang}/espace-client`}
+                href={`/${lang}/espace-client`}
                 className="bg-sahamaOrange hover:bg-sahamaOrange/90 text-black font-bold px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
               >
                 <MapPin size={18} /> {b.cta1}
@@ -96,17 +107,17 @@ export default async function ContactPage({ params }: { params: { lang: "fr" | "
         {/* Contact Info */}
         <div className="bg-cardBg p-8 rounded-2xl border border-zinc-800 flex flex-col justify-between">
           <div>
-            <h3 className="text-xl font-bold mb-6 text-sahamaYellow">Coordonnées</h3>
-            
+            <h3 className="text-xl font-bold mb-6 text-sahamaYellow">{info.title}</h3>
+
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-sahamaOrange/10 rounded-lg text-sahamaOrange">
                   <Mail size={24} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">Courriel direct</p>
-                  <a href="mailto:Souleymane.Diallo@sahama-services.com" className="text-white font-semibold hover:text-sahamaOrange transition">
-                    Souleymane.Diallo@sahama-services.com
+                  <p className="text-xs text-gray-400">{info.emailLabel}</p>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-white font-semibold hover:text-sahamaOrange transition break-all">
+                    {CONTACT_EMAIL}
                   </a>
                 </div>
               </div>
@@ -116,15 +127,15 @@ export default async function ContactPage({ params }: { params: { lang: "fr" | "
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">Bureaux & Zones d'activités</p>
-                  <p className="text-white font-semibold">Afrique de l'Ouest & Montréal (QC, Canada)</p>
+                  <p className="text-xs text-gray-400">{info.officesLabel}</p>
+                  <p className="text-white font-semibold">{info.officesValue}</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="mt-8 p-4 bg-zinc-900/80 rounded-xl border border-zinc-800 text-xs text-gray-400">
-            Nom de domaine officiel : <span className="text-sahamaYellow font-mono">sahama.services.com</span> / <span className="text-sahamaYellow font-mono">sahama-services.com</span>
+            {info.domainLabel} <span className="text-sahamaYellow font-mono">sahama-services.com</span>
           </div>
         </div>
 

@@ -1,5 +1,8 @@
 import { Activity, AlertTriangle, BarChart3, Bell, ShieldAlert, Wrench } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 import PredictiveAnalysisPanel from "@/components/PredictiveAnalysisPanel";
 
@@ -19,8 +22,15 @@ const COLOR_STYLES = [
 // Steps follow a shorter arc: detection -> analysis -> alert -> resolved
 const STEP_COLOR_INDEXES = [0, 1, 2, 5];
 
-export default async function PreventionPage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/prevention", dict.nav.prevention, dict.preventionPage.subtitle);
+}
+
+export default async function PreventionPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const t = dict.preventionPage;
 
   return (

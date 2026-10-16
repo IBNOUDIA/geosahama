@@ -3,14 +3,17 @@
 import { useState } from "react";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
-const CONTACT_EMAIL = "Souleymane.Diallo@sahama-services.com";
+import { CONTACT_EMAIL } from "@/i18n";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function ContactForm({ dict }: { dict: any }) {
+  const f = dict.contact.form;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  // Honeypot: hidden from people, filled in by bots; the API drops those submissions.
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,7 +24,7 @@ export default function ContactForm({ dict }: { dict: any }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, message, website }),
       });
 
       const data = await res.json();
@@ -43,13 +46,13 @@ export default function ContactForm({ dict }: { dict: any }) {
     return (
       <div className="bg-cardBg p-8 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center text-center gap-3 min-h-[320px]">
         <CheckCircle2 size={40} className="text-green-400" />
-        <h3 className="text-lg font-bold text-white">Message envoyé !</h3>
-        <p className="text-gray-400 text-sm">Merci, nous vous répondrons dans les plus brefs délais.</p>
+        <h3 className="text-lg font-bold text-white">{f.successTitle}</h3>
+        <p className="text-gray-400 text-sm">{f.successDesc}</p>
         <button
           onClick={() => setStatus("idle")}
           className="text-sahamaYellow text-sm font-semibold hover:underline mt-2"
         >
-          Envoyer un autre message
+          {f.resetButton}
         </button>
       </div>
     );
@@ -100,9 +103,20 @@ export default function ContactForm({ dict }: { dict: any }) {
         />
       </div>
 
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="hidden"
+      />
+
       {status === "error" && (
         <p className="text-red-400 text-xs">
-          Une erreur est survenue lors de l'envoi. Réessayez, ou écrivez-nous directement à {CONTACT_EMAIL}.
+          {f.errorMessage} {CONTACT_EMAIL}.
         </p>
       )}
 
@@ -113,7 +127,7 @@ export default function ContactForm({ dict }: { dict: any }) {
       >
         {status === "loading" ? (
           <>
-            Envoi en cours <Loader2 size={18} className="animate-spin" />
+            {f.sending} <Loader2 size={18} className="animate-spin" />
           </>
         ) : (
           <>

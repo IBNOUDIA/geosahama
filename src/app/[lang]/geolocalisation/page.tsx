@@ -2,9 +2,19 @@ import { MapPin } from "lucide-react";
 import GoogleMapView from "@/components/GoogleMapView";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 
-export default async function GeolocalisationPage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/geolocalisation", dict.nav.geoloc, dict.geolocalisationPage.subtitle);
+}
+
+export default async function GeolocalisationPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const t = dict.geolocalisationPage;
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;

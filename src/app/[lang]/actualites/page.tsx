@@ -1,11 +1,21 @@
 import NewsSection from "@/components/NewsSection";
 import Testimonials from "@/components/Testimonials";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 import MediaStatsPanel from "@/components/MediaStatsPanel";
 
-export default async function ActualitesPage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/actualites", dict.nav.news);
+}
+
+export default async function ActualitesPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const t = dict.actualitesPage;
 
   const articleCount = t.articles.length;
@@ -38,7 +48,7 @@ export default async function ActualitesPage({ params }: { params: { lang: "fr" 
       </section>
 
       <div className="max-w-7xl mx-auto px-4 pt-4 pb-12">
-        <NewsSection dict={dict} />
+        <NewsSection dict={dict} lang={lang} />
         <Testimonials dict={dict} />
       </div>
     </div>

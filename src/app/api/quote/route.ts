@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { clean, isEmail, isRateLimited } from "@/lib/api-guard";
 
 // TODO: revert to "Souleymane.Diallo@sahama-services.com" once the
 // sahama-services.com domain is verified on Resend (resend.com/domains) —
@@ -13,35 +14,41 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "missing_api_key" }, { status: 500 });
   }
 
-  let body: {
-    name?: string;
-    company?: string;
-    email?: string;
-    phone?: string;
-    services?: string[];
-    fleetSize?: string;
-    zone?: string;
-    message?: string;
-  };
+  if (isRateLimited(req, "quote", 5, 10 * 60_000)) {
+    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+  }
+
+  let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "invalid_body" }, { status: 400 });
   }
 
-  const name = body.name?.trim();
-  const email = body.email?.trim();
+  // Bots fill the hidden "website" field: pretend success, send nothing.
+  if (clean(body.website, 200)) {
+    return NextResponse.json({ success: true });
+  }
+
+  const name = clean(body.name, 100);
+  const email = clean(body.email, 200);
 
   if (!name || !email) {
     return NextResponse.json({ error: "missing_fields" }, { status: 400 });
   }
 
-  const company = body.company?.trim();
-  const phone = body.phone?.trim();
-  const services = Array.isArray(body.services) ? body.services.filter(Boolean) : [];
-  const fleetSize = body.fleetSize?.trim();
-  const zone = body.zone?.trim();
-  const message = body.message?.trim();
+  if (!isEmail(email)) {
+    return NextResponse.json({ error: "invalid_email" }, { status: 400 });
+  }
+
+  const company = clean(body.company, 150);
+  const phone = clean(body.phone, 40);
+  const services = Array.isArray(body.services)
+    ? body.services.slice(0, 10).map((s) => clean(s, 100)).filter(Boolean)
+    : [];
+  const fleetSize = clean(body.fleetSize, 50);
+  const zone = clean(body.zone, 100);
+  const message = clean(body.message, 5000);
 
   const lines = [
     `Nom: ${name}`,

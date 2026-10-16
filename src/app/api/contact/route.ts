@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { clean, isEmail, isRateLimited } from "@/lib/api-guard";
 
 // TODO: revert to "Souleymane.Diallo@sahama-services.com" once the
 // sahama-services.com domain is verified on Resend (resend.com/domains) —
@@ -13,19 +14,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "missing_api_key" }, { status: 500 });
   }
 
-  let body: { name?: string; email?: string; message?: string };
+  if (isRateLimited(req, "contact", 5, 10 * 60_000)) {
+    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+  }
+
+  let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "invalid_body" }, { status: 400 });
   }
 
-  const name = body.name?.trim();
-  const email = body.email?.trim();
-  const message = body.message?.trim();
+  // Bots fill the hidden "website" field: pretend success, send nothing.
+  if (clean(body.website, 200)) {
+    return NextResponse.json({ success: true });
+  }
+
+  const name = clean(body.name, 100);
+  const email = clean(body.email, 200);
+  const message = clean(body.message, 5000);
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: "missing_fields" }, { status: 400 });
+  }
+
+  if (!isEmail(email)) {
+    return NextResponse.json({ error: "invalid_email" }, { status: 400 });
   }
 
   try {

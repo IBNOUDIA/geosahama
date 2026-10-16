@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
-const CONTACT_EMAIL = "Souleymane.Diallo@sahama-services.com";
+import { CONTACT_EMAIL } from "@/i18n";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -20,6 +20,8 @@ export default function QuoteForm({ dict }: { dict: any }) {
   const [fleetSize, setFleetSize] = useState("");
   const [zone, setZone] = useState("");
   const [message, setMessage] = useState("");
+  // Honeypot: hidden from people, filled in by bots; the API drops those submissions.
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
   const toggleService = (label: string) => {
@@ -34,7 +36,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, phone, services, fleetSize, zone, message }),
+        body: JSON.stringify({ name, company, email, phone, services, fleetSize, zone, message, website }),
       });
 
       const data = await res.json();
@@ -199,6 +201,17 @@ export default function QuoteForm({ dict }: { dict: any }) {
           className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
         />
       </div>
+
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="hidden"
+      />
 
       {status === "error" && (
         <p className="text-red-400 text-xs">

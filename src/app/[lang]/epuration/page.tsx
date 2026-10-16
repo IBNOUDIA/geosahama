@@ -1,11 +1,21 @@
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 import WaterTreatmentPanel from "@/components/WaterTreatmentPanel";
 
 const STEP_COLORS = ["text-sahamaOrange", "text-sahamaOrange", "text-sahamaYellow", "text-sahamaYellow"];
 
-export default async function EpurationPage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/epuration", dict.nav.epuration, dict.epurationPage.subtitle);
+}
+
+export default async function EpurationPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const t = dict.epurationPage;
 
   return (

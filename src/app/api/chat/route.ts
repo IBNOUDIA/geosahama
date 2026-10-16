@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { clean, isRateLimited } from "@/lib/api-guard";
 
 const SYSTEM_CONTEXT = `Tu es l'assistant virtuel de Sahama Services, une entreprise spécialisée en géolocalisation, télémétrie et suivi écologique, active en Afrique de l'Ouest et à Montréal.
 
@@ -29,29 +30,36 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { message?: string; history?: Array<{ role: "user" | "model"; text: string }> };
+  if (isRateLimited(req, "chat", 20, 5 * 60_000)) {
+    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+  }
+
+  let body: { message?: unknown; history?: unknown };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "invalid_body" }, { status: 400 });
   }
 
-  const message = body.message?.trim();
+  const message = clean(body.message, 1000);
   if (!message) {
     return NextResponse.json({ error: "empty_message" }, { status: 400 });
   }
 
-  const history = (body.history ?? []).slice(-12).map((m) => ({
-    role: m.role,
-    parts: [{ text: m.text }],
-  }));
+  // Only well-formed user/model turns reach Gemini, each capped in length.
+  const history = (Array.isArray(body.history) ? body.history : [])
+    .slice(-12)
+    .filter((m): m is { role: "user" | "model"; text: string } =>
+      Boolean(m) && (m.role === "user" || m.role === "model") && typeof m.text === "string"
+    )
+    .map((m) => ({ role: m.role, parts: [{ text: m.text.slice(0, 2000) }] }));
 
   try {
     const resp = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`,
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
         body: JSON.stringify({
           system_instruction: { parts: [{ text: SYSTEM_CONTEXT }] },
           contents: [...history, { role: "user", parts: [{ text: message }] }],

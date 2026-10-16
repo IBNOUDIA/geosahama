@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { ShieldCheck, MapPin, Activity, ArrowRight } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Locale } from "@/i18n";
 import SatelliteOrbit from "@/components/SatelliteOrbit";
 import Reveal from "@/components/Reveal";
 
-export default async function Home({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
 
   return (
     <main className="bg-darkBg text-white min-h-screen relative">
@@ -38,13 +40,13 @@ export default async function Home({ params }: { params: { lang: "fr" | "en" } }
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={`/${params.lang}/geolocalisation`}
+              href={`/${lang}/geolocalisation`}
               className="bg-sahamaOrange hover:bg-sahamaOrange/90 text-black font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-sahamaOrange/20"
             >
               {dict.hero.ctaPrimary} <ArrowRight size={20} />
             </Link>
             <Link
-              href={`/${params.lang}/epuration`}
+              href={`/${lang}/epuration`}
               className="border border-zinc-700 hover:border-sahamaYellow bg-zinc-900/50 text-white font-semibold px-8 py-4 rounded-xl transition-all"
             >
               {dict.hero.ctaSecondary}

@@ -28,9 +28,11 @@ const socials = [
   { label: "Facebook", href: FACEBOOK_URL, Icon: Facebook },
   { label: "Instagram", href: INSTAGRAM_URL, Icon: Instagram },
   { label: "WhatsApp", href: WHATSAPP_URL, Icon: WhatsAppIcon },
-];
+].filter((s) => s.href !== "#"); // hide networks whose link is not configured yet
 
 export default function SocialLinks({ className }: { className?: string }) {
+  if (socials.length === 0) return null;
+
   return (
     <div className={`flex items-center justify-center gap-3 ${className ?? ""}`}>
       {socials.map(({ label, href, Icon }) => (

@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Sahama Services - Geolocation & Ecological Tracking",
+    "description": "Fleet geolocation and security solutions in West Africa, and ecological tracking of the purification process in Montreal."
+  },
   "nav": {
     "home": "Home",
     "geoloc": "Geolocation",
@@ -7,7 +11,10 @@
     "epuration": "Purification & Tracking",
     "news": "News",
     "contact": "Contact",
-    "clientSpace": "Client Portal"
+    "clientSpace": "Client Portal",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLang": "Passer en français"
   },
   "hero": {
     "badge": "Active in West Africa & Expanding Soon to Montreal",
@@ -35,6 +42,20 @@
     "formEmail": "Email Address",
     "formMessage": "Your Message",
     "formSend": "Send Message",
+    "info": {
+      "title": "Contact details",
+      "emailLabel": "Direct email",
+      "officesLabel": "Offices & areas of operation",
+      "officesValue": "West Africa & Montreal (QC, Canada)",
+      "domainLabel": "Official website:"
+    },
+    "form": {
+      "sending": "Sending",
+      "successTitle": "Message sent!",
+      "successDesc": "Thank you, we will get back to you as soon as possible.",
+      "resetButton": "Send another message",
+      "errorMessage": "An error occurred while sending. Please try again, or email us directly at"
+    },
     "bridge": {
       "badge": "Canada ⇄ West Africa Coordination",
       "title1": "The Technology Bridge ",
@@ -80,7 +101,12 @@
     "micUnsupported": "Voice recognition is not supported by this browser.",
     "micError": "Microphone unavailable or permission denied.",
     "muteTitle": "Mute voice",
-    "unmuteTitle": "Enable voice"
+    "unmuteTitle": "Enable voice",
+    "errorReply": "Sorry, I can't answer right now. Please contact us directly at",
+    "connectionError": "A connection error occurred. Contact us at",
+    "openLabel": "Open the Sahama AI assistant",
+    "closeLabel": "Close the assistant",
+    "sendLabel": "Send"
   },
   "securitePage": {
     "title1": "Security & ",

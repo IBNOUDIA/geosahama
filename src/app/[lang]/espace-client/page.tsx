@@ -1,10 +1,20 @@
 import { LogIn, MapPin, ShieldCheck } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n";
+import { pageMetadata } from "@/seo";
 
-export default async function EspaceClientPage({ params }: { params: { lang: "fr" | "en" } }) {
-  const dict = await getDictionary(params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  return pageMetadata(lang, "/espace-client", dict.nav.clientSpace);
+}
+
+export default async function EspaceClientPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const t = dict.espaceClientPage;
-  const wialonUrl = `https://hosting.wialon.eu/?lang=${params.lang}`;
+  const wialonUrl = `https://hosting.wialon.eu/?lang=${lang}`;
 
   return (
     <div className="max-w-md mx-auto px-4 py-16 text-center">
@@ -33,7 +43,7 @@ export default async function EspaceClientPage({ params }: { params: { lang: "fr
 
       <p className="text-gray-500 text-xs mt-6">
         {t.noAccess}{" "}
-        <a href={`/${params.lang}/contact`} className="text-sahamaYellow hover:underline">
+        <a href={`/${lang}/contact`} className="text-sahamaYellow hover:underline">
           {t.contactLink}
         </a>{" "}
         {t.activation}

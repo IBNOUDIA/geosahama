@@ -20,9 +20,9 @@ interface Article {
 // Static, non-translated metadata for each article — merged with the
 // translated title/location/excerpt from the dictionary at render time.
 const ARTICLE_META = [
-  { id: 1, category: "epuration" as const, date: "18 août 2026", mediaType: "image" as const, photosCount: 8 },
-  { id: 2, category: "geolocalisation" as const, date: "02 août 2026", mediaType: "image" as const },
-  { id: 3, category: "evenement" as const, date: "20 juillet 2026", mediaType: "image" as const },
+  { id: 1, category: "epuration" as const, date: "2026-08-18", mediaType: "image" as const, photosCount: 8 },
+  { id: 2, category: "geolocalisation" as const, date: "2026-08-02", mediaType: "image" as const },
+  { id: 3, category: "evenement" as const, date: "2026-07-20", mediaType: "image" as const },
 ];
 
 const FILTER_ICONS: Record<string, React.ElementType | null> = {
@@ -33,9 +33,18 @@ const FILTER_ICONS: Record<string, React.ElementType | null> = {
   video: Video,
 };
 
+// ISO dates in ARTICLE_META, shown in the visitor's language ("18 août 2026" / "August 18, 2026").
+function formatDate(iso: string, lang: "fr" | "en") {
+  return new Date(`${iso}T12:00:00`).toLocaleDateString(lang === "fr" ? "fr-CA" : "en-CA", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
 const FILTER_ORDER = ["all", "geolocalisation", "epuration", "evenement", "video"];
 
-export default function NewsSection({ dict }: { dict: any }) {
+export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "en" }) {
   const t = dict.actualitesPage;
   const [filter, setFilter] = useState<string>("all");
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
@@ -125,7 +134,7 @@ export default function NewsSection({ dict }: { dict: any }) {
 
                 <div className="p-6">
                   <div className="text-xs text-gray-400 mb-2">
-                    {article.date} • {article.location}
+                    {formatDate(article.date, lang)} • {article.location}
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">{article.title}</h3>
                   <p className="text-gray-400 text-sm">{article.excerpt}</p>
