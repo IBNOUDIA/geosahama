@@ -141,7 +141,7 @@ export default function ContactForm({ dict }: { dict: any }) {
 
       <p className="text-[11px] text-gray-500 text-center">
         {dict.footer.formNotice}{" "}
-        <Link href={`/${lang}/confidentialite`} className="text-sahamaYellow hover:underline">
+        <Link href={`/${lang}/confidentialite`} className="text-sahamaYellow underline underline-offset-2">
           {dict.footer.privacy.toLowerCase()}
         </Link>
         .

@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 // Stylized, animated map of the West African coast with the Sahama hubs and
 // the link to Montreal. Coordinates come from a simple equirectangular
 // projection: x = (lon + 20) * 40, y = (22 - lat) * 40.
@@ -18,12 +22,32 @@ const ROUTES = [
 const COAST =
   "M120 40 L140 100 L160 160 L140 220 L100 292 L128 340 L132 388 L180 420 L212 452 L252 500 L272 540 L320 584 L360 608 L420 656 L496 704 L560 688 L640 672 L720 684 L800 656 L860 632 L920 624 L980 640 L1040 650 L1040 0 L100 0 Z";
 
+// Animations repaint the SVG every frame; starting them only once the page has
+// loaded and settled keeps the phone free while the page becomes interactive.
+const ANIMATION_DELAY_MS = 3000;
+
 export default function WestAfricaMap({ montrealLabel, className }: { montrealLabel: string; className?: string }) {
+  const [live, setLive] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const start = () => (timer = setTimeout(() => setLive(true), ANIMATION_DELAY_MS));
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("load", start);
+    };
+  }, []);
+
   return (
-    <svg viewBox="0 0 1040 760" className={className} role="img" aria-label="Dakar · Conakry · Bamako · Abidjan · Montréal">
+    <svg viewBox="0 0 1040 760" className={`${className ?? ""} ${live ? "wa-live" : ""}`} role="img" aria-label="Dakar · Conakry · Bamako · Abidjan · Montréal">
       <style>{`
-        .wa-route { stroke-dasharray: 10 12; animation: waFlow 2.4s linear infinite; }
-        .wa-pulse { animation: waPulse 2.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+        .wa-route { stroke-dasharray: 10 12; }
+        .wa-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
+        .wa-live .wa-route { animation: waFlow 2.4s linear infinite; }
+        .wa-live .wa-pulse { animation: waPulse 2.6s ease-out infinite; }
         @keyframes waFlow { to { stroke-dashoffset: -44; } }
         @keyframes waPulse { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
         @media (prefers-reduced-motion: reduce) {
@@ -89,6 +113,7 @@ export default function WestAfricaMap({ montrealLabel, className }: { montrealLa
       ))}
 
       {/* Tracked vehicle travelling Dakar -> Bamako -> Abidjan */}
+      {live && (
       <g className="wa-moving">
         <circle r="16" fill="url(#waGlow)">
           <animateMotion dur="9s" repeatCount="indefinite" path="M102 292 Q300 220 480 374 Q610 470 640 652" />
@@ -97,6 +122,7 @@ export default function WestAfricaMap({ montrealLabel, className }: { montrealLa
           <animateMotion dur="9s" repeatCount="indefinite" path="M102 292 Q300 220 480 374 Q610 470 640 652" />
         </circle>
       </g>
+      )}
 
       {/* Hubs */}
       {HUBS.map((hub) => (

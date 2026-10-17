@@ -510,10 +510,39 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
   );
 }
 
+// The Maps JavaScript API is heavy: load it only when the map scrolls near
+// the viewport instead of competing with the rest of the page on load.
 export default function GoogleMapView({ apiKey, t }: { apiKey: string; t: any }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <APIProvider apiKey={apiKey}>
-      <MapWithControls t={t} apiKey={apiKey} />
-    </APIProvider>
+    <div ref={ref} className="w-full h-full">
+      {visible ? (
+        <APIProvider apiKey={apiKey}>
+          <MapWithControls t={t} apiKey={apiKey} />
+        </APIProvider>
+      ) : (
+        <div className="w-full h-full flex items-center justify-center bg-cardBg">
+          <Loader2 size={28} className="text-sahamaOrange animate-spin" />
+        </div>
+      )}
+    </div>
   );
 }

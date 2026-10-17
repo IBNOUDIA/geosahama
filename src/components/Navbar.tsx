@@ -59,11 +59,11 @@ export default function Navbar({ lang, dict }: NavbarProps) {
             {/* Switch Lang */}
             <button
               onClick={toggleLanguage}
-              aria-label={dict.nav.switchLang}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-700 text-xs text-sahamaYellow hover:bg-zinc-800 transition"
             >
               <Globe size={14} />
               <span>{lang === "fr" ? "EN" : "FR"}</span>
+              <span className="sr-only">{dict.nav.switchLang}</span>
             </button>
             
             {/* Espace Client Button */}
@@ -79,11 +79,11 @@ export default function Navbar({ lang, dict }: NavbarProps) {
           <div className="lg:hidden flex items-center gap-3">
             <button
               onClick={toggleLanguage}
-              aria-label={dict.nav.switchLang}
               className="flex items-center gap-1 px-2.5 py-1 rounded border border-zinc-700 text-xs text-sahamaYellow"
             >
               <Globe size={14} />
               <span>{lang === "fr" ? "EN" : "FR"}</span>
+              <span className="sr-only">{dict.nav.switchLang}</span>
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}

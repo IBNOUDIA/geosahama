@@ -160,7 +160,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
                   <div className="text-xs text-gray-400 mb-2">
                     {formatDate(article.date, lang)} • {article.location}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{article.title}</h3>
+                  <h2 className="text-lg font-bold text-cream mb-2">{article.title}</h2>
                   <p className="text-gray-400 text-sm">{article.excerpt}</p>
                 </div>
               </div>
@@ -185,18 +185,17 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
 
       {/* Galerie Photos */}
       <div className="mt-16 bg-cardBg p-8 rounded-2xl border border-zinc-800">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-cream">
           <Camera size={20} className="text-sahamaYellow" /> {t.galleryTitle}
-        </h3>
+        </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {galleryPhotos.map((photo: { id: number; title: string; src: string }) => (
             <button
               key={photo.id}
               onClick={() => setSelectedImage(photo.src)}
-              aria-label={photo.title}
               className="h-32 md:h-40 rounded-xl overflow-hidden relative group"
             >
-              <Image src={photo.src} alt={photo.title} fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover group-hover:scale-105 transition duration-500" />
+              <Image src={photo.src} alt="" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover group-hover:scale-105 transition duration-500" />
               <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[10px] text-gray-300 bg-black/60 rounded px-1.5 py-0.5 truncate">
                 {photo.title}
               </span>
