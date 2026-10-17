@@ -14,7 +14,9 @@
     "clientSpace": "Client Portal",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "switchLang": "Passer en français"
+    "switchLang": "Passer en français",
+    "cases": "Case studies",
+    "partners": "Partners"
   },
   "hero": {
     "badge": "Active in West Africa & Expanding Soon to Montreal",
@@ -340,5 +342,178 @@
     "subtitle": "Feedback from our partners in West Africa and Montreal on our geolocation and ecological tracking solutions.",
     "placeholderLabel": "Client Testimonial",
     "placeholderSub": "Contact Details"
+  },
+  "realisationsPage": {
+    "kicker": "Case studies",
+    "title1": "Solutions built ",
+    "title2": "for the field",
+    "subtitle": "Transport, industry, environment: see how our teams deploy geolocation, security and environmental tracking for each type of project.",
+    "noticeTitle": "Typical examples",
+    "noticeText": "The cases below describe typical deployments built from our services. Our client case studies will be published soon, with the agreement of the companies involved.",
+    "casesKicker": "Deployment scenarios",
+    "casesTitle": "Three settings, one standard of traceability",
+    "exampleBadge": "Typical example",
+    "challengeLabel": "The challenge",
+    "solutionLabel": "Our response",
+    "trackedLabel": "What the client tracks",
+    "servicesLabel": "Services involved",
+    "cases": [
+      {
+        "example": true,
+        "sector": "Road transport",
+        "place": "Dakar – Bamako corridor",
+        "title": "Securing a truck fleet on an international corridor",
+        "photo": "/photos/geolocalisation.webp",
+        "challenge": "Multi-day trips, unplanned stops and unexplained fuel losses, with no visibility between departure and arrival.",
+        "solution": [
+          "GPS trackers fitted on every truck and trailer",
+          "Geofences at borders, depots and authorized rest areas",
+          "Alerts for long stops, detours or abnormal drops in fuel level",
+          "Live tracking from the Client Portal, on desktop and mobile"
+        ],
+        "tracked": [
+          "Real-time position and route",
+          "Driving and idle time",
+          "Fuel consumption",
+          "Full trip history"
+        ],
+        "services": [
+          "geoloc",
+          "security"
+        ]
+      },
+      {
+        "example": true,
+        "sector": "Industry & energy",
+        "place": "Abidjan",
+        "title": "Protecting an industrial site and its equipment, day and night",
+        "photo": "/photos/test-telemetrie.webp",
+        "challenge": "A large site, valuable equipment and breakdowns that halt production without warning.",
+        "solution": [
+          "Connected sensors and video surveillance on entrances and sensitive areas",
+          "Access control for vehicles and staff",
+          "Telemetry on critical machines and predictive maintenance",
+          "Real-time alerts sent to the security and maintenance teams"
+        ],
+        "tracked": [
+          "Site access and intrusion alerts",
+          "Equipment status and temperature",
+          "Anomalies spotted before failure",
+          "Regular risk reports"
+        ],
+        "services": [
+          "security",
+          "prevention"
+        ]
+      },
+      {
+        "example": true,
+        "sector": "Environment",
+        "place": "Montreal · project in deployment",
+        "title": "Tracing treatment residues all the way to landfill",
+        "photo": "/photos/enfouissement-eco.webp",
+        "challenge": "Proving, load by load, that industrial sludge and residues follow the right channel to the authorized disposal site.",
+        "solution": [
+          "Water quality sensors at the source and in the basins",
+          "GPS tracking of every residue shipment",
+          "Traceable reception at the landfill site",
+          "Carbon footprint and compliance reports"
+        ],
+        "tracked": [
+          "Effluent quality",
+          "Route and timing of every load",
+          "Volumes received at the disposal site",
+          "Indicators for environmental audits"
+        ],
+        "services": [
+          "epuration",
+          "geoloc"
+        ]
+      }
+    ],
+    "methodKicker": "Our method",
+    "methodTitle": "From needs assessment to day-to-day monitoring",
+    "method": [
+      {
+        "num": "01",
+        "title": "Needs assessment",
+        "desc": "Review of your assets, routes and risks, then a tailored quote within 48 business hours."
+      },
+      {
+        "num": "02",
+        "title": "Installation",
+        "desc": "Our technicians fit the trackers and sensors, on your site or at one of our hubs."
+      },
+      {
+        "num": "03",
+        "title": "Commissioning",
+        "desc": "Alerts and geofences configured, accounts created and your teams trained."
+      },
+      {
+        "num": "04",
+        "title": "Monitoring & tuning",
+        "desc": "Regular reports, support and settings adjusted to your feedback."
+      }
+    ],
+    "shareTitle": "Are you a Sahama Services client?",
+    "shareText": "Your project could be featured here. Write to us to present your project, with or without your company's name.",
+    "shareButton": "Submit your project"
+  },
+  "partenairesPage": {
+    "kicker": "Partners & trust",
+    "title1": "An ecosystem ",
+    "title2": "you can trust",
+    "subtitle": "Proven technologies, partners on the ground and the voice of our clients: what makes our solutions reliable, from West Africa to Montreal.",
+    "cta": "Become a partner",
+    "techKicker": "Our technologies",
+    "techTitle": "Recognized tools serving your operations",
+    "techIntro": "We rely on market-standard platforms and equipment, for reliable data you can access anywhere.",
+    "tech": [
+      {
+        "name": "Wialon",
+        "role": "Fleet tracking platform",
+        "desc": "Partner platform behind our Client Portal: live tracking, history, reports and alerts, on desktop and mobile."
+      },
+      {
+        "name": "Google Maps Platform",
+        "role": "Mapping",
+        "desc": "Maps, address search and route calculation, built into our interactive map."
+      },
+      {
+        "name": "GPS trackers & sensors",
+        "role": "Field equipment",
+        "desc": "Trackers for vehicles and machinery, telemetry, temperature and water quality sensors."
+      },
+      {
+        "name": "Mobile networks",
+        "role": "Data transmission",
+        "desc": "Positions and alerts flow continuously to our platform, 24 hours a day."
+      }
+    ],
+    "typesKicker": "Working together",
+    "typesTitle": "Four ways to partner with us",
+    "typesIntro": "Whether you have assets to protect or expertise to share, let's build a network of trust across West Africa and Quebec.",
+    "types": [
+      {
+        "title": "Client companies",
+        "desc": "Carriers, manufacturers, mining companies, local authorities: we design a solution around your assets and your regions."
+      },
+      {
+        "title": "Installers & integrators",
+        "desc": "Technicians and local companies who want to install and maintain our equipment in their region."
+      },
+      {
+        "title": "Institutions & public bodies",
+        "desc": "Road safety, environmental monitoring or public fleet management projects."
+      },
+      {
+        "title": "Technology partners",
+        "desc": "Equipment makers, telecom operators and software vendors who want to integrate their solutions with ours."
+      }
+    ],
+    "testimonials": [],
+    "emptyTitle": "Our first testimonials are coming soon",
+    "emptyText": "We are currently gathering feedback from our clients. Already working with us? Share your experience: it will help other companies get to know us.",
+    "emptyButton": "Share my experience"
   }
 }

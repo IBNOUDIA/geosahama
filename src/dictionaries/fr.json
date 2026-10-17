@@ -14,7 +14,9 @@
     "clientSpace": "Espace Client",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "switchLang": "Switch to English"
+    "switchLang": "Switch to English",
+    "cases": "Réalisations",
+    "partners": "Partenaires"
   },
   "hero": {
     "badge": "Opérationnel en Afrique de l'Ouest & Prochainement à Montréal",
@@ -340,5 +342,178 @@
     "subtitle": "Retours de nos partenaires en Afrique de l'Ouest et à Montréal sur nos solutions de géolocalisation et de suivi écologique.",
     "placeholderLabel": "Témoignage client",
     "placeholderSub": "Coordonnées"
+  },
+  "realisationsPage": {
+    "kicker": "Réalisations",
+    "title1": "Des solutions pensées ",
+    "title2": "pour le terrain",
+    "subtitle": "Transport, industrie, environnement : découvrez comment nos équipes déploient la géolocalisation, la sécurité et le suivi écologique selon le type de projet.",
+    "noticeTitle": "Exemples types",
+    "noticeText": "Les cas ci-dessous décrivent des déploiements types, construits à partir de nos services. Nos études de cas clients seront publiées prochainement, avec l'accord des entreprises concernées.",
+    "casesKicker": "Scénarios d'intervention",
+    "casesTitle": "Trois contextes, une même exigence de traçabilité",
+    "exampleBadge": "Exemple type",
+    "challengeLabel": "Le défi",
+    "solutionLabel": "Notre réponse",
+    "trackedLabel": "Ce que le client suit",
+    "servicesLabel": "Services mobilisés",
+    "cases": [
+      {
+        "example": true,
+        "sector": "Transport routier",
+        "place": "Corridor Dakar – Bamako",
+        "title": "Sécuriser une flotte de camions sur un corridor international",
+        "photo": "/photos/geolocalisation.webp",
+        "challenge": "Des trajets de plusieurs jours, des arrêts imprévus et des pertes de carburant difficiles à expliquer, sans aucune visibilité entre le départ et l'arrivée.",
+        "solution": [
+          "Balises GPS installées sur chaque camion et chaque remorque",
+          "Géobarrières aux frontières, aux dépôts et sur les aires de repos autorisées",
+          "Alertes en cas d'arrêt prolongé, de détour ou de baisse anormale du niveau de carburant",
+          "Suivi en direct depuis l'Espace Client, sur ordinateur et sur mobile"
+        ],
+        "tracked": [
+          "Position et itinéraire en temps réel",
+          "Temps de conduite et d'arrêt",
+          "Consommation de carburant",
+          "Historique complet des trajets"
+        ],
+        "services": [
+          "geoloc",
+          "security"
+        ]
+      },
+      {
+        "example": true,
+        "sector": "Industrie & énergie",
+        "place": "Abidjan",
+        "title": "Protéger un site industriel et ses équipements, jour et nuit",
+        "photo": "/photos/test-telemetrie.webp",
+        "challenge": "Un site étendu, des équipements de valeur et des pannes qui arrêtent la production sans signe avant-coureur.",
+        "solution": [
+          "Capteurs connectés et vidéosurveillance sur les accès et les zones sensibles",
+          "Contrôle d'accès des véhicules et du personnel",
+          "Télémétrie des machines critiques et maintenance prédictive",
+          "Alertes transmises en temps réel aux équipes de sécurité et de maintenance"
+        ],
+        "tracked": [
+          "Accès au site et alertes d'intrusion",
+          "État et température des équipements",
+          "Anomalies repérées avant la panne",
+          "Rapports de risques réguliers"
+        ],
+        "services": [
+          "security",
+          "prevention"
+        ]
+      },
+      {
+        "example": true,
+        "sector": "Environnement",
+        "place": "Montréal · projet en déploiement",
+        "title": "Tracer les résidus d'épuration jusqu'à l'enfouissement",
+        "photo": "/photos/enfouissement-eco.webp",
+        "challenge": "Prouver, chargement par chargement, que les boues et résidus industriels suivent la bonne filière jusqu'au site de dépôt autorisé.",
+        "solution": [
+          "Capteurs de qualité de l'eau à la source et dans les bassins",
+          "Suivi GPS de chaque transport de résidus",
+          "Traçabilité de la réception sur le site d'enfouissement",
+          "Bilan carbone et rapports de conformité"
+        ],
+        "tracked": [
+          "Qualité des effluents",
+          "Trajet et horaires de chaque chargement",
+          "Volumes reçus sur le site de dépôt",
+          "Indicateurs pour les audits environnementaux"
+        ],
+        "services": [
+          "epuration",
+          "geoloc"
+        ]
+      }
+    ],
+    "methodKicker": "Notre méthode",
+    "methodTitle": "De l'étude du besoin au suivi quotidien",
+    "method": [
+      {
+        "num": "01",
+        "title": "Étude du besoin",
+        "desc": "Analyse de vos actifs, de vos trajets et de vos risques, puis devis personnalisé sous 48 h ouvrables."
+      },
+      {
+        "num": "02",
+        "title": "Installation",
+        "desc": "Pose des balises et des capteurs par nos techniciens, sur votre site ou dans l'un de nos hubs."
+      },
+      {
+        "num": "03",
+        "title": "Mise en service",
+        "desc": "Réglage des alertes et des géobarrières, création des accès et prise en main par vos équipes."
+      },
+      {
+        "num": "04",
+        "title": "Suivi & ajustements",
+        "desc": "Rapports réguliers, assistance et ajustement des réglages selon vos retours."
+      }
+    ],
+    "shareTitle": "Vous êtes client de Sahama Services ?",
+    "shareText": "Votre projet pourrait figurer ici. Écrivez-nous pour présenter votre réalisation, avec ou sans le nom de votre entreprise.",
+    "shareButton": "Proposer votre projet"
+  },
+  "partenairesPage": {
+    "kicker": "Partenaires & confiance",
+    "title1": "Un écosystème ",
+    "title2": "de confiance",
+    "subtitle": "Des technologies éprouvées, des partenaires sur le terrain et la parole de nos clients : ce qui fait la fiabilité de nos solutions, de l'Afrique de l'Ouest à Montréal.",
+    "cta": "Devenir partenaire",
+    "techKicker": "Nos technologies",
+    "techTitle": "Des outils reconnus au service de vos opérations",
+    "techIntro": "Nous nous appuyons sur des plateformes et des équipements standards du marché, pour des données fiables et consultables partout.",
+    "tech": [
+      {
+        "name": "Wialon",
+        "role": "Plateforme de suivi de flottes",
+        "desc": "Plateforme partenaire de notre Espace Client : suivi en direct, historiques, rapports et alertes, sur ordinateur comme sur mobile."
+      },
+      {
+        "name": "Google Maps Platform",
+        "role": "Cartographie",
+        "desc": "Cartes, recherche d'adresses et calcul d'itinéraires, intégrés à notre carte interactive."
+      },
+      {
+        "name": "Balises GPS & capteurs",
+        "role": "Équipements terrain",
+        "desc": "Traceurs pour véhicules et engins, capteurs de télémétrie, de température et de qualité de l'eau."
+      },
+      {
+        "name": "Réseaux mobiles",
+        "role": "Transmission des données",
+        "desc": "Les positions et les alertes remontent en continu vers notre plateforme, 24 h sur 24."
+      }
+    ],
+    "typesKicker": "Travailler ensemble",
+    "typesTitle": "Quatre façons de devenir partenaire",
+    "typesIntro": "Que vous ayez des actifs à protéger ou une expertise à partager, construisons ensemble un réseau de confiance en Afrique de l'Ouest et au Québec.",
+    "types": [
+      {
+        "title": "Entreprises clientes",
+        "desc": "Transporteurs, industriels, sociétés minières, collectivités : nous concevons avec vous une solution adaptée à vos actifs et à vos zones."
+      },
+      {
+        "title": "Installateurs & intégrateurs",
+        "desc": "Techniciens et entreprises locales qui souhaitent installer et entretenir nos équipements dans leur région."
+      },
+      {
+        "title": "Institutions & organismes publics",
+        "desc": "Projets de sécurité routière, de suivi environnemental ou de gestion de flottes publiques."
+      },
+      {
+        "title": "Partenaires technologiques",
+        "desc": "Fabricants d'équipements, opérateurs télécoms et éditeurs de logiciels qui souhaitent intégrer leurs solutions aux nôtres."
+      }
+    ],
+    "testimonials": [],
+    "emptyTitle": "Les premiers témoignages arrivent bientôt",
+    "emptyText": "Nous recueillons actuellement les retours de nos clients. Vous travaillez déjà avec nous ? Partagez votre expérience : elle aidera d'autres entreprises à nous connaître.",
+    "emptyButton": "Partager mon expérience"
   }
 }

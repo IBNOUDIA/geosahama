@@ -14,6 +14,8 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
     { label: dict.nav.epuration, href: "/epuration" },
   ];
   const company = [
+    { label: dict.nav.cases, href: "/realisations" },
+    { label: dict.nav.partners, href: "/partenaires" },
     { label: dict.nav.news, href: "/actualites" },
     { label: dict.nav.contact, href: "/contact" },
     { label: dict.nav.clientSpace, href: "/espace-client" },

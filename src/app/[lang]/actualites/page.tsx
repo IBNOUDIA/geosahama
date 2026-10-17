@@ -54,7 +54,6 @@ export default async function ActualitesPage({ params }: { params: Promise<{ lan
 
       <div className="max-w-7xl mx-auto px-4 pt-4 pb-16">
         <NewsSection dict={dict} lang={lang} />
-        {/* Testimonials stay hidden until real client quotes are available. */}
       </div>
 
       <CtaBand lang={lang} dict={dict} />

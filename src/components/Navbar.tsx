@@ -29,6 +29,7 @@ export default function Navbar({ lang, dict }: NavbarProps) {
     { name: dict.nav.security, href: `/${lang}/securite` },
     { name: dict.nav.prevention, href: `/${lang}/prevention` },
     { name: dict.nav.epuration, href: `/${lang}/epuration` },
+    { name: dict.nav.cases, href: `/${lang}/realisations` },
     { name: dict.nav.news, href: `/${lang}/actualites` },
     { name: dict.nav.contact, href: `/${lang}/contact` },
   ];
@@ -45,7 +46,7 @@ export default function Navbar({ lang, dict }: NavbarProps) {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden xl:flex items-center space-x-6">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
@@ -76,7 +77,7 @@ export default function Navbar({ lang, dict }: NavbarProps) {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center gap-3">
+          <div className="xl:hidden flex items-center gap-3">
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 px-2.5 py-1 rounded border border-zinc-700 text-xs text-sahamaYellow"
@@ -101,7 +102,7 @@ export default function Navbar({ lang, dict }: NavbarProps) {
 
       {/* Mobile Menu Content */}
       {isOpen && (
-        <div className="lg:hidden bg-cardBg border-b border-zinc-800 px-4 pt-2 pb-6 space-y-3">
+        <div className="xl:hidden bg-cardBg border-b border-zinc-800 px-4 pt-2 pb-6 space-y-3">
           {menuItems.map((item) => (
             <Link
               key={item.name}
