@@ -43,6 +43,12 @@
       { "value": "24/7", "label": "Asset monitoring" },
       { "value": "48h", "label": "Quote response time" }
     ],
+    "video": {
+      "kicker": "Sahama on video",
+      "title": "Discover Sahama Services in 30 seconds",
+      "subtitle": "From the Senegalese savanna to Montreal's purification basins: our mission in pictures.",
+      "play": "Play the video"
+    },
     "reel": {
       "kicker": "Sahama in 4 steps",
       "title": "From the road to the report, full traceability",
@@ -282,6 +288,11 @@
         "title": "Sahama Services at the West Africa Logistics Trade Show",
         "location": "Dakar, Senegal",
         "excerpt": "Meeting with our partners and presenting our telemetry solutions at the regional trade show."
+      },
+      {
+        "title": "Sahama Services in 30 seconds: our presentation film",
+        "location": "West Africa & Montreal",
+        "excerpt": "Equip, monitor, anticipate, trace: discover our chain of trust from Dakar to Montreal."
       }
     ],
     "gallery": [

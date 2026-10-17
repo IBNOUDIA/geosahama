@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import { Adinkra, BogolanTexture, KenteBand } from "@/components/AfricanPatterns";
 import PresentationReel from "@/components/PresentationReel";
 import WestAfricaMap from "@/components/WestAfricaMap";
+import VideoShowcase from "@/components/VideoShowcase";
 import CtaBand from "@/components/CtaBand";
 
 const SERVICES: Array<{ key: "geoloc" | "security" | "prevention" | "epuration"; path: string; Icon: LucideIcon; accent: string }> = [
@@ -87,6 +88,8 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
           </div>
         </div>
       </section>
+
+      <VideoShowcase video={dict.home.video} />
 
       {/* Services */}
       <section className="max-w-7xl mx-auto px-4 pt-24 pb-20">

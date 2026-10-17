@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Recycle, Video, CalendarDays, Camera, X, PlayCircle } from "lucide-react";
+import { MapPin, Recycle, Video, CalendarDays, Camera, X, Play } from "lucide-react";
 import Illustration, { type Scene } from "./Illustration";
+import { PRESENTATION_POSTER, PRESENTATION_VIDEO } from "./VideoShowcase";
 
 const GALLERY_SCENES: Scene[] = ["gps-install", "sensor", "technician", "telemetry"];
 
@@ -25,6 +26,14 @@ const ARTICLE_META = [
   { id: 1, category: "epuration" as const, date: "2026-08-18", mediaType: "image" as const, photosCount: 8 },
   { id: 2, category: "geolocalisation" as const, date: "2026-08-02", mediaType: "image" as const },
   { id: 3, category: "evenement" as const, date: "2026-07-20", mediaType: "image" as const },
+  {
+    id: 4,
+    category: "video" as const,
+    date: "2026-10-16",
+    mediaType: "video" as const,
+    image: PRESENTATION_POSTER,
+    videoUrl: PRESENTATION_VIDEO,
+  },
 ];
 
 const FILTER_ICONS: Record<string, React.ElementType | null> = {
@@ -57,7 +66,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
     title: t.articles[i].title,
     location: t.articles[i].location,
     excerpt: t.articles[i].excerpt,
-  }));
+  })).sort((a, b) => b.date.localeCompare(a.date)); // newest first
 
   const galleryPhotos = t.gallery.map((g: { title: string }, i: number) => ({ id: i + 1, title: g.title }));
 
@@ -124,7 +133,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
                   {article.mediaType === "video" && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-12 h-12 bg-sahamaOrange rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition">
-                        <PlayCircle size={22} className="text-black" fill="black" />
+                        <Play size={22} className="text-darkBg ml-0.5" fill="currentColor" />
                       </div>
                     </div>
                   )}
@@ -189,7 +198,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
               <X size={16} />
             </button>
             <div className="aspect-video w-full">
-              <iframe className="w-full h-full" src={selectedVideo} title={t.videoLabel} allowFullScreen />
+              <video className="w-full h-full" src={selectedVideo} controls autoPlay playsInline title={t.videoLabel} />
             </div>
           </div>
         </div>

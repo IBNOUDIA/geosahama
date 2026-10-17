@@ -43,6 +43,12 @@
       { "value": "24/7", "label": "Surveillance des actifs" },
       { "value": "48h", "label": "Réponse aux demandes de devis" }
     ],
+    "video": {
+      "kicker": "Sahama en vidéo",
+      "title": "Découvrez Sahama Services en 30 secondes",
+      "subtitle": "De la savane sénégalaise aux bassins d'épuration de Montréal : notre mission en images.",
+      "play": "Lancer la vidéo"
+    },
     "reel": {
       "kicker": "Sahama en 4 étapes",
       "title": "De la route au rapport, une traçabilité totale",
@@ -282,6 +288,11 @@
         "title": "Sahama Services au Salon de la Logistique en Afrique de l'Ouest",
         "location": "Dakar, Sénégal",
         "excerpt": "Rencontre avec nos partenaires et présentation de nos solutions de télémétrie sur le salon régional."
+      },
+      {
+        "title": "Sahama Services en 30 secondes : notre film de présentation",
+        "location": "Afrique de l'Ouest & Montréal",
+        "excerpt": "Équiper, surveiller, anticiper, tracer : découvrez notre chaîne de confiance de Dakar à Montréal."
       }
     ],
     "gallery": [
