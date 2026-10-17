@@ -244,6 +244,7 @@
     "mapFallbackAfter": "pour charger la carte interactive.",
     "searchPlaceholder": "Rechercher une adresse...",
     "searchButton": "OK",
+    "serviceError": "Service de cartographie momentanément indisponible. Réessayez plus tard.",
     "searchError": "Adresse introuvable.",
     "myLocationTitle": "Ma position",
     "locateError": "Impossible d'obtenir votre position.",

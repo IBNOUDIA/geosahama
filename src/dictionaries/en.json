@@ -244,6 +244,7 @@
     "mapFallbackAfter": "file to load the interactive map.",
     "searchPlaceholder": "Search an address...",
     "searchButton": "Go",
+    "serviceError": "Mapping service temporarily unavailable. Please try again later.",
     "searchError": "Address not found.",
     "myLocationTitle": "My location",
     "locateError": "Unable to get your location.",

@@ -45,11 +45,61 @@ function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
   return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
 }
 
-function MapWithControls({ t }: { t: any }) {
+type LatLng = { lat: number; lng: number };
+type RouteSummary = {
+  distanceText: string;
+  durationText: string;
+  steps: Array<{ instruction: string; distanceText: string }>;
+  start: LatLng;
+  end: LatLng;
+};
+
+// Google's legacy Directions API can no longer be enabled on new projects, so
+// routes come from the Routes API (REST, called with the same browser key).
+async function computeRoute(apiKey: string, origin: string | LatLng, destination: string | LatLng, language: string) {
+  const waypoint = (p: string | LatLng) =>
+    typeof p === "string" ? { address: p } : { location: { latLng: { latitude: p.lat, longitude: p.lng } } };
+
+  const resp = await fetch("https://routes.googleapis.com/directions/v2:computeRoutes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Goog-Api-Key": apiKey,
+      "X-Goog-FieldMask":
+        "routes.localizedValues,routes.polyline.encodedPolyline,routes.legs.startLocation,routes.legs.endLocation,routes.legs.steps.navigationInstruction,routes.legs.steps.localizedValues",
+    },
+    body: JSON.stringify({ origin: waypoint(origin), destination: waypoint(destination), travelMode: "DRIVE", languageCode: language }),
+  });
+  const data = await resp.json().catch(() => ({}));
+  if (!resp.ok) {
+    console.error("Routes API error:", resp.status, data?.error?.message);
+    throw new Error(resp.status === 403 ? "service_denied" : "route_failed");
+  }
+
+  const route = data.routes?.[0];
+  const leg = route?.legs?.[0];
+  if (!route || !leg) throw new Error("route_failed");
+  const toLatLng = (l: { latLng: { latitude: number; longitude: number } }) => ({ lat: l.latLng.latitude, lng: l.latLng.longitude });
+
+  return {
+    encodedPolyline: route.polyline.encodedPolyline as string,
+    summary: {
+      distanceText: route.localizedValues?.distance?.text ?? "",
+      durationText: route.localizedValues?.duration?.text ?? "",
+      steps: (leg.steps ?? [])
+        .filter((s: any) => s.navigationInstruction?.instructions)
+        .map((s: any) => ({ instruction: s.navigationInstruction.instructions, distanceText: s.localizedValues?.distance?.text ?? "" })),
+      start: toLatLng(leg.startLocation),
+      end: toLatLng(leg.endLocation),
+    } satisfies RouteSummary,
+  };
+}
+
+function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
   const map = useMap();
   const geocodingLib = useMapsLibrary("geocoding");
-  const routesLib = useMapsLibrary("routes");
-  const rendererRef = useRef<google.maps.DirectionsRenderer | null>(null);
+  const geometryLib = useMapsLibrary("geometry");
+  const polylineRef = useRef<google.maps.Polyline | null>(null);
 
   const [mode, setMode] = useState<"address" | "route">("address");
 
@@ -68,22 +118,20 @@ function MapWithControls({ t }: { t: any }) {
   const [fromText, setFromText] = useState("");
   const [fromCoords, setFromCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [toText, setToText] = useState("");
-  const [routeResult, setRouteResult] = useState<google.maps.DirectionsResult | null>(null);
+  const [routeResult, setRouteResult] = useState<RouteSummary | null>(null);
   const [routeError, setRouteError] = useState("");
   const [calculatingRoute, setCalculatingRoute] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
 
-  // Create the DirectionsRenderer once the routes library and map are ready
+  // Orange polyline that draws the current route; removed with the map.
   useEffect(() => {
-    if (!routesLib || !map) return;
-    const renderer = new routesLib.DirectionsRenderer({
-      map,
-      suppressMarkers: false,
-      polylineOptions: { strokeColor: "#FF7A00", strokeWeight: 5 },
-    });
-    rendererRef.current = renderer;
-    return () => renderer.setMap(null);
-  }, [routesLib, map]);
+    if (!map) return;
+    const line = new google.maps.Polyline({ map, strokeColor: "#FF7A00", strokeWeight: 5, strokeOpacity: 0.9 });
+    polylineRef.current = line;
+    return () => line.setMap(null);
+  }, [map]);
+
+  const clearRouteLine = () => polylineRef.current?.setPath([]);
 
   const clearOtherOverlays = () => {
     setMarkedPoint(null);
@@ -104,15 +152,18 @@ function MapWithControls({ t }: { t: any }) {
         const point = { lat: loc.lat(), lng: loc.lng() };
         map.panTo(point);
         map.setZoom(11);
-        rendererRef.current?.setDirections(null);
+        clearRouteLine();
         setRouteResult(null);
         clearOtherOverlays();
         setMarkedPoint(point);
       } else {
         setSearchError(t.searchError);
       }
-    } catch {
-      setSearchError(t.searchError);
+    } catch (err) {
+      // REQUEST_DENIED means the Geocoding API is not enabled for the key,
+      // which is a configuration problem, not an unknown address.
+      const denied = (err as { code?: string })?.code === "REQUEST_DENIED";
+      setSearchError(denied ? t.serviceError : t.searchError);
     } finally {
       setSearching(false);
     }
@@ -121,7 +172,7 @@ function MapWithControls({ t }: { t: any }) {
   const handleMapClick = (event: MapMouseEvent) => {
     const latLng = event.detail.latLng;
     if (!latLng) return;
-    rendererRef.current?.setDirections(null);
+    clearRouteLine();
     setRouteResult(null);
     clearOtherOverlays();
     setMarkedPoint({ lat: latLng.lat, lng: latLng.lng });
@@ -139,7 +190,7 @@ function MapWithControls({ t }: { t: any }) {
       (pos) => {
         const { latitude, longitude } = pos.coords;
         const point = { lat: latitude, lng: longitude };
-        rendererRef.current?.setDirections(null);
+        clearRouteLine();
         setRouteResult(null);
         setMarkedPoint(null);
         setUserLocation(point);
@@ -172,19 +223,22 @@ function MapWithControls({ t }: { t: any }) {
     origin: string | { lat: number; lng: number },
     destination: string | { lat: number; lng: number }
   ) => {
-    if (!routesLib) return;
+    if (!geometryLib || !map) return;
     setCalculatingRoute(true);
     setRouteError("");
     try {
-      const directionsService = new routesLib.DirectionsService();
-      const result = await directionsService.route({ origin, destination, travelMode: "DRIVING" });
-      rendererRef.current?.setDirections(result);
+      const { encodedPolyline, summary } = await computeRoute(apiKey, origin, destination, document.documentElement.lang || "fr");
+      const path = geometryLib.encoding.decodePath(encodedPolyline);
+      polylineRef.current?.setPath(path);
+      const bounds = new google.maps.LatLngBounds();
+      path.forEach((p) => bounds.extend(p));
+      map.fitBounds(bounds, 60);
       clearOtherOverlays();
-      setRouteResult(result);
-    } catch {
-      setRouteError(t.routeError);
+      setRouteResult(summary);
+    } catch (err) {
+      setRouteError((err as Error).message === "service_denied" ? t.serviceError : t.routeError);
       setRouteResult(null);
-      rendererRef.current?.setDirections(null);
+      clearRouteLine();
     } finally {
       setCalculatingRoute(false);
     }
@@ -235,13 +289,13 @@ function MapWithControls({ t }: { t: any }) {
   };
 
   const handleClearRoute = () => {
-    rendererRef.current?.setDirections(null);
+    clearRouteLine();
     setRouteResult(null);
     setRouteError("");
     setShowSteps(false);
   };
 
-  const leg = routeResult?.routes[0]?.legs[0];
+  const leg = routeResult;
 
   return (
     <>
@@ -263,6 +317,8 @@ function MapWithControls({ t }: { t: any }) {
         ))}
         {markedPoint && !routeResult && <Marker position={markedPoint} title={t.coordinatesLabel} />}
         {userLocation && !routeResult && <Marker position={userLocation} title={t.youAreHere} />}
+        {routeResult && <Marker position={routeResult.start} label="A" />}
+        {routeResult && <Marker position={routeResult.end} label="B" />}
       </Map>
 
       {/* Mode tabs + search / route form */}
@@ -350,7 +406,7 @@ function MapWithControls({ t }: { t: any }) {
             <div className="flex items-center gap-2 min-w-0">
               <Navigation size={14} className="text-sahamaOrange shrink-0" />
               <span className="truncate">
-                {leg.distance?.text} · {leg.duration?.text}
+                {leg.distanceText} · {leg.durationText}
               </span>
             </div>
             <div className="flex items-center gap-2 shrink-0">
@@ -442,8 +498,8 @@ function MapWithControls({ t }: { t: any }) {
             <div key={i} className="flex items-start gap-2 border-b border-zinc-800 last:border-0 pb-2 last:pb-0">
               <span className="text-sahamaYellow font-mono shrink-0">{i + 1}.</span>
               <div className="flex-1 min-w-0">
-                <span dangerouslySetInnerHTML={{ __html: step.instructions }} />
-                {step.distance?.text && <div className="text-gray-500 mt-0.5">{step.distance.text}</div>}
+                <span>{step.instruction}</span>
+                {step.distanceText && <div className="text-gray-500 mt-0.5">{step.distanceText}</div>}
               </div>
             </div>
           ))}
@@ -456,7 +512,7 @@ function MapWithControls({ t }: { t: any }) {
 export default function GoogleMapView({ apiKey, t }: { apiKey: string; t: any }) {
   return (
     <APIProvider apiKey={apiKey}>
-      <MapWithControls t={t} />
+      <MapWithControls t={t} apiKey={apiKey} />
     </APIProvider>
   );
 }
