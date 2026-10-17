@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 body {
-  background-color: #0D1526;
-  color: #FFFFFF;
+  background-color: #0B1024;
+  color: #F6EEE1;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-sora), var(--font-inter), sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: #FF7A00;
+    color: #0B1024;
+  }
 }

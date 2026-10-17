@@ -24,6 +24,41 @@
     "ctaPrimary": "Découvrir nos solutions",
     "ctaSecondary": "Projet Épuration Montréal"
   },
+  "footer": {
+    "tagline": "Géolocalisation, sécurité et suivi écologique — de l'Afrique de l'Ouest à Montréal.",
+    "servicesTitle": "Services",
+    "companyTitle": "Entreprise",
+    "contactTitle": "Contact",
+    "zones": "Dakar · Abidjan · Conakry · Bamako · Montréal",
+    "rights": "Tous droits réservés.",
+    "developedBy": "Développé par"
+  },
+  "home": {
+    "stats": [
+      { "value": "4", "label": "Hubs en Afrique de l'Ouest" },
+      { "value": "2", "label": "Continents connectés" },
+      { "value": "24/7", "label": "Surveillance des actifs" },
+      { "value": "48h", "label": "Réponse aux demandes de devis" }
+    ],
+    "reel": {
+      "kicker": "Sahama en 4 étapes",
+      "title": "De la route au rapport, une traçabilité totale",
+      "pause": "Mettre en pause",
+      "play": "Lire la présentation",
+      "slides": [
+        { "scene": "geolocalisation", "title": "Équiper", "text": "Nos équipes installent des balises GPS sur vos véhicules et équipements, de Dakar à Bamako." },
+        { "scene": "telemetry", "title": "Surveiller", "text": "Les données de position et de télémétrie remontent en temps réel vers notre plateforme, 24h/24." },
+        { "scene": "technician", "title": "Anticiper", "text": "L'analyse prédictive détecte les anomalies et déclenche l'intervention avant l'incident." },
+        { "scene": "epuration", "title": "Tracer", "text": "À Montréal, chaque étape du processus d'épuration est suivie jusqu'à l'enfouissement contrôlé." }
+      ]
+    },
+    "servicesKicker": "Nos expertises",
+    "servicesTitle": "De Dakar à Montréal, une seule chaîne de confiance",
+    "learnMore": "En savoir plus",
+    "ctaTitle": "Un projet de flotte, de sécurité ou de suivi écologique ?",
+    "ctaDesc": "Décrivez-nous votre besoin : notre équipe vous répond avec un devis personnalisé sous 48 heures.",
+    "ctaButton": "Demander un devis"
+  },
   "services": {
     "geolocTitle": "Géolocalisation & Flottes",
     "geolocDesc": "Suivi en temps réel de vos actifs industriels et véhicules avec cartographie haute définition Google Maps & Earth.",
@@ -223,6 +258,7 @@
     "emptyState": "Contenu à venir dans cette catégorie.",
     "reportage": "Reportage",
     "photoSuffix": "photo(s)",
+    "illustrationLabel": "Illustration",
     "galleryTitle": "Galerie photos de terrain",
     "closeLabel": "Fermer",
     "videoLabel": "Vidéo",

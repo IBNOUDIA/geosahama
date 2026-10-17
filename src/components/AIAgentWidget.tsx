@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Truck, X, Send, Sparkles, Loader2, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 import { CONTACT_EMAIL } from "@/i18n";
 import ChatMessageText, { stripMarkdown } from "./ChatMessageText";
+import { KenteBand } from "./AfricanPatterns";
 
 interface AIAgentWidgetProps {
   dict: any;
@@ -174,7 +175,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
         <button
           onClick={() => setIsOpen(true)}
           aria-label={dict.ai.openLabel}
-          className="chatbot-float flex items-center gap-2 bg-gradient-to-r from-green-500 via-yellow-400 to-red-500 text-black font-bold px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all"
+          className="chatbot-float flex items-center gap-2 bg-gradient-to-r from-sahamaOrange to-sahamaYellow text-darkBg font-semibold px-4 py-3 rounded-full shadow-2xl shadow-sahamaOrange/30 ring-2 ring-darkBg hover:scale-105 transition-all"
         >
           <Truck size={22} />
           <span className="hidden sm:inline">Sahama AI</span>
@@ -185,11 +186,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
       {isOpen && (
         <div className="w-80 sm:w-96 bg-cardBg border border-zinc-800 rounded-2xl shadow-2xl flex flex-col h-[480px] overflow-hidden">
           {/* Flag stripe accent */}
-          <div className="flex h-1.5 shrink-0">
-            <div className="flex-1 bg-green-500" />
-            <div className="flex-1 bg-yellow-400" />
-            <div className="flex-1 bg-red-500" />
-          </div>
+          <KenteBand className="h-1.5 shrink-0" />
 
           {/* Header */}
           <div className="bg-zinc-900 px-4 py-3 border-b border-zinc-800 flex items-center justify-between">

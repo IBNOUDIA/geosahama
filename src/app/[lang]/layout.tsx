@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Inter, JetBrains_Mono, Sora } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import AIAgentWidget from "@/components/AIAgentWidget";
-import SocialLinks from "@/components/SocialLinks";
+import Footer from "@/components/Footer";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { CONTACT_EMAIL, isLocale, locales, SITE_URL } from "@/i18n";
+import { isLocale, locales, SITE_URL } from "@/i18n";
 import { pageMetadata } from "@/seo";
+
+// Self-hosted by Next.js at build time: no request to Google from visitors.
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 // Only /fr and /en exist (pre-rendered here); any other first segment, e.g. a
 // stray /something.txt, hits the isLocale check below and returns a 404
@@ -42,43 +48,18 @@ export default async function LangLayout({
   const dictionary = await getDictionary(lang);
 
   return (
-    <html lang={lang}>
+    <html lang={lang} className={`${sora.variable} ${inter.variable} ${mono.variable}`}>
       <head>
         <noscript>
           <style>{`.reveal-item { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
       </head>
-      <body className="bg-darkBg text-white antialiased">
+      <body className="bg-darkBg text-white antialiased font-sans">
         <div className="min-h-screen flex flex-col justify-between relative">
           <Navbar lang={lang} dict={dictionary} />
           <div className="pt-20 flex-1">{children}</div>
           <AIAgentWidget dict={dictionary} lang={lang} />
-          <footer className="border-t border-zinc-800 py-8 text-center text-gray-500 text-xs sm:text-sm">
-            <p>
-              {dictionary.contact.emailLabel}{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-sahamaYellow hover:underline font-semibold">
-                {CONTACT_EMAIL}
-              </a>
-            </p>
-
-            <SocialLinks className="mt-5" />
-
-            <p className="mt-5">
-              © {new Date().getFullYear()} Sahama Services (sahama-services.com).{" "}
-              {lang === "fr" ? "Tous droits réservés." : "All rights reserved."}
-            </p>
-            <p className="mt-1.5 text-gray-600">
-              {lang === "fr" ? "Développé par" : "Developed by"}{" "}
-              <a
-                href="https://amardia.ca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-sahamaYellow hover:underline"
-              >
-                amardia.ca
-              </a>
-            </p>
-          </footer>
+          <Footer lang={lang} dict={dictionary} />
         </div>
       </body>
     </html>

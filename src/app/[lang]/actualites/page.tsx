@@ -1,5 +1,4 @@
 import NewsSection from "@/components/NewsSection";
-import Testimonials from "@/components/Testimonials";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n";
@@ -49,7 +48,7 @@ export default async function ActualitesPage({ params }: { params: Promise<{ lan
 
       <div className="max-w-7xl mx-auto px-4 pt-4 pb-12">
         <NewsSection dict={dict} lang={lang} />
-        <Testimonials dict={dict} />
+        {/* Testimonials stay hidden until real client quotes are available. */}
       </div>
     </div>
   );

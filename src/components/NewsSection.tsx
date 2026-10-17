@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { MapPin, Recycle, Video, CalendarDays, Camera, X, PlayCircle } from "lucide-react";
-import MediaPlaceholder from "./MediaPlaceholder";
+import Illustration, { type Scene } from "./Illustration";
+
+const GALLERY_SCENES: Scene[] = ["gps-install", "sensor", "technician", "telemetry"];
 
 interface Article {
   id: number;
@@ -115,7 +117,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
                   {article.image ? (
                     <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                   ) : (
-                    <MediaPlaceholder category={article.category} label={t.photoPending} />
+                    <Illustration scene={article.category === "video" ? "telemetry" : article.category} label={t.illustrationLabel} className="group-hover:scale-105 transition duration-500" />
                   )}
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition" />
 
@@ -167,7 +169,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {galleryPhotos.map((photo: { id: number; title: string }) => (
             <div key={photo.id} className="h-32 rounded-xl overflow-hidden relative group">
-              <MediaPlaceholder label={t.photoPending} />
+              <Illustration scene={GALLERY_SCENES[(photo.id - 1) % GALLERY_SCENES.length]} label={t.illustrationLabel} />
               <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[10px] text-gray-300 bg-black/60 rounded px-1.5 py-0.5 truncate">
                 {photo.title}
               </span>

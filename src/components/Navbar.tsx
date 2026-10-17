@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import Logo from "./Logo";
+import { KenteBand } from "./AfricanPatterns";
 
 interface NavbarProps {
   lang: "fr" | "en";
@@ -33,14 +34,14 @@ export default function Navbar({ lang, dict }: NavbarProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-darkBg/90 backdrop-blur-md border-b border-zinc-800">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-darkBg/85 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
           <Link href={`/${lang}`} className="flex items-center gap-2.5">
             <Logo size={34} />
-            <span className="text-2xl font-bold tracking-wider text-white">
+            <span className="font-display text-xl sm:text-2xl font-bold tracking-wide text-cream">
               SAHAMA<span className="text-sahamaOrange">.SERVICES</span>
             </span>
           </Link>
@@ -70,7 +71,7 @@ export default function Navbar({ lang, dict }: NavbarProps) {
             {/* Espace Client Button */}
             <Link
               href={`/${lang}/espace-client`}
-              className="bg-gradient-to-r from-sahamaOrange to-sahamaYellow text-black font-semibold px-5 py-2.5 rounded-lg shadow-lg hover:brightness-110 transition-all text-sm"
+              className="bg-sahamaOrange text-darkBg font-semibold px-5 py-2.5 rounded-lg shadow-lg shadow-sahamaOrange/20 hover:bg-[#ff8c24] transition-all text-sm"
             >
               {dict.nav.clientSpace}
             </Link>
@@ -97,6 +98,8 @@ export default function Navbar({ lang, dict }: NavbarProps) {
           </div>
         </div>
       </div>
+
+      <KenteBand className="h-[3px] opacity-90" />
 
       {/* Mobile Menu Content */}
       {isOpen && (

@@ -24,6 +24,41 @@
     "ctaPrimary": "Explore Solutions",
     "ctaSecondary": "Montreal Water Project"
   },
+  "footer": {
+    "tagline": "Geolocation, security and ecological tracking — from West Africa to Montreal.",
+    "servicesTitle": "Services",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "zones": "Dakar · Abidjan · Conakry · Bamako · Montreal",
+    "rights": "All rights reserved.",
+    "developedBy": "Developed by"
+  },
+  "home": {
+    "stats": [
+      { "value": "4", "label": "Hubs across West Africa" },
+      { "value": "2", "label": "Continents connected" },
+      { "value": "24/7", "label": "Asset monitoring" },
+      { "value": "48h", "label": "Quote response time" }
+    ],
+    "reel": {
+      "kicker": "Sahama in 4 steps",
+      "title": "From the road to the report, full traceability",
+      "pause": "Pause",
+      "play": "Play the presentation",
+      "slides": [
+        { "scene": "geolocalisation", "title": "Equip", "text": "Our teams fit GPS trackers on your vehicles and equipment, from Dakar to Bamako." },
+        { "scene": "telemetry", "title": "Monitor", "text": "Position and telemetry data flow to our platform in real time, around the clock." },
+        { "scene": "technician", "title": "Anticipate", "text": "Predictive analysis spots anomalies and triggers action before an incident happens." },
+        { "scene": "epuration", "title": "Trace", "text": "In Montreal, every step of the purification process is tracked through to controlled landfill." }
+      ]
+    },
+    "servicesKicker": "Our expertise",
+    "servicesTitle": "From Dakar to Montreal, one chain of trust",
+    "learnMore": "Learn more",
+    "ctaTitle": "A fleet, security or ecological tracking project?",
+    "ctaDesc": "Tell us what you need: our team will reply with a tailored quote within 48 hours.",
+    "ctaButton": "Request a quote"
+  },
   "services": {
     "geolocTitle": "Geolocation & Fleets",
     "geolocDesc": "Real-time tracking of industrial assets and vehicles powered by high-definition Google Maps & Earth.",
@@ -223,6 +258,7 @@
     "emptyState": "Content coming soon in this category.",
     "reportage": "Report",
     "photoSuffix": "photo(s)",
+    "illustrationLabel": "Illustration",
     "galleryTitle": "Field Photo Gallery",
     "closeLabel": "Close",
     "videoLabel": "Video",
