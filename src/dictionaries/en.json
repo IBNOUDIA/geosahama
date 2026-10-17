@@ -153,6 +153,10 @@
     "sendLabel": "Send"
   },
   "securitePage": {
+    "kicker": "Security & monitoring",
+    "featuresKicker": "Our solutions",
+    "featuresTitle": "Protecting your sites, teams and equipment",
+    "featuresIntro": "Connected sensors, telemetry and video surveillance work together to detect, verify and alert — day and night, across all your sites in West Africa.",
     "title1": "Security & ",
     "title2": "Asset Monitoring",
     "subtitle": "Telemetry and industrial facility security solutions, designed to protect your sites, teams, and equipment around the clock.",
@@ -200,6 +204,11 @@
     "panelFooter": "Continuous monitoring of key indicators"
   },
   "epurationPage": {
+    "kicker": "Montreal ecological project",
+    "processKicker": "Our process",
+    "processTitle": "Full traceability, step by step",
+    "closingTitle": "Through to controlled landfill",
+    "closingText": "Every load of residue is GPS-tracked to the disposal site, with a carbon footprint and compliance reports for your environmental audits.",
     "badge": "Montreal Ecological Project",
     "title1": "Ecological Tracking of the ",
     "title2": "Purification Process",
@@ -215,6 +224,17 @@
     "panelFooter": "From prevention to controlled landfill"
   },
   "geolocalisationPage": {
+    "kicker": "Geolocation & fleets",
+    "mapKicker": "Interactive map",
+    "mapTitle": "Try our live mapping",
+    "mapIntro": "Search an address, locate yourself relative to our hubs and calculate a detailed road route.",
+    "highlights": [
+      { "title": "Address search", "desc": "Find a place and get its GPS coordinates with a click on the map." },
+      { "title": "Nearest hub", "desc": "Locate yourself and see the distance to our nearest hub." },
+      { "title": "Detailed directions", "desc": "Calculate a road route with its steps, between two addresses or to a hub." }
+    ],
+    "portalTitle": "Your vehicles in real time",
+    "portalText": "Our clients track their fleets around the clock from the Client Portal, on the Wialon partner platform.",
     "title1": "Geolocation & ",
     "title2": "Fleet Management",
     "subtitle": "Our traceability solutions in West Africa enable real-time tracking connected to the Google Maps & Earth APIs.",

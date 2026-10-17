@@ -28,7 +28,7 @@ export default function WaterTreatmentPanel({
       `}</style>
 
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-800">
-        <span className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
+        <span className="flex items-center gap-2 text-cream font-semibold text-sm">
           <Droplets size={16} className="text-teal-400" /> {title}
         </span>
         <span className="flex items-center gap-1.5 text-teal-300 text-xs font-semibold uppercase tracking-wider">

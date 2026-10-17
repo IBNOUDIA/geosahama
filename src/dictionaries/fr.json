@@ -153,6 +153,10 @@
     "sendLabel": "Envoyer"
   },
   "securitePage": {
+    "kicker": "Sécurité & surveillance",
+    "featuresKicker": "Nos solutions",
+    "featuresTitle": "Protéger vos sites, vos équipes et vos équipements",
+    "featuresIntro": "Capteurs connectés, télémétrie et vidéosurveillance travaillent ensemble pour détecter, vérifier et alerter — de jour comme de nuit, sur l'ensemble de vos sites en Afrique de l'Ouest.",
     "title1": "Sécurité & ",
     "title2": "Surveillance d'Actifs",
     "subtitle": "Solutions de télémétrie et de sécurisation des installations industrielles, pensées pour protéger vos sites, vos équipes et vos équipements en continu.",
@@ -200,6 +204,11 @@
     "panelFooter": "Surveillance continue des indicateurs clés"
   },
   "epurationPage": {
+    "kicker": "Projet écologique Montréal",
+    "processKicker": "Notre processus",
+    "processTitle": "Une traçabilité complète, étape par étape",
+    "closingTitle": "Jusqu'à l'enfouissement contrôlé",
+    "closingText": "Chaque chargement de résidus est suivi par GPS jusqu'au site de dépôt, avec un bilan carbone et des rapports de conformité pour vos audits environnementaux.",
     "badge": "Projet Écologique Montréal",
     "title1": "Suivi Écologique du ",
     "title2": "Processus d'Épuration",
@@ -215,6 +224,17 @@
     "panelFooter": "De la prévention jusqu'à l'enfouissement contrôlé"
   },
   "geolocalisationPage": {
+    "kicker": "Géolocalisation & flottes",
+    "mapKicker": "Carte interactive",
+    "mapTitle": "Testez notre cartographie en direct",
+    "mapIntro": "Recherchez une adresse, localisez-vous par rapport à nos hubs et calculez un itinéraire routier détaillé.",
+    "highlights": [
+      { "title": "Recherche d'adresse", "desc": "Trouvez un lieu et obtenez ses coordonnées GPS d'un clic sur la carte." },
+      { "title": "Hub le plus proche", "desc": "Localisez-vous et découvrez la distance jusqu'à notre hub le plus proche." },
+      { "title": "Itinéraire détaillé", "desc": "Calculez un trajet routier avec ses étapes, entre deux adresses ou vers un hub." }
+    ],
+    "portalTitle": "Vos véhicules en temps réel",
+    "portalText": "Nos clients suivent leurs flottes 24 h/24 depuis l'Espace Client, sur la plateforme partenaire Wialon.",
     "title1": "Géolocalisation & ",
     "title2": "Gestion de Flottes",
     "subtitle": "Nos solutions de traçabilité en Afrique de l'Ouest permettent un suivi temps réel connecté aux API Google Maps & Earth.",
