@@ -1,0 +1,120 @@
+// Stylized, animated map of the West African coast with the Sahama hubs and
+// the link to Montreal. Coordinates come from a simple equirectangular
+// projection: x = (lon + 20) * 40, y = (22 - lat) * 40.
+const HUBS = [
+  { name: "Dakar", x: 102, y: 292, main: true, labelDx: 18, labelDy: -14 },
+  { name: "Conakry", x: 252, y: 500, labelDx: -96, labelDy: 6 },
+  { name: "Bamako", x: 480, y: 374, labelDx: 18, labelDy: -12 },
+  { name: "Abidjan", x: 640, y: 652, labelDx: 18, labelDy: -10 },
+];
+
+const ROUTES = [
+  "M102 292 Q300 220 480 374",
+  "M480 374 Q610 470 640 652",
+  "M252 500 Q360 380 480 374",
+  "M102 292 Q140 420 252 500",
+];
+
+const COAST =
+  "M120 40 L140 100 L160 160 L140 220 L100 292 L128 340 L132 388 L180 420 L212 452 L252 500 L272 540 L320 584 L360 608 L420 656 L496 704 L560 688 L640 672 L720 684 L800 656 L860 632 L920 624 L980 640 L1040 650 L1040 0 L100 0 Z";
+
+export default function WestAfricaMap({ montrealLabel, className }: { montrealLabel: string; className?: string }) {
+  return (
+    <svg viewBox="0 0 1040 760" className={className} role="img" aria-label="Dakar · Conakry · Bamako · Abidjan · Montréal">
+      <style>{`
+        .wa-route { stroke-dasharray: 10 12; animation: waFlow 2.4s linear infinite; }
+        .wa-pulse { animation: waPulse 2.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+        @keyframes waFlow { to { stroke-dashoffset: -44; } }
+        @keyframes waPulse { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) {
+          .wa-route, .wa-pulse { animation: none; }
+          .wa-moving { display: none; }
+        }
+      `}</style>
+      <defs>
+        <linearGradient id="waLand" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#F0B03F" stopOpacity="0.22" />
+          <stop offset="60%" stopColor="#C4532F" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#C4532F" stopOpacity="0.05" />
+        </linearGradient>
+        <radialGradient id="waGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FF7A00" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#FF7A00" stopOpacity="0" />
+        </radialGradient>
+        <pattern id="waDots" width="16" height="16" patternUnits="userSpaceOnUse">
+          <circle cx="8" cy="8" r="1.6" fill="#F6EEE1" opacity="0.18" />
+        </pattern>
+        <radialGradient id="waFadeGrad" cx="38%" cy="55%" r="62%">
+          <stop offset="55%" stopColor="#fff" />
+          <stop offset="100%" stopColor="#000" />
+        </radialGradient>
+        <mask id="waFade">
+          <rect width="1040" height="760" fill="url(#waFadeGrad)" />
+        </mask>
+        <clipPath id="waLandClip">
+          <path d={COAST} />
+        </clipPath>
+      </defs>
+
+      {/* Graticule */}
+      <g stroke="#F6EEE1" strokeOpacity="0.06" strokeWidth="1">
+        {[120, 280, 440, 600].map((y) => (
+          <line key={`h${y}`} x1="0" y1={y} x2="1040" y2={y} />
+        ))}
+        {[200, 400, 600, 800].map((x) => (
+          <line key={`v${x}`} x1={x} y1="0" x2={x} y2="760" />
+        ))}
+      </g>
+
+      {/* Land, fading out towards the open edges of the map */}
+      <g mask="url(#waFade)">
+        <path d={COAST} fill="url(#waLand)" />
+        <rect width="1040" height="760" fill="url(#waDots)" clipPath="url(#waLandClip)" />
+        <path d="M120 40 L140 100 L160 160 L140 220 L100 292 L128 340 L132 388 L180 420 L212 452 L252 500 L272 540 L320 584 L360 608 L420 656 L496 704 L560 688 L640 672 L720 684 L800 656 L860 632 L920 624 L980 640 L1040 650" fill="none" stroke="#F0B03F" strokeOpacity="0.6" strokeWidth="2.5" strokeLinejoin="round" />
+      </g>
+
+      {/* Link to Montreal, leaving the map towards the north-west */}
+      <path d="M102 292 Q40 140 14 36" fill="none" stroke="#6FD4E6" strokeOpacity="0.7" strokeWidth="2.5" className="wa-route" />
+      <g transform="translate(24 20)">
+        <rect x="0" y="-2" width="190" height="38" rx="19" fill="#0B1024" stroke="#6FD4E6" strokeOpacity="0.6" />
+        <circle cx="20" cy="17" r="6" fill="#6FD4E6" />
+        <text x="34" y="23" fill="#F6EEE1" fontSize="17" fontWeight="600" fontFamily="var(--font-inter), sans-serif">
+          {montrealLabel}
+        </text>
+      </g>
+
+      {/* Routes between hubs */}
+      {ROUTES.map((d) => (
+        <path key={d} d={d} fill="none" stroke="#FF7A00" strokeOpacity="0.85" strokeWidth="3" strokeLinecap="round" className="wa-route" />
+      ))}
+
+      {/* Tracked vehicle travelling Dakar -> Bamako -> Abidjan */}
+      <g className="wa-moving">
+        <circle r="16" fill="url(#waGlow)">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M102 292 Q300 220 480 374 Q610 470 640 652" />
+        </circle>
+        <circle r="6" fill="#F6EEE1" stroke="#FF7A00" strokeWidth="3">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M102 292 Q300 220 480 374 Q610 470 640 652" />
+        </circle>
+      </g>
+
+      {/* Hubs */}
+      {HUBS.map((hub) => (
+        <g key={hub.name} transform={`translate(${hub.x} ${hub.y})`}>
+          <circle r="12" fill="#FF7A00" opacity="0.5" className="wa-pulse" />
+          <circle r={hub.main ? 9 : 7} fill="#F0B03F" stroke="#0B1024" strokeWidth="3" />
+          <text
+            x={hub.labelDx}
+            y={hub.labelDy}
+            fill="#F6EEE1"
+            fontSize="22"
+            fontWeight="600"
+            fontFamily="var(--font-sora), sans-serif"
+          >
+            {hub.name}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}

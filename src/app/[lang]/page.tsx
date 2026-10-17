@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ShieldCheck, MapPin, Radar, Droplets, ArrowRight, type LucideIcon } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import type { Locale } from "@/i18n";
-import SatelliteOrbit from "@/components/SatelliteOrbit";
 import Reveal from "@/components/Reveal";
 import { Adinkra, BogolanTexture, KenteBand } from "@/components/AfricanPatterns";
 import PresentationReel from "@/components/PresentationReel";
+import WestAfricaMap from "@/components/WestAfricaMap";
 import CtaBand from "@/components/CtaBand";
 
 const SERVICES: Array<{ key: "geoloc" | "security" | "prevention" | "epuration"; path: string; Icon: LucideIcon; accent: string }> = [
@@ -23,32 +23,32 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
   return (
     <main className="bg-darkBg text-white relative">
       {/* Hero */}
-      <section className="relative min-h-[min(72vh,760px)] flex items-center justify-center overflow-hidden pt-10 pb-20">
+      <section className="relative min-h-[min(78vh,780px)] flex items-center overflow-hidden pt-10 pb-20">
         <div className="absolute inset-0 z-0">
-          <SatelliteOrbit className="w-full h-full" />
           <BogolanTexture opacity={0.045} />
-          <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/30 to-darkBg/10" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_42%_at_50%_50%,rgba(11,16,36,0.75),transparent_75%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/40 to-darkBg/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_55%_at_75%_50%,rgba(255,122,0,0.10),transparent_70%)]" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 grid lg:grid-cols-[1.05fr,1fr] gap-10 items-center">
+          <div className="text-center lg:text-left">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 border border-sahamaOrange/30 text-sahamaYellow text-xs md:text-sm mb-7">
             <span className="w-2 h-2 rounded-full bg-sahamaOrange animate-pulse" />
             {dict.hero.badge}
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.1] text-cream">
+          <h1 className="text-4xl md:text-[3.4rem] font-bold mb-6 leading-[1.1] text-cream">
             {dict.hero.title1}
             <span className="bg-gradient-to-r from-sahamaOrange via-sahamaYellow to-sahamaOrange bg-clip-text text-transparent">
               {dict.hero.title2}
             </span>
           </h1>
 
-          <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
             {dict.hero.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link
               href={`/${lang}/geolocalisation`}
               className="bg-sahamaOrange hover:bg-[#ff8c24] text-darkBg font-semibold px-8 py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-sahamaOrange/25"
@@ -61,6 +61,11 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
             >
               {dict.hero.ctaSecondary}
             </Link>
+          </div>
+          </div>
+
+          <div className="relative">
+            <WestAfricaMap montrealLabel={lang === "fr" ? "Montréal, QC" : "Montreal, QC"} className="w-full h-auto drop-shadow-2xl" />
           </div>
         </div>
       </section>

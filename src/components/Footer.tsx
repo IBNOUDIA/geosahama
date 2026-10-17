@@ -24,7 +24,7 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
       <KenteBand className="h-2" />
       <BogolanTexture opacity={0.03} />
 
-      <div className="relative max-w-7xl mx-auto px-4 pt-14 pb-8">
+      <div className="relative max-w-7xl mx-auto px-4 pt-14 pb-24">
         <div className="grid gap-10 md:grid-cols-[1.4fr,1fr,1fr,1.3fr]">
           <div>
             <Link href={`/${lang}`} className="flex items-center gap-2.5 mb-4">
@@ -63,8 +63,8 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
           </p>
           <p>
             {f.developedBy}{" "}
-            <a href="https://amardia.ca" target="_blank" rel="noopener noreferrer" className="hover:text-sahamaYellow hover:underline">
-              amardia.ca
+            <a href="https://www.amardia.ca" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-400 hover:text-sahamaYellow hover:underline">
+              www.amardia.ca
             </a>
           </p>
         </div>
