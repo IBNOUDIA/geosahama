@@ -172,6 +172,12 @@
     ]
   },
   "preventionPage": {
+    "kicker": "Prévention & anticipation",
+    "processKicker": "Notre méthode",
+    "processTitle": "Du signal faible à l'action, en quatre temps",
+    "featuresKicker": "Nos capacités",
+    "featuresTitle": "Anticiper plutôt que subir",
+    "featuresIntro": "Nos équipes et nos capteurs surveillent en continu vos équipements, vos sites et vos flottes. Chaque anomalie est analysée, priorisée et traitée avant de devenir un incident coûteux.",
     "title1": "Prévention des Risques & ",
     "title2": "Analyse Prédictive",
     "subtitle": "Systèmes d'alerte rapide et prévention des incidents matériels ou environnementaux, pour anticiper avant que l'incident ne survienne.",

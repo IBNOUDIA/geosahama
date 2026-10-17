@@ -172,6 +172,12 @@
     ]
   },
   "preventionPage": {
+    "kicker": "Prevention & anticipation",
+    "processKicker": "Our method",
+    "processTitle": "From weak signal to action, in four steps",
+    "featuresKicker": "Our capabilities",
+    "featuresTitle": "Anticipate rather than react",
+    "featuresIntro": "Our teams and sensors continuously monitor your equipment, sites and fleets. Every anomaly is analysed, prioritised and handled before it becomes a costly incident.",
     "title1": "Risk Prevention & ",
     "title2": "Predictive Analytics",
     "subtitle": "Rapid alert systems and prevention of material or environmental incidents, anticipating issues before they happen.",

@@ -31,11 +31,11 @@ export default function PredictiveAnalysisPanel({
       `}</style>
 
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-800">
-        <span className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
+        <span className="flex items-center gap-2 text-cream font-semibold text-sm tracking-wide">
           <Activity size={16} className="text-sahamaYellow" /> {title}
         </span>
-        <span className="flex items-center gap-1.5 text-green-400 text-xs font-semibold uppercase tracking-wider">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" /> {status}
+        <span className="flex items-center gap-1.5 text-kola text-xs font-semibold uppercase tracking-wider">
+          <span className="w-1.5 h-1.5 rounded-full bg-kola animate-pulse" /> {status}
         </span>
       </div>
 
@@ -44,12 +44,12 @@ export default function PredictiveAnalysisPanel({
         <path
           d="M0,90 L30,85 L60,88 L90,70 L120,80 L150,40 L180,75 L210,60 L240,30 L270,65 L300,50"
           fill="none"
-          stroke="#FFC700"
+          stroke="#F0B03F"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <circle cx="240" cy="30" r="4" fill="#FFC700" className="spike-dot" />
+        <circle cx="240" cy="30" r="4" fill="#F0B03F" className="spike-dot" />
         <rect className="scan-line" x="0" y="0" width="2" height="120" fill="#FF7A00" />
       </svg>
 
