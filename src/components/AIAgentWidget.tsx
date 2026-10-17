@@ -74,7 +74,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMsg, history }),
+        body: JSON.stringify({ message: userMsg, history, lang }),
       });
 
       const data = await res.json();
