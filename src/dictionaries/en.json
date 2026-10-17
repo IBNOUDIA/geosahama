@@ -91,7 +91,11 @@
       "emailLabel": "Direct email",
       "officesLabel": "Offices & areas of operation",
       "officesValue": "West Africa & Montreal (QC, Canada)",
-      "domainLabel": "Official website:"
+      "domainLabel": "Official website:",
+    "hubsLabel": "Our hubs",
+    "responseLabel": "Quote response time",
+    "responseValue": "48 business hours",
+    "questionKicker": "A question?"
     },
     "form": {
       "sending": "Sending",
@@ -278,6 +282,7 @@
   },
   "actualitesPage": {
     "kicker": "Sahama Media & News",
+    "subtitle": "Projects, field deployments and events: follow Sahama Services news, from Dakar to Montreal.",
     "title": "Our Activities & News",
     "panelTitle": "Sahama Media",
     "panelStatus": "Updated",

@@ -91,7 +91,11 @@
       "emailLabel": "Courriel direct",
       "officesLabel": "Bureaux & zones d'activités",
       "officesValue": "Afrique de l'Ouest & Montréal (QC, Canada)",
-      "domainLabel": "Site officiel :"
+      "domainLabel": "Site officiel :",
+    "hubsLabel": "Nos hubs",
+    "responseLabel": "Délai de réponse aux devis",
+    "responseValue": "48 heures ouvrables",
+    "questionKicker": "Une question ?"
     },
     "form": {
       "sending": "Envoi en cours",
@@ -278,6 +282,7 @@
   },
   "actualitesPage": {
     "kicker": "Sahama Media & News",
+    "subtitle": "Projets, déploiements sur le terrain et rencontres : suivez l'actualité de Sahama Services, de Dakar à Montréal.",
     "title": "Nos activités & actualités",
     "panelTitle": "Sahama Media",
     "panelStatus": "Mis à jour",
