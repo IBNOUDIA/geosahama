@@ -305,10 +305,11 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
         defaultZoom={3}
         gestureHandling="cooperative"
         disableDefaultUI={false}
-        // Google's own buttons default to the top corners, hidden under our
-        // search panel (left) and locate button (right): move them to the bottom.
+        // Map-type switch moved off the top-left search panel; fullscreen stays
+        // top-right with our locate button placed just to its left, so the
+        // bottom-right corner is left to zoom / Street View.
         mapTypeControlOptions={{ position: ControlPosition.LEFT_BOTTOM }}
-        fullscreenControlOptions={{ position: ControlPosition.RIGHT_BOTTOM }}
+        fullscreenControlOptions={{ position: ControlPosition.RIGHT_TOP }}
         styles={DARK_MAP_STYLE}
         onClick={handleMapClick}
       >
@@ -322,7 +323,7 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
       </Map>
 
       {/* Mode tabs + search / route form */}
-      <div className="absolute top-4 left-4 right-16 md:right-auto md:w-80 z-10">
+      <div className="absolute top-4 left-4 right-28 md:right-auto md:w-80 z-10">
         <div className="flex gap-1.5 mb-2">
           <button
             type="button"
@@ -447,19 +448,19 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
         onClick={handleLocate}
         disabled={locating}
         title={t.myLocationTitle}
-        className="absolute top-4 right-4 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 hover:border-sahamaYellow p-2.5 rounded-lg text-white transition disabled:opacity-60"
+        className="absolute top-[10px] right-[60px] z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 hover:border-sahamaYellow p-2.5 rounded-lg text-white transition disabled:opacity-60"
       >
         <Crosshair size={17} className={locating ? "animate-spin" : ""} />
       </button>
       {locateError && (
-        <div className="absolute top-16 right-4 z-10 bg-red-950/90 border border-red-900 text-red-300 text-xs px-3 py-1.5 rounded-lg max-w-[220px] text-right">
+        <div className="absolute top-16 right-[60px] z-10 bg-red-950/90 border border-red-900 text-red-300 text-xs px-3 py-1.5 rounded-lg max-w-[220px] text-right">
           {locateError}
         </div>
       )}
 
       {/* Clicked / searched coordinates panel */}
       {markedPoint && (
-        <div className="absolute bottom-4 right-4 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center gap-2 text-xs text-gray-200">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center gap-2 text-xs text-gray-200 whitespace-nowrap">
           <MapPin size={13} className="text-sahamaOrange shrink-0" />
           <span className="font-mono">
             {markedPoint.lat.toFixed(6)}, {markedPoint.lng.toFixed(6)}
@@ -476,7 +477,7 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
 
       {/* Nearest hub panel */}
       {nearestHub && (
-        <div className="absolute bottom-4 left-4 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-xs text-gray-200 flex items-center gap-3">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-xs text-gray-200 flex items-center gap-3 whitespace-nowrap">
           <span>
             {t.nearestHubLabel} <span className="text-sahamaYellow font-semibold">{nearestHub.name}</span> —{" "}
             {Math.round(nearestHub.distanceKm)} km
@@ -493,7 +494,7 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
 
       {/* Turn-by-turn steps drawer */}
       {showSteps && routeResult && leg && (
-        <div className="absolute bottom-4 left-4 right-4 z-10 max-h-40 overflow-y-auto bg-black/85 backdrop-blur border border-zinc-700 rounded-lg p-3 text-xs text-gray-200 space-y-2">
+        <div className="absolute bottom-4 left-4 right-16 md:right-auto md:w-96 z-10 max-h-48 overflow-y-auto bg-darkBg/90 backdrop-blur border border-zinc-700 rounded-lg p-3 text-xs text-gray-200 space-y-2">
           {leg.steps.map((step, i) => (
             <div key={i} className="flex items-start gap-2 border-b border-zinc-800 last:border-0 pb-2 last:pb-0">
               <span className="text-sahamaYellow font-mono shrink-0">{i + 1}.</span>
