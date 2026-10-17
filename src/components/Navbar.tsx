@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import Logo from "./Logo";
+import Logo, { Wordmark } from "./Logo";
 import { KenteBand } from "./AfricanPatterns";
 
 interface NavbarProps {
@@ -40,10 +40,8 @@ export default function Navbar({ lang, dict }: NavbarProps) {
           
           {/* Logo */}
           <Link href={`/${lang}`} className="flex items-center gap-2.5">
-            <Logo size={34} />
-            <span className="font-display text-xl sm:text-2xl font-bold tracking-wide text-cream">
-              SAHAMA<span className="text-sahamaOrange">.SERVICES</span>
-            </span>
+            <Logo size={44} />
+            <Wordmark className="text-lg sm:text-xl" />
           </Link>
 
           {/* Desktop Menu */}

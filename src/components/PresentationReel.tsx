@@ -2,10 +2,19 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Pause, Play } from "lucide-react";
+import Image from "next/image";
 import Illustration, { type Scene } from "./Illustration";
 import { Adinkra, KenteBand } from "./AfricanPatterns";
 
 const SLIDE_MS = 6000;
+
+// Real field photos for each step; scenes without one fall back to the illustration.
+const SCENE_PHOTOS: Partial<Record<Scene, string>> = {
+  geolocalisation: "/photos/balise-gps.webp",
+  telemetry: "/photos/test-telemetrie.webp",
+  technician: "/photos/intervention-tech.webp",
+  epuration: "/photos/enfouissement-eco.webp",
+};
 
 type Slide = { scene: Scene; title: string; text: string };
 
@@ -55,7 +64,11 @@ export default function PresentationReel({ reel }: { reel: { kicker: string; tit
         <div className="grid lg:grid-cols-[1.5fr,1fr]">
           <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[380px] overflow-hidden">
             <div key={index} className="reel-in absolute inset-0">
-              <Illustration scene={slide.scene} />
+              {SCENE_PHOTOS[slide.scene] ? (
+                <Image src={SCENE_PHOTOS[slide.scene]!} alt={slide.title} fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
+              ) : (
+                <Illustration scene={slide.scene} />
+              )}
             </div>
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-darkBg/80 to-transparent" />
             <button

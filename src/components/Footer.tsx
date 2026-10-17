@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
-import Logo from "./Logo";
+import Logo, { Wordmark } from "./Logo";
 import SocialLinks from "./SocialLinks";
 import { BogolanTexture, KenteBand } from "./AfricanPatterns";
 import { CONTACT_EMAIL, type Locale } from "@/i18n";
@@ -28,10 +28,8 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
         <div className="grid gap-10 md:grid-cols-[1.4fr,1fr,1fr,1.3fr]">
           <div>
             <Link href={`/${lang}`} className="flex items-center gap-2.5 mb-4">
-              <Logo size={32} />
-              <span className="font-display text-xl font-bold tracking-wide text-cream">
-                SAHAMA<span className="text-sahamaOrange">.SERVICES</span>
-              </span>
+              <Logo size={48} />
+              <Wordmark className="text-xl" />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{f.tagline}</p>
             <SocialLinks className="mt-5 !justify-start" />

@@ -3,7 +3,7 @@ import { getDictionary } from "@/dictionaries/get-dictionary";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
-import Illustration from "@/components/Illustration";
+import Image from "next/image";
 import { BogolanTexture } from "@/components/AfricanPatterns";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
@@ -24,7 +24,7 @@ export default async function EspaceClientPage({ params }: { params: Promise<{ l
       <div className="relative max-w-5xl mx-auto px-4 py-16 md:py-24">
         <div className="grid md:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-800 bg-cardBg shadow-2xl shadow-black/40">
           <div className="relative min-h-[220px] md:min-h-full">
-            <Illustration scene="telemetry" />
+            <Image src="/photos/geolocalisation.webp" alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" priority />
           </div>
 
           <div className="p-8 md:p-10 flex flex-col justify-center">

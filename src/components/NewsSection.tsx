@@ -2,10 +2,17 @@
 
 import { useState } from "react";
 import { MapPin, Recycle, Video, CalendarDays, Camera, X, Play } from "lucide-react";
-import Illustration, { type Scene } from "./Illustration";
+import Image from "next/image";
+import Illustration from "./Illustration";
 import { PRESENTATION_POSTER, PRESENTATION_VIDEO } from "./VideoShowcase";
 
-const GALLERY_SCENES: Scene[] = ["gps-install", "sensor", "technician", "telemetry"];
+// Field photos, in the same order as the gallery captions in the dictionary.
+const GALLERY_PHOTOS = [
+  "/photos/balise-gps.webp",
+  "/photos/capteur-eau.webp",
+  "/photos/intervention-tech.webp",
+  "/photos/test-telemetrie.webp",
+];
 
 interface Article {
   id: number;
@@ -23,9 +30,9 @@ interface Article {
 // Static, non-translated metadata for each article — merged with the
 // translated title/location/excerpt from the dictionary at render time.
 const ARTICLE_META = [
-  { id: 1, category: "epuration" as const, date: "2026-08-18", mediaType: "image" as const, photosCount: 8 },
-  { id: 2, category: "geolocalisation" as const, date: "2026-08-02", mediaType: "image" as const },
-  { id: 3, category: "evenement" as const, date: "2026-07-20", mediaType: "image" as const },
+  { id: 1, category: "epuration" as const, date: "2026-08-18", mediaType: "image" as const, image: "/photos/epuration-eau.webp" },
+  { id: 2, category: "geolocalisation" as const, date: "2026-08-02", mediaType: "image" as const, image: "/photos/geolocalisation.webp" },
+  { id: 3, category: "evenement" as const, date: "2026-07-20", mediaType: "image" as const, image: "/photos/salon-dakar.webp" },
   {
     id: 4,
     category: "video" as const,
@@ -68,7 +75,7 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
     excerpt: t.articles[i].excerpt,
   })).sort((a, b) => b.date.localeCompare(a.date)); // newest first
 
-  const galleryPhotos = t.gallery.map((g: { title: string }, i: number) => ({ id: i + 1, title: g.title }));
+  const galleryPhotos = t.gallery.map((g: { title: string }, i: number) => ({ id: i + 1, title: g.title, src: GALLERY_PHOTOS[i] }));
 
   const filteredArticles = filter === "all" ? articlesData : articlesData.filter((item) => item.category === filter);
 
@@ -124,9 +131,15 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
                   onClick={() => openMedia(article)}
                 >
                   {article.image ? (
-                    <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover group-hover:scale-105 transition duration-500"
+                    />
                   ) : (
-                    <Illustration scene={article.category === "video" ? "telemetry" : article.category} label={t.illustrationLabel} className="group-hover:scale-105 transition duration-500" />
+                    <Illustration scene={article.category === "video" ? "telemetry" : article.category} label={t.illustrationLabel} />
                   )}
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition" />
 
@@ -176,13 +189,18 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
           <Camera size={20} className="text-sahamaYellow" /> {t.galleryTitle}
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryPhotos.map((photo: { id: number; title: string }) => (
-            <div key={photo.id} className="h-32 rounded-xl overflow-hidden relative group">
-              <Illustration scene={GALLERY_SCENES[(photo.id - 1) % GALLERY_SCENES.length]} label={t.illustrationLabel} />
+          {galleryPhotos.map((photo: { id: number; title: string; src: string }) => (
+            <button
+              key={photo.id}
+              onClick={() => setSelectedImage(photo.src)}
+              aria-label={photo.title}
+              className="h-32 md:h-40 rounded-xl overflow-hidden relative group"
+            >
+              <Image src={photo.src} alt={photo.title} fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover group-hover:scale-105 transition duration-500" />
               <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[10px] text-gray-300 bg-black/60 rounded px-1.5 py-0.5 truncate">
                 {photo.title}
               </span>
-            </div>
+            </button>
           ))}
         </div>
       </div>
@@ -211,7 +229,14 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
             <button onClick={() => setSelectedImage(null)} className="absolute -top-10 right-0 text-white text-sm font-semibold flex items-center gap-1.5">
               <X size={16} /> {t.closeLabel}
             </button>
-            <img src={selectedImage} alt={t.enlargeAlt} className="max-w-full max-h-[80vh] rounded-lg border border-zinc-700" />
+            <Image
+              src={selectedImage}
+              alt={t.enlargeAlt}
+              width={1600}
+              height={1195}
+              sizes="(min-width: 768px) 768px, 100vw"
+              className="w-auto h-auto max-w-full max-h-[80vh] rounded-lg border border-zinc-700"
+            />
           </div>
         </div>
       )}

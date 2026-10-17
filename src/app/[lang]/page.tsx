@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, MapPin, Radar, Droplets, ArrowRight, type LucideIcon } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
@@ -9,11 +10,17 @@ import WestAfricaMap from "@/components/WestAfricaMap";
 import VideoShowcase from "@/components/VideoShowcase";
 import CtaBand from "@/components/CtaBand";
 
-const SERVICES: Array<{ key: "geoloc" | "security" | "prevention" | "epuration"; path: string; Icon: LucideIcon; accent: string }> = [
-  { key: "geoloc", path: "/geolocalisation", Icon: MapPin, accent: "text-sahamaOrange bg-sahamaOrange/10" },
-  { key: "security", path: "/securite", Icon: ShieldCheck, accent: "text-sahamaYellow bg-sahamaYellow/10" },
-  { key: "prevention", path: "/prevention", Icon: Radar, accent: "text-terracotta bg-terracotta/15" },
-  { key: "epuration", path: "/epuration", Icon: Droplets, accent: "text-kola bg-kola/15" },
+const SERVICES: Array<{
+  key: "geoloc" | "security" | "prevention" | "epuration";
+  path: string;
+  Icon: LucideIcon;
+  accent: string;
+  photo: string;
+}> = [
+  { key: "geoloc", path: "/geolocalisation", Icon: MapPin, accent: "text-sahamaOrange", photo: "/photos/geolocalisation.webp" },
+  { key: "security", path: "/securite", Icon: ShieldCheck, accent: "text-sahamaYellow", photo: "/photos/balise-gps.webp" },
+  { key: "prevention", path: "/prevention", Icon: Radar, accent: "text-terracotta", photo: "/photos/intervention-tech.webp" },
+  { key: "epuration", path: "/epuration", Icon: Droplets, accent: "text-kola", photo: "/photos/epuration-eau.webp" },
 ];
 
 export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
@@ -101,19 +108,29 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES.map(({ key, path, Icon, accent }, i) => (
+          {SERVICES.map(({ key, path, Icon, accent, photo }, i) => (
             <Reveal key={key} delay={i * 100}>
               <Link
                 href={`/${lang}${path}`}
-                className="group relative block h-full bg-cardBg p-7 rounded-2xl border border-zinc-800 hover:border-sahamaOrange/60 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-sahamaOrange/10 transition-all overflow-hidden"
+                className="group relative flex flex-col h-full bg-cardBg rounded-2xl border border-zinc-800 hover:border-sahamaOrange/60 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-sahamaOrange/10 transition-all overflow-hidden"
               >
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover group-hover:scale-105 transition duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cardBg via-cardBg/20 to-transparent" />
+                </div>
                 <BogolanTexture opacity={0.035} />
-                <div className="relative">
-                  <div className={`p-3 rounded-xl w-fit mb-5 ${accent}`}>
-                    <Icon size={26} />
+                <div className="relative px-7 pb-7 -mt-7 flex-1 flex flex-col">
+                  <div className={`p-3 rounded-xl w-fit mb-4 backdrop-blur bg-cardBg/80 ring-1 ring-zinc-700 ${accent}`}>
+                    <Icon size={24} />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-cream">{s[`${key}Title`]}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-5">{s[`${key}Desc`]}</p>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-1">{s[`${key}Desc`]}</p>
                   <span className="inline-flex items-center gap-1.5 text-sahamaOrange text-sm font-semibold">
                     {dict.home.learnMore}
                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />

@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import { isLocale } from "@/i18n";
@@ -10,6 +12,7 @@ export const alt = "Sahama Services";
 export default async function OpenGraphImage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dict = await getDictionary(isLocale(lang) ? lang : "fr");
+  const logoMark = `data:image/png;base64,${(await readFile(join(process.cwd(), "public/logo-mark.png"))).toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -32,19 +35,18 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ lan
               width: "88px",
               height: "88px",
               borderRadius: "22px",
-              background: "linear-gradient(135deg, #FF7A00, #FFC700)",
+              background: "#F6EEE1",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <svg width="52" height="52" viewBox="0 0 40 40">
-              <path d="M20 4c-6.6 0-12 5.2-12 11.8C8 24.6 20 38 20 38s12-13.4 12-22.2C32 9.2 26.6 4 20 4z" fill="#0B0B0B" />
-              <circle cx="20" cy="15.8" r="4.6" fill="#FFC700" />
-            </svg>
+            {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> */}
+            <img src={logoMark} width={68} height={68} alt="" />
           </div>
-          <div style={{ display: "flex", fontSize: "56px", fontWeight: 800, letterSpacing: "2px" }}>
-            SAHAMA<span style={{ color: "#FF7A00" }}>.SERVICES</span>
+          <div style={{ display: "flex", flexDirection: "column", fontSize: "50px", fontWeight: 800, lineHeight: 0.95 }}>
+            <span>Sahama</span>
+            <span style={{ color: "#FF7A00" }}>Services</span>
           </div>
         </div>
         <div style={{ display: "flex", fontSize: "60px", fontWeight: 800, lineHeight: 1.15, maxWidth: "1000px" }}>
