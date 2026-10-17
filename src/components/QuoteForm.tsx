@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
 import { CONTACT_EMAIL } from "@/i18n";
@@ -23,6 +25,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
   // Honeypot: hidden from people, filled in by bots; the API drops those submissions.
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const lang = usePathname()?.startsWith("/en") ? "en" : "fr";
 
   const toggleService = (label: string) => {
     setServices((prev) => (prev.includes(label) ? prev.filter((s) => s !== label) : [...prev, label]));
@@ -234,6 +237,14 @@ export default function QuoteForm({ dict }: { dict: any }) {
           </>
         )}
       </button>
+
+      <p className="text-[11px] text-gray-500 text-center">
+        {dict.footer.formNotice}{" "}
+        <Link href={`/${lang}/confidentialite`} className="text-sahamaYellow hover:underline">
+          {dict.footer.privacy.toLowerCase()}
+        </Link>
+        .
+      </p>
     </form>
   );
 }

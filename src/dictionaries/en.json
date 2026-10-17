@@ -31,7 +31,10 @@
     "contactTitle": "Contact",
     "zones": "Dakar · Abidjan · Conakry · Bamako · Montreal",
     "rights": "All rights reserved.",
-    "developedBy": "Web Architect:"
+    "developedBy": "Web Architect:",
+    "legalNotice": "Legal notice",
+    "privacy": "Privacy policy",
+    "formNotice": "Your information is used only to handle your request. See our"
   },
   "home": {
     "stats": [

@@ -58,9 +58,17 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
         </div>
 
         <div className="mt-12 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between gap-2 text-xs text-gray-500">
-          <p>
-            © {new Date().getFullYear()} Sahama Services — sahama-services.com. {f.rights}
-          </p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            <span>
+              © {new Date().getFullYear()} Sahama Services — sahama-services.com. {f.rights}
+            </span>
+            <Link href={`/${lang}/mentions-legales`} className="hover:text-sahamaYellow hover:underline">
+              {f.legalNotice}
+            </Link>
+            <Link href={`/${lang}/confidentialite`} className="hover:text-sahamaYellow hover:underline">
+              {f.privacy}
+            </Link>
+          </div>
           <p>
             {f.developedBy}{" "}
             <a href="https://www.amardia.ca" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-400 hover:text-sahamaYellow hover:underline">
