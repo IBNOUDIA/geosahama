@@ -71,7 +71,7 @@ export default function ContactForm({ dict }: { dict: any }) {
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+          className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
         />
       </div>
       <div>
@@ -85,7 +85,7 @@ export default function ContactForm({ dict }: { dict: any }) {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+          className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
         />
       </div>
       <div>
@@ -99,7 +99,7 @@ export default function ContactForm({ dict }: { dict: any }) {
           required
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+          className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
         />
       </div>
 

@@ -267,7 +267,7 @@ function MapWithControls({ t }: { t: any }) {
             type="button"
             onClick={() => setMode("address")}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
-              mode === "address" ? "bg-sahamaOrange text-black" : "bg-black/70 text-gray-300 border border-zinc-700"
+              mode === "address" ? "bg-sahamaOrange text-black" : "bg-darkBg/80 text-gray-300 border border-zinc-700"
             }`}
           >
             <Search size={11} /> {t.tabAddress}
@@ -276,7 +276,7 @@ function MapWithControls({ t }: { t: any }) {
             type="button"
             onClick={() => setMode("route")}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
-              mode === "route" ? "bg-sahamaOrange text-black" : "bg-black/70 text-gray-300 border border-zinc-700"
+              mode === "route" ? "bg-sahamaOrange text-black" : "bg-darkBg/80 text-gray-300 border border-zinc-700"
             }`}
           >
             <Navigation size={11} /> {t.tabRoute}
@@ -291,7 +291,7 @@ function MapWithControls({ t }: { t: any }) {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder={t.searchPlaceholder}
-                className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg pl-9 pr-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
+                className="w-full bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg pl-9 pr-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
               />
             </div>
             <button
@@ -312,7 +312,7 @@ function MapWithControls({ t }: { t: any }) {
                 onChange={(e) => setFromText(e.target.value)}
                 readOnly={!!fromCoords}
                 placeholder={t.fromPlaceholder}
-                className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg pl-3 pr-9 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
+                className="w-full bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg pl-3 pr-9 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
               />
               <button
                 type="button"
@@ -327,7 +327,7 @@ function MapWithControls({ t }: { t: any }) {
               value={toText}
               onChange={(e) => setToText(e.target.value)}
               placeholder={t.toPlaceholder}
-              className="w-full bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
+              className="w-full bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-sahamaOrange"
             />
             <button
               type="submit"
@@ -341,7 +341,7 @@ function MapWithControls({ t }: { t: any }) {
         )}
 
         {mode === "route" && routeResult && leg && (
-          <div className="bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center justify-between gap-2 text-xs text-gray-200">
+          <div className="bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center justify-between gap-2 text-xs text-gray-200">
             <div className="flex items-center gap-2 min-w-0">
               <Navigation size={14} className="text-sahamaOrange shrink-0" />
               <span className="truncate">
@@ -386,7 +386,7 @@ function MapWithControls({ t }: { t: any }) {
         onClick={handleLocate}
         disabled={locating}
         title={t.myLocationTitle}
-        className="absolute top-4 right-4 z-10 bg-black/80 backdrop-blur border border-zinc-700 hover:border-sahamaYellow p-2.5 rounded-lg text-white transition disabled:opacity-60"
+        className="absolute top-4 right-4 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 hover:border-sahamaYellow p-2.5 rounded-lg text-white transition disabled:opacity-60"
       >
         <Crosshair size={17} className={locating ? "animate-spin" : ""} />
       </button>
@@ -398,7 +398,7 @@ function MapWithControls({ t }: { t: any }) {
 
       {/* Clicked / searched coordinates panel */}
       {markedPoint && (
-        <div className="absolute bottom-4 right-4 z-10 bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center gap-2 text-xs text-gray-200">
+        <div className="absolute bottom-4 right-4 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 flex items-center gap-2 text-xs text-gray-200">
           <MapPin size={13} className="text-sahamaOrange shrink-0" />
           <span className="font-mono">
             {markedPoint.lat.toFixed(6)}, {markedPoint.lng.toFixed(6)}
@@ -415,7 +415,7 @@ function MapWithControls({ t }: { t: any }) {
 
       {/* Nearest hub panel */}
       {nearestHub && (
-        <div className="absolute bottom-4 left-4 z-10 bg-black/80 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-xs text-gray-200 flex items-center gap-3">
+        <div className="absolute bottom-4 left-4 z-10 bg-darkBg/85 backdrop-blur border border-zinc-700 rounded-lg px-3 py-2 text-xs text-gray-200 flex items-center gap-3">
           <span>
             {t.nearestHubLabel} <span className="text-sahamaYellow font-semibold">{nearestHub.name}</span> —{" "}
             {Math.round(nearestHub.distanceKm)} km

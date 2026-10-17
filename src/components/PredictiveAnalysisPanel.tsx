@@ -10,7 +10,7 @@ export default function PredictiveAnalysisPanel({
   footer: string;
 }) {
   return (
-    <div className="bg-black/70 backdrop-blur border border-zinc-800 rounded-2xl p-5">
+    <div className="bg-darkBg/80 backdrop-blur border border-zinc-800 rounded-2xl p-5 shadow-2xl shadow-black/40">
       <style>{`
         @keyframes scanSweep {
           0% { transform: translateX(0); opacity: 0; }

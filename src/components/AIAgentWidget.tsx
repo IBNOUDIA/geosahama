@@ -250,7 +250,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
               placeholder={isListening ? dict.ai.listeningLabel : dict.ai.placeholder}
               aria-label={dict.ai.placeholder}
               disabled={isLoading}
-              className="flex-1 bg-black border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-sahamaOrange disabled:opacity-50"
+              className="flex-1 bg-darkBg border border-zinc-700 rounded-lg px-3 py-2 text-xs text-cream focus:outline-none focus:border-sahamaOrange disabled:opacity-50"
             />
             {micSupported && (
               <button
@@ -261,7 +261,7 @@ export default function AIAgentWidget({ dict, lang }: AIAgentWidgetProps) {
                 className={`p-2 rounded-lg transition disabled:opacity-50 ${
                   isListening
                     ? "bg-red-500 text-white animate-pulse"
-                    : "bg-black border border-zinc-800 text-gray-300 hover:text-white"
+                    : "bg-darkBg border border-zinc-700 text-gray-300 hover:text-white"
                 }`}
               >
                 {isListening ? <MicOff size={16} /> : <Mic size={16} />}

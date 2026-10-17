@@ -89,7 +89,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs cursor-pointer transition ${
                   checked
                     ? "bg-sahamaOrange/10 border-sahamaOrange text-white"
-                    : "bg-black border-zinc-800 text-gray-300 hover:border-zinc-600"
+                    : "bg-darkBg border-zinc-700 text-gray-300 hover:border-zinc-600"
                 }`}
               >
                 <input
@@ -115,7 +115,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+            className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           />
         </div>
         <div>
@@ -126,7 +126,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
             id="quote-company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+            className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           />
         </div>
       </div>
@@ -142,7 +142,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+            className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           />
         </div>
         <div>
@@ -154,7 +154,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+            className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           />
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
             id="quote-fleet"
             value={fleetSize}
             onChange={(e) => setFleetSize(e.target.value)}
-            className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+            className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           />
         </div>
         <div>
@@ -179,7 +179,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
             id="quote-zone"
             value={zone}
             onChange={(e) => setZone(e.target.value)}
-            className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+            className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           >
             <option value="">—</option>
             <option value={q.zoneOptions.westAfrica}>{q.zoneOptions.westAfrica}</option>
@@ -198,7 +198,7 @@ export default function QuoteForm({ dict }: { dict: any }) {
           rows={3}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full bg-black border border-zinc-800 rounded-lg p-3 text-sm text-white focus:border-sahamaOrange focus:outline-none"
+          className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
         />
       </div>
 

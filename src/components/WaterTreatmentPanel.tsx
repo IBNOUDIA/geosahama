@@ -10,7 +10,7 @@ export default function WaterTreatmentPanel({
   footer: string;
 }) {
   return (
-    <div className="bg-black/70 backdrop-blur border border-zinc-800 rounded-2xl p-5">
+    <div className="bg-darkBg/80 backdrop-blur border border-zinc-800 rounded-2xl p-5 shadow-2xl shadow-black/40">
       <style>{`
         @keyframes waveDrift1 { from { transform: translateX(0); } to { transform: translateX(-150px); } }
         @keyframes waveDrift2 { from { transform: translateX(-150px); } to { transform: translateX(0); } }

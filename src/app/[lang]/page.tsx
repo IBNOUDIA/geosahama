@@ -6,6 +6,7 @@ import SatelliteOrbit from "@/components/SatelliteOrbit";
 import Reveal from "@/components/Reveal";
 import { Adinkra, BogolanTexture, KenteBand } from "@/components/AfricanPatterns";
 import PresentationReel from "@/components/PresentationReel";
+import CtaBand from "@/components/CtaBand";
 
 const SERVICES: Array<{ key: "geoloc" | "security" | "prevention" | "epuration"; path: string; Icon: LucideIcon; accent: string }> = [
   { key: "geoloc", path: "/geolocalisation", Icon: MapPin, accent: "text-sahamaOrange bg-sahamaOrange/10" },
@@ -118,25 +119,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
 
       <PresentationReel reel={dict.home.reel as Parameters<typeof PresentationReel>[0]["reel"]} />
 
-      {/* Call to action */}
-      <section className="max-w-7xl mx-auto px-4 pb-24">
-        <div className="relative overflow-hidden rounded-3xl border border-sahamaOrange/30 bg-gradient-to-br from-[#2a1608] via-cardBg to-cardBg">
-          <BogolanTexture opacity={0.06} />
-          <div className="relative px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-2xl md:text-3xl font-bold text-cream mb-3">{dict.home.ctaTitle}</h2>
-              <p className="text-gray-300">{dict.home.ctaDesc}</p>
-            </div>
-            <Link
-              href={`/${lang}/contact#devis`}
-              className="shrink-0 bg-sahamaOrange hover:bg-[#ff8c24] text-darkBg font-semibold px-8 py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-sahamaOrange/25"
-            >
-              {dict.home.ctaButton} <ArrowRight size={20} />
-            </Link>
-          </div>
-          <KenteBand className="h-2" />
-        </div>
-      </section>
+      <CtaBand lang={lang} dict={dict} />
     </main>
   );
 }

@@ -1,4 +1,6 @@
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import CtaBand from "@/components/CtaBand";
+import { BogolanTexture } from "@/components/AfricanPatterns";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
@@ -23,6 +25,7 @@ export default async function EpurationPage({ params }: { params: Promise<{ lang
       <section className="relative overflow-hidden py-16 md:py-20">
         <div className="absolute inset-0 z-0">
           <SatelliteOrbit className="w-full h-full" showSatellite={false} />
+          <BogolanTexture opacity={0.045} />
           <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/70 to-darkBg/30" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 grid md:grid-cols-[1.3fr,1fr] gap-10 items-center">
@@ -30,7 +33,7 @@ export default async function EpurationPage({ params }: { params: Promise<{ lang
             <span className="px-3 py-1 rounded-full bg-sahamaOrange/10 border border-sahamaOrange/30 text-sahamaOrange text-xs font-semibold uppercase tracking-wider">
               {t.badge}
             </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold mt-4 mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold text-cream mt-4 mb-4">
               {t.title1}
               <span className="text-sahamaYellow">{t.title2}</span>
             </h1>
@@ -52,6 +55,7 @@ export default async function EpurationPage({ params }: { params: Promise<{ lang
         ))}
       </div>
       </div>
+      <CtaBand lang={lang} dict={dict} />
     </div>
   );
 }

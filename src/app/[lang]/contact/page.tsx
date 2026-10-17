@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Radio, FileText } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import { BogolanTexture } from "@/components/AfricanPatterns";
 import type { Metadata } from "next";
 import { CONTACT_EMAIL, type Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
@@ -28,6 +29,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
       <section className="relative overflow-hidden py-16 md:py-24">
         <div className="absolute inset-0 z-0">
           <SatelliteOrbit className="w-full h-full" />
+          <BogolanTexture opacity={0.045} />
           <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/50 to-darkBg/20" />
         </div>
 
@@ -37,7 +39,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
               <span className="w-2 h-2 rounded-full bg-sahamaOrange animate-pulse" />
               {b.badge}
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-cream mb-6 leading-tight">
               {b.title1}
               <span className="bg-gradient-to-r from-sahamaOrange to-sahamaYellow bg-clip-text text-transparent">
                 {b.title2}
@@ -61,7 +63,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           </div>
 
           {/* Network status panel */}
-          <div className="bg-black/70 backdrop-blur border border-zinc-800 rounded-2xl p-5">
+          <div className="bg-darkBg/80 backdrop-blur border border-zinc-800 rounded-2xl p-5 shadow-2xl shadow-black/40">
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-800">
               <span className="flex items-center gap-2 text-white font-bold text-sm tracking-wide">
                 <Radio size={16} className="text-sahamaOrange" /> {b.panelTitle}
@@ -91,7 +93,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sahamaOrange/10 border border-sahamaOrange/30 text-sahamaOrange text-xs font-semibold uppercase tracking-wider mb-4">
             <FileText size={12} /> {dict.contact.quote.badge}
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">{dict.contact.quote.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">{dict.contact.quote.title}</h2>
           <p className="text-gray-400">{dict.contact.quote.subtitle}</p>
         </div>
         <QuoteForm dict={dict} />
@@ -99,7 +101,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
 
       <div id="formulaire" className="max-w-6xl mx-auto px-4 pt-4 pb-28">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-extrabold mb-4">{dict.contact.title}</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-cream mb-4">{dict.contact.title}</h2>
         <p className="text-gray-400">{dict.contact.subtitle}</p>
       </div>
 

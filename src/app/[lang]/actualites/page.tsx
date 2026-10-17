@@ -1,5 +1,6 @@
 import NewsSection from "@/components/NewsSection";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import { BogolanTexture } from "@/components/AfricanPatterns";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
@@ -26,12 +27,13 @@ export default async function ActualitesPage({ params }: { params: Promise<{ lan
       <section className="relative overflow-hidden py-16 md:py-20">
         <div className="absolute inset-0 z-0">
           <SatelliteOrbit className="w-full h-full" showSatellite={false} />
+          <BogolanTexture opacity={0.045} />
           <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/70 to-darkBg/30" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 grid md:grid-cols-[1.3fr,1fr] gap-10 items-center">
           <div className="text-center md:text-left">
-            <span className="text-sahamaOrange font-semibold text-sm uppercase tracking-widest">{t.kicker}</span>
-            <h1 className="text-3xl md:text-5xl font-extrabold mt-2">{t.title}</h1>
+            <span className="text-sahamaOrange font-semibold text-xs uppercase tracking-[0.2em]">{t.kicker}</span>
+            <h1 className="text-3xl md:text-5xl font-bold text-cream mt-2">{t.title}</h1>
           </div>
           <MediaStatsPanel
             title={t.panelTitle}

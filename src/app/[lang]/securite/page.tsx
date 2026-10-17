@@ -1,5 +1,7 @@
 import { ShieldCheck, Eye, Bell, Radio, Lock, Camera } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import CtaBand from "@/components/CtaBand";
+import { BogolanTexture } from "@/components/AfricanPatterns";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
@@ -30,11 +32,12 @@ export default async function SecuritePage({ params }: { params: Promise<{ lang:
       <section className="relative overflow-hidden py-16 md:py-20">
         <div className="absolute inset-0 z-0">
           <SatelliteOrbit className="w-full h-full" showSatellite={false} />
+          <BogolanTexture opacity={0.045} />
           <div className="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/70 to-darkBg/30" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 grid md:grid-cols-[1.3fr,1fr] gap-10 items-center">
           <div className="text-center md:text-left">
-            <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold text-cream mb-4">
               {t.title1}
               <span className="text-sahamaOrange">{t.title2}</span>
             </h1>
@@ -42,7 +45,7 @@ export default async function SecuritePage({ params }: { params: Promise<{ lang:
           </div>
 
           {/* Decorative radar / surveillance panel */}
-          <div className="bg-black/70 backdrop-blur border border-zinc-800 rounded-2xl p-5">
+          <div className="bg-darkBg/80 backdrop-blur border border-zinc-800 rounded-2xl p-5 shadow-2xl shadow-black/40">
             <style>{`
               .radar-sweep {
                 background: conic-gradient(from 0deg, rgba(255,122,0,0.4), transparent 35%);
@@ -127,6 +130,7 @@ export default async function SecuritePage({ params }: { params: Promise<{ lang:
         })}
       </div>
       </div>
+      <CtaBand lang={lang} dict={dict} />
     </div>
   );
 }
