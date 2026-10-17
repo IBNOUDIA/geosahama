@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   APIProvider,
+  ControlPosition,
   Map,
   Marker,
   useMap,
@@ -250,6 +251,10 @@ function MapWithControls({ t }: { t: any }) {
         defaultZoom={3}
         gestureHandling="cooperative"
         disableDefaultUI={false}
+        // Google's own buttons default to the top corners, hidden under our
+        // search panel (left) and locate button (right): move them to the bottom.
+        mapTypeControlOptions={{ position: ControlPosition.LEFT_BOTTOM }}
+        fullscreenControlOptions={{ position: ControlPosition.RIGHT_BOTTOM }}
         styles={DARK_MAP_STYLE}
         onClick={handleMapClick}
       >
