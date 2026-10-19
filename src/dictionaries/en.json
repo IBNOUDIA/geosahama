@@ -1,14 +1,13 @@
 {
   "meta": {
-    "title": "Sahama Services - Geolocation & Ecological Tracking",
-    "description": "Fleet geolocation and security solutions in West Africa, and ecological tracking of the purification process in Montreal."
+    "title": "Sahama Services - Geolocation & Security in West Africa",
+    "description": "Fleet geolocation, site security and risk prevention in West Africa, with hubs in Dakar, Abidjan, Conakry and Bamako."
   },
   "nav": {
     "home": "Home",
     "geoloc": "Geolocation",
     "security": "Security",
     "prevention": "Prevention",
-    "epuration": "Purification & Tracking",
     "news": "News",
     "contact": "Contact",
     "clientSpace": "Client Portal",
@@ -19,19 +18,19 @@
     "partners": "Partners"
   },
   "hero": {
-    "badge": "Active in West Africa & Expanding Soon to Montreal",
-    "title1": "Precision Geolocation & ",
-    "title2": "Intelligent Ecological Tracking",
-    "subtitle": "From fleet security in West Africa to environmental tracking of the purification process in Montreal: end-to-end traceability from prevention to landfill disposal.",
+    "badge": "Operating in Dakar, Abidjan, Conakry and Bamako",
+    "title1": "Geolocation & security ",
+    "title2": "for your fleets in West Africa",
+    "subtitle": "Real-time GPS tracking, site monitoring and incident prevention: our teams equip, monitor and protect your vehicles and equipment in the field.",
     "ctaPrimary": "Explore Solutions",
-    "ctaSecondary": "Montreal Water Project"
+    "ctaSecondary": "See our case studies"
   },
   "footer": {
-    "tagline": "Geolocation, security and ecological tracking — from West Africa to Montreal.",
+    "tagline": "Geolocation, security and risk prevention across West Africa.",
     "servicesTitle": "Services",
     "companyTitle": "Company",
     "contactTitle": "Contact",
-    "zones": "Dakar · Abidjan · Conakry · Bamako · Montreal",
+    "zones": "Dakar · Abidjan · Conakry · Bamako",
     "rights": "All rights reserved.",
     "developedBy": "Web Architect:",
     "legalNotice": "Legal notice",
@@ -41,14 +40,14 @@
   "home": {
     "stats": [
       { "value": "4", "label": "Hubs across West Africa" },
-      { "value": "2", "label": "Continents connected" },
+      { "value": "3", "label": "Complementary areas of expertise" },
       { "value": "24/7", "label": "Asset monitoring" },
       { "value": "48h", "label": "Quote response time" }
     ],
     "video": {
       "kicker": "Sahama on video",
       "title": "Discover Sahama Services in 30 seconds",
-      "subtitle": "From the Senegalese savanna to Montreal's purification basins: our mission in pictures.",
+      "subtitle": "From the Senegalese savanna to West Africa's ports: our mission in pictures.",
       "play": "Play the video"
     },
     "reel": {
@@ -57,16 +56,16 @@
       "pause": "Pause",
       "play": "Play the presentation",
       "slides": [
-        { "scene": "geolocalisation", "title": "Equip", "text": "Our teams fit GPS trackers on your vehicles and equipment, from Dakar to Bamako." },
+        { "scene": "gps-install", "title": "Equip", "text": "Our teams fit GPS trackers on your vehicles and equipment, from Dakar to Bamako." },
         { "scene": "telemetry", "title": "Monitor", "text": "Position and telemetry data flow to our platform in real time, around the clock." },
         { "scene": "technician", "title": "Anticipate", "text": "Predictive analysis spots anomalies and triggers action before an incident happens." },
-        { "scene": "epuration", "title": "Trace", "text": "In Montreal, every step of the purification process is tracked through to controlled landfill." }
+        { "scene": "geolocalisation", "title": "Report", "text": "Trip history, reports and alerts are available at any time from your Client Portal." }
       ]
     },
     "servicesKicker": "Our expertise",
-    "servicesTitle": "From Dakar to Montreal, one chain of trust",
+    "servicesTitle": "From Dakar to Abidjan, one chain of trust",
     "learnMore": "Learn more",
-    "ctaTitle": "A fleet, security or ecological tracking project?",
+    "ctaTitle": "A fleet, security or prevention project?",
     "ctaDesc": "Tell us what you need: our team will reply with a tailored quote within 48 hours.",
     "ctaButton": "Request a quote"
   },
@@ -76,13 +75,11 @@
     "securityTitle": "Security & Monitoring",
     "securityDesc": "Preventive alerts, risk management, and advanced telemetry to secure critical assets.",
     "preventionTitle": "Prevention & Risk Control",
-    "preventionDesc": "Predictive analytics for equipment failures and operational anomalies to minimize downtime.",
-    "epurationTitle": "Ecological Purification Tracking",
-    "epurationDesc": "Complete environmental process traceability in Montreal, from initial prevention to controlled landfilling."
+    "preventionDesc": "Predictive analytics for equipment failures and operational anomalies to minimize downtime."
   },
   "contact": {
     "title": "Contact Sahama Services",
-    "subtitle": "Have a question or project? Our teams in West Africa and Montreal are at your service.",
+    "subtitle": "Have a question or project? Our teams across West Africa are at your service.",
     "emailLabel": "Direct Email Contact:",
     "formName": "Full Name",
     "formEmail": "Email Address",
@@ -92,7 +89,7 @@
       "title": "Contact details",
       "emailLabel": "Direct email",
       "officesLabel": "Offices & areas of operation",
-      "officesValue": "West Africa & Montreal (QC, Canada)",
+      "officesValue": "Dakar · Abidjan · Conakry · Bamako",
       "domainLabel": "Official website:",
     "hubsLabel": "Our hubs",
     "responseLabel": "Quote response time",
@@ -107,10 +104,10 @@
       "errorMessage": "An error occurred while sending. Please try again, or email us directly at"
     },
     "bridge": {
-      "badge": "Canada ⇄ West Africa Coordination",
-      "title1": "The Technology Bridge ",
-      "title2": "Between Canada & the Sahel",
-      "subtitle": "Our platform connects fleet supervision and industrial security in West Africa with ecological tracking of the purification process in Montreal — one team, two continents.",
+      "badge": "West Africa network",
+      "title1": "A connected network, ",
+      "title2": "from Dakar to Abidjan",
+      "subtitle": "From our hubs in Dakar, Abidjan, Conakry and Bamako, our teams coordinate your fleet tracking and site security across West Africa.",
       "cta1": "Client Portal",
       "cta2": "Write to Us",
       "panelTitle": "Sahama Network",
@@ -129,9 +126,11 @@
       "fleetSizeLabel": "Approximate number of vehicles / assets to track",
       "zoneLabel": "Geographic Zone",
       "zoneOptions": {
-        "westAfrica": "West Africa",
-        "montreal": "Montreal",
-        "both": "Both"
+        "senegal": "Senegal",
+        "coteIvoire": "Côte d'Ivoire",
+        "guinea": "Guinea",
+        "mali": "Mali",
+        "other": "Other West African country"
       },
       "messageLabel": "Additional details (optional)",
       "submitButton": "Send My Quote Request",
@@ -209,26 +208,6 @@
     "panelStatus": "Monitoring active",
     "panelFooter": "Continuous monitoring of key indicators"
   },
-  "epurationPage": {
-    "kicker": "Montreal ecological project",
-    "processKicker": "Our process",
-    "processTitle": "Full traceability, step by step",
-    "closingTitle": "Through to controlled landfill",
-    "closingText": "Every load of residue is GPS-tracked to the disposal site, with a carbon footprint and compliance reports for your environmental audits.",
-    "badge": "Montreal Ecological Project",
-    "title1": "Ecological Tracking of the ",
-    "title2": "Purification Process",
-    "subtitle": "A complete platform to monitor every stage of water and industrial waste treatment in Montreal, ensuring flawless environmental compliance.",
-    "steps": [
-      { "num": "01", "title": "Prevention & Capture", "desc": "Source detection of pollutants and effluent monitoring." },
-      { "num": "02", "title": "Purification Treatment", "desc": "Real-time monitoring of basins and clarification filters." },
-      { "num": "03", "title": "Secure Transport", "desc": "GPS geolocation tracking of purification residues and sludge." },
-      { "num": "04", "title": "Landfill & Recovery", "desc": "Final traceability at the disposal site and carbon footprint reporting." }
-    ],
-    "panelTitle": "Ecological Treatment",
-    "panelBadge": "Montreal, QC",
-    "panelFooter": "From prevention to controlled landfill"
-  },
   "geolocalisationPage": {
     "kicker": "Geolocation & fleets",
     "mapKicker": "Interactive map",
@@ -284,7 +263,7 @@
   },
   "actualitesPage": {
     "kicker": "Sahama Media & News",
-    "subtitle": "Projects, field deployments and events: follow Sahama Services news, from Dakar to Montreal.",
+    "subtitle": "Projects, field deployments and events: follow Sahama Services news across West Africa.",
     "title": "Our Activities & News",
     "panelTitle": "Sahama Media",
     "panelStatus": "Updated",
@@ -294,7 +273,6 @@
     "filters": {
       "all": "View All",
       "geolocalisation": "Geolocation",
-      "epuration": "Montreal Purification",
       "evenement": "Events",
       "video": "Videos"
     },
@@ -309,11 +287,6 @@
     "photoPending": "Photo coming soon",
     "articles": [
       {
-        "title": "Launch of the ecological traceability project for the purification process",
-        "location": "Montreal, QC",
-        "excerpt": "Deployment of our smart sensors to track the process from prevention through to landfill."
-      },
-      {
         "title": "Acquisition and commissioning of new GPS equipment",
         "location": "West Africa",
         "excerpt": "Expanding our geographic coverage for high-precision fleet tracking."
@@ -325,13 +298,13 @@
       },
       {
         "title": "Sahama Services in 30 seconds: our presentation film",
-        "location": "West Africa & Montreal",
-        "excerpt": "Equip, monitor, anticipate, trace: discover our chain of trust from Dakar to Montreal."
+        "location": "West Africa",
+        "excerpt": "Equip, monitor, anticipate, report: discover our chain of trust, from Dakar to Abidjan."
       }
     ],
     "gallery": [
       { "title": "GPS Beacon Installation" },
-      { "title": "Ecological Tracking Sensor" },
+      { "title": "Logistics trade show in Dakar" },
       { "title": "Technical Team Intervention" },
       { "title": "On-Site Telemetry Test" }
     ]
@@ -339,7 +312,7 @@
   "testimonialsSection": {
     "kicker": "Trusted By",
     "title": "Client Testimonials",
-    "subtitle": "Feedback from our partners in West Africa and Montreal on our geolocation and ecological tracking solutions.",
+    "subtitle": "Feedback from our clients in West Africa on our geolocation, security and prevention solutions.",
     "placeholderLabel": "Client Testimonial",
     "placeholderSub": "Contact Details"
   },
@@ -347,7 +320,7 @@
     "kicker": "Case studies",
     "title1": "Solutions built ",
     "title2": "for the field",
-    "subtitle": "Transport, industry, environment: see how our teams deploy geolocation, security and environmental tracking for each type of project.",
+    "subtitle": "Transport, industry, mining: see how our teams deploy geolocation, security and prevention for each type of project.",
     "noticeTitle": "Typical examples",
     "noticeText": "The cases below describe typical deployments built from our services. Our client case studies will be published soon, with the agreement of the companies involved.",
     "casesKicker": "Deployment scenarios",
@@ -408,26 +381,26 @@
       },
       {
         "example": true,
-        "sector": "Environment",
-        "place": "Montreal · project in deployment",
-        "title": "Tracing treatment residues all the way to landfill",
-        "photo": "/photos/enfouissement-eco.webp",
-        "challenge": "Proving, load by load, that industrial sludge and residues follow the right channel to the authorized disposal site.",
+        "sector": "Mining & construction",
+        "place": "Guinea",
+        "title": "Tracking machinery on a mining site and preventing breakdowns",
+        "photo": "/photos/balise-gps.webp",
+        "challenge": "Heavy machinery spread across a remote site, poorly tracked engine hours and breakdowns that halt production for days.",
         "solution": [
-          "Water quality sensors at the source and in the basins",
-          "GPS tracking of every residue shipment",
-          "Traceable reception at the landfill site",
-          "Carbon footprint and compliance reports"
+          "GPS trackers and sensors on every machine and service vehicle",
+          "Geofences around extraction areas, depots and authorized tracks",
+          "Engine-hour tracking and maintenance alerts before failure",
+          "Alerts for out-of-hours use or leaving the zone"
         ],
         "tracked": [
-          "Effluent quality",
-          "Route and timing of every load",
-          "Volumes received at the disposal site",
-          "Indicators for environmental audits"
+          "Position and activity of each machine",
+          "Engine hours and idle time",
+          "Maintenance alerts",
+          "Usage reports per machine"
         ],
         "services": [
-          "epuration",
-          "geoloc"
+          "geoloc",
+          "prevention"
         ]
       }
     ],
@@ -463,7 +436,7 @@
     "kicker": "Partners & trust",
     "title1": "An ecosystem ",
     "title2": "you can trust",
-    "subtitle": "Proven technologies, partners on the ground and the voice of our clients: what makes our solutions reliable, from West Africa to Montreal.",
+    "subtitle": "Proven technologies, partners on the ground and the voice of our clients: what makes our solutions reliable, across West Africa.",
     "cta": "Become a partner",
     "techKicker": "Our technologies",
     "techTitle": "Recognized tools serving your operations",
@@ -482,7 +455,7 @@
       {
         "name": "GPS trackers & sensors",
         "role": "Field equipment",
-        "desc": "Trackers for vehicles and machinery, telemetry, temperature and water quality sensors."
+        "desc": "Trackers for vehicles and machinery, telemetry, temperature and fuel level sensors."
       },
       {
         "name": "Mobile networks",
@@ -492,7 +465,7 @@
     ],
     "typesKicker": "Working together",
     "typesTitle": "Four ways to partner with us",
-    "typesIntro": "Whether you have assets to protect or expertise to share, let's build a network of trust across West Africa and Quebec.",
+    "typesIntro": "Whether you have assets to protect or expertise to share, let's build a network of trust across West Africa.",
     "types": [
       {
         "title": "Client companies",
@@ -504,7 +477,7 @@
       },
       {
         "title": "Institutions & public bodies",
-        "desc": "Road safety, environmental monitoring or public fleet management projects."
+        "desc": "Road safety, infrastructure monitoring or public fleet management projects."
       },
       {
         "title": "Technology partners",

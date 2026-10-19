@@ -11,7 +11,7 @@ import { pageMetadata } from "@/seo";
 // Three field photos arranged as an editorial mosaic in the header.
 const MOSAIC = [
   { src: "/photos/salon-dakar.webp", className: "row-span-2" },
-  { src: "/photos/epuration-eau.webp", className: "" },
+  { src: "/photos/intervention-tech.webp", className: "" },
   { src: "/photos/balise-gps.webp", className: "" },
 ];
 

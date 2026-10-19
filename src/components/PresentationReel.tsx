@@ -10,10 +10,10 @@ const SLIDE_MS = 6000;
 
 // Real field photos for each step; scenes without one fall back to the illustration.
 const SCENE_PHOTOS: Partial<Record<Scene, string>> = {
-  geolocalisation: "/photos/balise-gps.webp",
+  "gps-install": "/photos/balise-gps.webp",
   telemetry: "/photos/test-telemetrie.webp",
   technician: "/photos/intervention-tech.webp",
-  epuration: "/photos/enfouissement-eco.webp",
+  geolocalisation: "/photos/geolocalisation.webp",
 };
 
 type Slide = { scene: Scene; title: string; text: string };

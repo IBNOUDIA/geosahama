@@ -56,7 +56,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ lan
           {dict.hero.title2}
         </div>
         <div style={{ display: "flex", fontSize: "30px", color: "#cbd5e1", marginTop: "36px" }}>
-          {lang === "en" ? "West Africa · Montreal — sahama-services.com" : "Afrique de l'Ouest · Montréal — sahama-services.com"}
+          Dakar · Abidjan · Conakry · Bamako — sahama-services.com
         </div>
       </div>
     ),

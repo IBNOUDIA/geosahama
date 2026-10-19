@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Recycle, Video, CalendarDays, Camera, X, Play } from "lucide-react";
+import { MapPin, Video, CalendarDays, Camera, X, Play } from "lucide-react";
 import Image from "next/image";
 import Illustration from "./Illustration";
 import { PRESENTATION_POSTER, PRESENTATION_VIDEO } from "./VideoShowcase";
@@ -9,14 +9,14 @@ import { PRESENTATION_POSTER, PRESENTATION_VIDEO } from "./VideoShowcase";
 // Field photos, in the same order as the gallery captions in the dictionary.
 const GALLERY_PHOTOS = [
   "/photos/balise-gps.webp",
-  "/photos/capteur-eau.webp",
+  "/photos/salon-dakar.webp",
   "/photos/intervention-tech.webp",
   "/photos/test-telemetrie.webp",
 ];
 
 interface Article {
   id: number;
-  category: "geolocalisation" | "epuration" | "video" | "evenement";
+  category: "geolocalisation" | "video" | "evenement";
   title: string;
   date: string;
   location: string;
@@ -30,7 +30,6 @@ interface Article {
 // Static, non-translated metadata for each article — merged with the
 // translated title/location/excerpt from the dictionary at render time.
 const ARTICLE_META = [
-  { id: 1, category: "epuration" as const, date: "2026-08-18", mediaType: "image" as const, image: "/photos/epuration-eau.webp" },
   { id: 2, category: "geolocalisation" as const, date: "2026-08-02", mediaType: "image" as const, image: "/photos/geolocalisation.webp" },
   { id: 3, category: "evenement" as const, date: "2026-07-20", mediaType: "image" as const, image: "/photos/salon-dakar.webp" },
   {
@@ -46,7 +45,6 @@ const ARTICLE_META = [
 const FILTER_ICONS: Record<string, React.ElementType | null> = {
   all: null,
   geolocalisation: MapPin,
-  epuration: Recycle,
   evenement: CalendarDays,
   video: Video,
 };
@@ -60,7 +58,7 @@ function formatDate(iso: string, lang: "fr" | "en") {
   });
 }
 
-const FILTER_ORDER = ["all", "geolocalisation", "epuration", "evenement", "video"];
+const FILTER_ORDER = ["all", "geolocalisation", "evenement", "video"];
 
 export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "en" }) {
   const t = dict.actualitesPage;

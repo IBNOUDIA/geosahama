@@ -17,7 +17,6 @@ const HUBS = [
   { name: "Abidjan", lat: 5.36, lng: -4.0083 },
   { name: "Conakry", lat: 9.6412, lng: -13.5784 },
   { name: "Bamako", lat: 12.6392, lng: -8.0029 },
-  { name: "Montréal", lat: 45.5019, lng: -73.5674 },
 ];
 
 // Dark map theme so the embed matches the site instead of a stock white map
@@ -301,8 +300,8 @@ function MapWithControls({ t, apiKey }: { t: any; apiKey: string }) {
     <>
       <Map
         style={{ width: "100%", height: "100%" }}
-        defaultCenter={{ lat: 22, lng: -25 }}
-        defaultZoom={3}
+        defaultCenter={{ lat: 11, lng: -10 }}
+        defaultZoom={5}
         gestureHandling="cooperative"
         disableDefaultUI={false}
         // Map-type switch moved off the top-left search panel; fullscreen stays

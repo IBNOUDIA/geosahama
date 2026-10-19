@@ -9,7 +9,7 @@ import { CONTACT_EMAIL } from "@/i18n";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const SERVICE_KEYS = ["geolocTitle", "securityTitle", "preventionTitle", "epurationTitle"] as const;
+const SERVICE_KEYS = ["geolocTitle", "securityTitle", "preventionTitle"] as const;
 
 export default function QuoteForm({ dict }: { dict: any }) {
   const q = dict.contact.quote;
@@ -185,9 +185,11 @@ export default function QuoteForm({ dict }: { dict: any }) {
             className="w-full bg-darkBg border border-zinc-700 rounded-lg p-3 text-sm text-cream focus:border-sahamaOrange focus:ring-2 focus:ring-sahamaOrange/20 focus:outline-none transition"
           >
             <option value="">—</option>
-            <option value={q.zoneOptions.westAfrica}>{q.zoneOptions.westAfrica}</option>
-            <option value={q.zoneOptions.montreal}>{q.zoneOptions.montreal}</option>
-            <option value={q.zoneOptions.both}>{q.zoneOptions.both}</option>
+            {Object.values(q.zoneOptions as Record<string, string>).map((zone) => (
+              <option key={zone} value={zone}>
+                {zone}
+              </option>
+            ))}
           </select>
         </div>
       </div>

@@ -28,7 +28,6 @@ export default function Navbar({ lang, dict }: NavbarProps) {
     { name: dict.nav.geoloc, href: `/${lang}/geolocalisation` },
     { name: dict.nav.security, href: `/${lang}/securite` },
     { name: dict.nav.prevention, href: `/${lang}/prevention` },
-    { name: dict.nav.epuration, href: `/${lang}/epuration` },
     { name: dict.nav.cases, href: `/${lang}/realisations` },
     { name: dict.nav.news, href: `/${lang}/actualites` },
     { name: dict.nav.contact, href: `/${lang}/contact` },

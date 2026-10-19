@@ -11,7 +11,6 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
     { label: dict.nav.geoloc, href: "/geolocalisation" },
     { label: dict.nav.security, href: "/securite" },
     { label: dict.nav.prevention, href: "/prevention" },
-    { label: dict.nav.epuration, href: "/epuration" },
   ];
   const company = [
     { label: dict.nav.cases, href: "/realisations" },

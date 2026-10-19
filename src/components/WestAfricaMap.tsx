@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-// Stylized, animated map of the West African coast with the Sahama hubs and
-// the link to Montreal. Coordinates come from a simple equirectangular
+// Stylized, animated map of the West African coast with the Sahama hubs.
+// Coordinates come from a simple equirectangular
 // projection: x = (lon + 20) * 40, y = (22 - lat) * 40.
 const HUBS = [
   { name: "Dakar", x: 102, y: 292, main: true, labelDx: 18, labelDy: -14 },
@@ -26,7 +26,7 @@ const COAST =
 // loaded and settled keeps the phone free while the page becomes interactive.
 const ANIMATION_DELAY_MS = 3000;
 
-export default function WestAfricaMap({ montrealLabel, className }: { montrealLabel: string; className?: string }) {
+export default function WestAfricaMap({ className }: { className?: string }) {
   const [live, setLive] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function WestAfricaMap({ montrealLabel, className }: { montrealLa
   }, []);
 
   return (
-    <svg viewBox="0 0 1040 760" className={`${className ?? ""} ${live ? "wa-live" : ""}`} role="img" aria-label="Dakar · Conakry · Bamako · Abidjan · Montréal">
+    <svg viewBox="0 0 1040 760" className={`${className ?? ""} ${live ? "wa-live" : ""}`} role="img" aria-label="Dakar · Conakry · Bamako · Abidjan">
       <style>{`
         .wa-route { stroke-dasharray: 10 12; }
         .wa-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
@@ -95,16 +95,6 @@ export default function WestAfricaMap({ montrealLabel, className }: { montrealLa
         <path d={COAST} fill="url(#waLand)" />
         <rect width="1040" height="760" fill="url(#waDots)" clipPath="url(#waLandClip)" />
         <path d="M120 40 L140 100 L160 160 L140 220 L100 292 L128 340 L132 388 L180 420 L212 452 L252 500 L272 540 L320 584 L360 608 L420 656 L496 704 L560 688 L640 672 L720 684 L800 656 L860 632 L920 624 L980 640 L1040 650" fill="none" stroke="#F0B03F" strokeOpacity="0.6" strokeWidth="2.5" strokeLinejoin="round" />
-      </g>
-
-      {/* Link to Montreal, leaving the map towards the north-west */}
-      <path d="M102 292 Q40 140 14 36" fill="none" stroke="#6FD4E6" strokeOpacity="0.7" strokeWidth="2.5" className="wa-route" />
-      <g transform="translate(24 20)">
-        <rect x="0" y="-2" width="190" height="38" rx="19" fill="#0B1024" stroke="#6FD4E6" strokeOpacity="0.6" />
-        <circle cx="20" cy="17" r="6" fill="#6FD4E6" />
-        <text x="34" y="23" fill="#F6EEE1" fontSize="17" fontWeight="600" fontFamily="var(--font-inter), sans-serif">
-          {montrealLabel}
-        </text>
       </g>
 
       {/* Routes between hubs */}

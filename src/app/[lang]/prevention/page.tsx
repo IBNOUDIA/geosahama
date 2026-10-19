@@ -42,7 +42,7 @@ export default async function PreventionPage({ params }: { params: Promise<{ lan
         kicker={t.featuresKicker}
         title={t.featuresTitle}
         intro={t.featuresIntro}
-        photo="/photos/capteur-eau.webp"
+        photo="/photos/test-telemetrie.webp"
         items={t.features}
         icons={ICONS}
       />

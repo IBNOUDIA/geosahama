@@ -11,7 +11,7 @@ import { pageMetadata } from "@/seo";
 import ContactForm from "@/components/ContactForm";
 import QuoteForm from "@/components/QuoteForm";
 
-const HUBS = ["Dakar", "Abidjan", "Conakry", "Bamako", "Montréal"];
+const HUBS = ["Dakar", "Abidjan", "Conakry", "Bamako"];
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -28,7 +28,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
 
   return (
     <div>
-      {/* Hero: the Canada <-> West Africa bridge */}
+      {/* Hero: the West Africa hub network */}
       <section className="relative overflow-hidden pt-14 pb-16 md:pt-20 md:pb-20">
         <BogolanTexture opacity={0.04} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_55%_at_75%_50%,rgba(255,122,0,0.08),transparent_70%)]" />
@@ -55,7 +55,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
               </a>
             </div>
           </div>
-          <WestAfricaMap montrealLabel={lang === "fr" ? "Montréal, QC" : "Montreal, QC"} className="w-full h-auto drop-shadow-2xl" />
+          <WestAfricaMap className="w-full h-auto drop-shadow-2xl" />
         </div>
       </section>
 
@@ -91,7 +91,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
                 <div className="flex flex-wrap gap-1.5 mt-1">
                   {HUBS.map((hub) => (
                     <span key={hub} className="px-2.5 py-1 rounded-full border border-zinc-700 text-xs text-gray-300">
-                      {hub === "Montréal" && lang === "en" ? "Montreal" : hub}
+                      {hub}
                     </span>
                   ))}
                 </div>

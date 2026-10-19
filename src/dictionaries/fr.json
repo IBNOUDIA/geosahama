@@ -1,14 +1,13 @@
 {
   "meta": {
-    "title": "Sahama Services - Géolocalisation & Suivi Écologique",
-    "description": "Solutions de géolocalisation et de sécurité de flottes en Afrique de l'Ouest, et suivi écologique du processus d'épuration à Montréal."
+    "title": "Sahama Services - Géolocalisation & Sécurité en Afrique de l'Ouest",
+    "description": "Géolocalisation de flottes, sécurité des sites et prévention des risques en Afrique de l'Ouest, avec des hubs à Dakar, Abidjan, Conakry et Bamako."
   },
   "nav": {
     "home": "Accueil",
     "geoloc": "Géolocalisation",
     "security": "Sécurité",
     "prevention": "Prévention",
-    "epuration": "Épuration & Suivi",
     "news": "Actualités",
     "contact": "Contact",
     "clientSpace": "Espace Client",
@@ -19,19 +18,19 @@
     "partners": "Partenaires"
   },
   "hero": {
-    "badge": "Opérationnel en Afrique de l'Ouest & Prochainement à Montréal",
-    "title1": "Géolocalisation de précision & ",
-    "title2": "Suivi Écologique Intelligent",
-    "subtitle": "De la sécurité des flottes en Afrique de l'Ouest jusqu'au suivi environnemental du processus d'épuration à Montréal : une traçabilité totale, de la prévention jusqu'à l'enfouissement.",
+    "badge": "Opérationnel à Dakar, Abidjan, Conakry et Bamako",
+    "title1": "Géolocalisation & sécurité ",
+    "title2": "de vos flottes en Afrique de l'Ouest",
+    "subtitle": "Suivi GPS en temps réel, surveillance de vos sites et prévention des incidents : nos équipes équipent, surveillent et protègent vos véhicules et vos équipements sur le terrain.",
     "ctaPrimary": "Découvrir nos solutions",
-    "ctaSecondary": "Projet Épuration Montréal"
+    "ctaSecondary": "Voir nos réalisations"
   },
   "footer": {
-    "tagline": "Géolocalisation, sécurité et suivi écologique — de l'Afrique de l'Ouest à Montréal.",
+    "tagline": "Géolocalisation, sécurité et prévention des risques en Afrique de l'Ouest.",
     "servicesTitle": "Services",
     "companyTitle": "Entreprise",
     "contactTitle": "Contact",
-    "zones": "Dakar · Abidjan · Conakry · Bamako · Montréal",
+    "zones": "Dakar · Abidjan · Conakry · Bamako",
     "rights": "Tous droits réservés.",
     "developedBy": "Architecte Web :",
     "legalNotice": "Mentions légales",
@@ -41,14 +40,14 @@
   "home": {
     "stats": [
       { "value": "4", "label": "Hubs en Afrique de l'Ouest" },
-      { "value": "2", "label": "Continents connectés" },
+      { "value": "3", "label": "Expertises complémentaires" },
       { "value": "24/7", "label": "Surveillance des actifs" },
       { "value": "48h", "label": "Réponse aux demandes de devis" }
     ],
     "video": {
       "kicker": "Sahama en vidéo",
       "title": "Découvrez Sahama Services en 30 secondes",
-      "subtitle": "De la savane sénégalaise aux bassins d'épuration de Montréal : notre mission en images.",
+      "subtitle": "De la savane sénégalaise aux ports d'Afrique de l'Ouest : notre mission en images.",
       "play": "Lancer la vidéo"
     },
     "reel": {
@@ -57,16 +56,16 @@
       "pause": "Mettre en pause",
       "play": "Lire la présentation",
       "slides": [
-        { "scene": "geolocalisation", "title": "Équiper", "text": "Nos équipes installent des balises GPS sur vos véhicules et équipements, de Dakar à Bamako." },
+        { "scene": "gps-install", "title": "Équiper", "text": "Nos équipes installent des balises GPS sur vos véhicules et équipements, de Dakar à Bamako." },
         { "scene": "telemetry", "title": "Surveiller", "text": "Les données de position et de télémétrie remontent en temps réel vers notre plateforme, 24h/24." },
         { "scene": "technician", "title": "Anticiper", "text": "L'analyse prédictive détecte les anomalies et déclenche l'intervention avant l'incident." },
-        { "scene": "epuration", "title": "Tracer", "text": "À Montréal, chaque étape du processus d'épuration est suivie jusqu'à l'enfouissement contrôlé." }
+        { "scene": "geolocalisation", "title": "Rendre compte", "text": "Historiques, rapports et alertes restent accessibles à tout moment depuis votre Espace Client." }
       ]
     },
     "servicesKicker": "Nos expertises",
-    "servicesTitle": "De Dakar à Montréal, une seule chaîne de confiance",
+    "servicesTitle": "De Dakar à Abidjan, une seule chaîne de confiance",
     "learnMore": "En savoir plus",
-    "ctaTitle": "Un projet de flotte, de sécurité ou de suivi écologique ?",
+    "ctaTitle": "Un projet de flotte, de sécurité ou de prévention ?",
     "ctaDesc": "Décrivez-nous votre besoin : notre équipe vous répond avec un devis personnalisé sous 48 heures.",
     "ctaButton": "Demander un devis"
   },
@@ -76,13 +75,11 @@
     "securityTitle": "Sécurité & Surveillance",
     "securityDesc": "Alertes préventives, gestion des risques et télémétrie avancée pour sécuriser vos installations.",
     "preventionTitle": "Prévention & Anticipation",
-    "preventionDesc": "Analyse prédictive des pannes et anomalies pour éviter les pertes et accidents sur le terrain.",
-    "epurationTitle": "Suivi Écologique d'Épuration",
-    "epurationDesc": "Traçabilité complète des processus environnementaux à Montréal, de la prévention initiale jusqu'à l'enfouissement contrôlé."
+    "preventionDesc": "Analyse prédictive des pannes et anomalies pour éviter les pertes et accidents sur le terrain."
   },
   "contact": {
     "title": "Contactez Sahama Services",
-    "subtitle": "Une question ou un projet ? Nos équipes en Afrique de l'Ouest et à Montréal sont à votre écoute.",
+    "subtitle": "Une question ou un projet ? Nos équipes en Afrique de l'Ouest sont à votre écoute.",
     "emailLabel": "Courriel de contact direct :",
     "formName": "Nom complet",
     "formEmail": "Adresse courriel",
@@ -92,7 +89,7 @@
       "title": "Coordonnées",
       "emailLabel": "Courriel direct",
       "officesLabel": "Bureaux & zones d'activités",
-      "officesValue": "Afrique de l'Ouest & Montréal (QC, Canada)",
+      "officesValue": "Dakar · Abidjan · Conakry · Bamako",
       "domainLabel": "Site officiel :",
     "hubsLabel": "Nos hubs",
     "responseLabel": "Délai de réponse aux devis",
@@ -107,10 +104,10 @@
       "errorMessage": "Une erreur est survenue lors de l'envoi. Réessayez, ou écrivez-nous directement à"
     },
     "bridge": {
-      "badge": "Coordination Canada ⇄ Afrique de l'Ouest",
-      "title1": "Le Pont Technologique ",
-      "title2": "Canada ⇄ Sahel & Ouest Africain",
-      "subtitle": "Notre plateforme relie la supervision de flottes et la sécurité industrielle en Afrique de l'Ouest au suivi écologique du processus d'épuration à Montréal — une seule équipe, deux continents.",
+      "badge": "Réseau Afrique de l'Ouest",
+      "title1": "Un réseau connecté, ",
+      "title2": "de Dakar à Abidjan",
+      "subtitle": "Depuis nos hubs de Dakar, Abidjan, Conakry et Bamako, nos équipes coordonnent le suivi de vos flottes et la sécurité de vos sites, partout en Afrique de l'Ouest.",
       "cta1": "Espace Client",
       "cta2": "Nous écrire",
       "panelTitle": "Réseau Sahama",
@@ -129,9 +126,11 @@
       "fleetSizeLabel": "Nombre approximatif de véhicules / actifs à suivre",
       "zoneLabel": "Zone géographique",
       "zoneOptions": {
-        "westAfrica": "Afrique de l'Ouest",
-        "montreal": "Montréal",
-        "both": "Les deux"
+        "senegal": "Sénégal",
+        "coteIvoire": "Côte d'Ivoire",
+        "guinea": "Guinée",
+        "mali": "Mali",
+        "other": "Autre pays d'Afrique de l'Ouest"
       },
       "messageLabel": "Détails supplémentaires (optionnel)",
       "submitButton": "Envoyer ma demande de devis",
@@ -209,26 +208,6 @@
     "panelStatus": "Monitoring actif",
     "panelFooter": "Surveillance continue des indicateurs clés"
   },
-  "epurationPage": {
-    "kicker": "Projet écologique Montréal",
-    "processKicker": "Notre processus",
-    "processTitle": "Une traçabilité complète, étape par étape",
-    "closingTitle": "Jusqu'à l'enfouissement contrôlé",
-    "closingText": "Chaque chargement de résidus est suivi par GPS jusqu'au site de dépôt, avec un bilan carbone et des rapports de conformité pour vos audits environnementaux.",
-    "badge": "Projet Écologique Montréal",
-    "title1": "Suivi Écologique du ",
-    "title2": "Processus d'Épuration",
-    "subtitle": "Une plateforme complète pour surveiller chaque étape du traitement des eaux et des déchets industriels à Montréal, assurant une conformité environnementale irréprochable.",
-    "steps": [
-      { "num": "01", "title": "Prévention & Captage", "desc": "Détection à la source des polluants et surveillance des effluents." },
-      { "num": "02", "title": "Traitement d'Épuration", "desc": "Monitoring en temps réel des bassins et filtres de clarification." },
-      { "num": "03", "title": "Transport Sécurisé", "desc": "Suivi par géolocalisation GPS des résidus et boues d'épuration." },
-      { "num": "04", "title": "Enfouissement & Valorisation", "desc": "Traçabilité finale sur le site de dépôt et bilan carbone." }
-    ],
-    "panelTitle": "Traitement Écologique",
-    "panelBadge": "Montréal, QC",
-    "panelFooter": "De la prévention jusqu'à l'enfouissement contrôlé"
-  },
   "geolocalisationPage": {
     "kicker": "Géolocalisation & flottes",
     "mapKicker": "Carte interactive",
@@ -284,7 +263,7 @@
   },
   "actualitesPage": {
     "kicker": "Sahama Media & News",
-    "subtitle": "Projets, déploiements sur le terrain et rencontres : suivez l'actualité de Sahama Services, de Dakar à Montréal.",
+    "subtitle": "Projets, déploiements sur le terrain et rencontres : suivez l'actualité de Sahama Services en Afrique de l'Ouest.",
     "title": "Nos activités & actualités",
     "panelTitle": "Sahama Media",
     "panelStatus": "Mis à jour",
@@ -294,7 +273,6 @@
     "filters": {
       "all": "Tout voir",
       "geolocalisation": "Géolocalisation",
-      "epuration": "Épuration Montréal",
       "evenement": "Événements",
       "video": "Vidéos"
     },
@@ -309,11 +287,6 @@
     "photoPending": "Photo à venir",
     "articles": [
       {
-        "title": "Lancement du projet de traçabilité écologique du processus d'épuration",
-        "location": "Montréal, QC",
-        "excerpt": "Déploiement de nos capteurs intelligents pour le suivi de la prévention jusqu'à l'enfouissement."
-      },
-      {
         "title": "Acquisition et mise en service de nouveaux équipements GPS",
         "location": "Afrique de l'Ouest",
         "excerpt": "Extension de notre couverture géographique pour un suivi haute précision des flottes."
@@ -325,13 +298,13 @@
       },
       {
         "title": "Sahama Services en 30 secondes : notre film de présentation",
-        "location": "Afrique de l'Ouest & Montréal",
-        "excerpt": "Équiper, surveiller, anticiper, tracer : découvrez notre chaîne de confiance de Dakar à Montréal."
+        "location": "Afrique de l'Ouest",
+        "excerpt": "Équiper, surveiller, anticiper, rendre compte : découvrez notre chaîne de confiance, de Dakar à Abidjan."
       }
     ],
     "gallery": [
       { "title": "Installation balise GPS" },
-      { "title": "Capteur de suivi écologique" },
+      { "title": "Salon de la logistique à Dakar" },
       { "title": "Intervention équipe technique" },
       { "title": "Test télémétrie sur site" }
     ]
@@ -339,7 +312,7 @@
   "testimonialsSection": {
     "kicker": "Ils nous font confiance",
     "title": "Témoignages clients",
-    "subtitle": "Retours de nos partenaires en Afrique de l'Ouest et à Montréal sur nos solutions de géolocalisation et de suivi écologique.",
+    "subtitle": "Retours de nos clients en Afrique de l'Ouest sur nos solutions de géolocalisation, de sécurité et de prévention.",
     "placeholderLabel": "Témoignage client",
     "placeholderSub": "Coordonnées"
   },
@@ -347,7 +320,7 @@
     "kicker": "Réalisations",
     "title1": "Des solutions pensées ",
     "title2": "pour le terrain",
-    "subtitle": "Transport, industrie, environnement : découvrez comment nos équipes déploient la géolocalisation, la sécurité et le suivi écologique selon le type de projet.",
+    "subtitle": "Transport, industrie, mines : découvrez comment nos équipes déploient la géolocalisation, la sécurité et la prévention selon le type de projet.",
     "noticeTitle": "Exemples types",
     "noticeText": "Les cas ci-dessous décrivent des déploiements types, construits à partir de nos services. Nos études de cas clients seront publiées prochainement, avec l'accord des entreprises concernées.",
     "casesKicker": "Scénarios d'intervention",
@@ -408,26 +381,26 @@
       },
       {
         "example": true,
-        "sector": "Environnement",
-        "place": "Montréal · projet en déploiement",
-        "title": "Tracer les résidus d'épuration jusqu'à l'enfouissement",
-        "photo": "/photos/enfouissement-eco.webp",
-        "challenge": "Prouver, chargement par chargement, que les boues et résidus industriels suivent la bonne filière jusqu'au site de dépôt autorisé.",
+        "sector": "Mines & chantiers",
+        "place": "Guinée",
+        "title": "Suivre les engins d'un chantier minier et prévenir les pannes",
+        "photo": "/photos/balise-gps.webp",
+        "challenge": "Des engins lourds répartis sur un site isolé, des heures moteur mal suivies et des pannes qui immobilisent la production pendant des jours.",
         "solution": [
-          "Capteurs de qualité de l'eau à la source et dans les bassins",
-          "Suivi GPS de chaque transport de résidus",
-          "Traçabilité de la réception sur le site d'enfouissement",
-          "Bilan carbone et rapports de conformité"
+          "Balises GPS et capteurs sur chaque engin et véhicule de service",
+          "Géobarrières autour des zones d'extraction, des dépôts et des pistes autorisées",
+          "Suivi des heures moteur et alertes de maintenance avant la panne",
+          "Alertes en cas d'utilisation hors horaires ou de sortie de zone"
         ],
         "tracked": [
-          "Qualité des effluents",
-          "Trajet et horaires de chaque chargement",
-          "Volumes reçus sur le site de dépôt",
-          "Indicateurs pour les audits environnementaux"
+          "Position et activité de chaque engin",
+          "Heures moteur et temps d'inactivité",
+          "Alertes de maintenance",
+          "Rapports d'utilisation par engin"
         ],
         "services": [
-          "epuration",
-          "geoloc"
+          "geoloc",
+          "prevention"
         ]
       }
     ],
@@ -463,7 +436,7 @@
     "kicker": "Partenaires & confiance",
     "title1": "Un écosystème ",
     "title2": "de confiance",
-    "subtitle": "Des technologies éprouvées, des partenaires sur le terrain et la parole de nos clients : ce qui fait la fiabilité de nos solutions, de l'Afrique de l'Ouest à Montréal.",
+    "subtitle": "Des technologies éprouvées, des partenaires sur le terrain et la parole de nos clients : ce qui fait la fiabilité de nos solutions, partout en Afrique de l'Ouest.",
     "cta": "Devenir partenaire",
     "techKicker": "Nos technologies",
     "techTitle": "Des outils reconnus au service de vos opérations",
@@ -482,7 +455,7 @@
       {
         "name": "Balises GPS & capteurs",
         "role": "Équipements terrain",
-        "desc": "Traceurs pour véhicules et engins, capteurs de télémétrie, de température et de qualité de l'eau."
+        "desc": "Traceurs pour véhicules et engins, capteurs de télémétrie, de température et de niveau de carburant."
       },
       {
         "name": "Réseaux mobiles",
@@ -492,7 +465,7 @@
     ],
     "typesKicker": "Travailler ensemble",
     "typesTitle": "Quatre façons de devenir partenaire",
-    "typesIntro": "Que vous ayez des actifs à protéger ou une expertise à partager, construisons ensemble un réseau de confiance en Afrique de l'Ouest et au Québec.",
+    "typesIntro": "Que vous ayez des actifs à protéger ou une expertise à partager, construisons ensemble un réseau de confiance à travers l'Afrique de l'Ouest.",
     "types": [
       {
         "title": "Entreprises clientes",
@@ -504,7 +477,7 @@
       },
       {
         "title": "Institutions & organismes publics",
-        "desc": "Projets de sécurité routière, de suivi environnemental ou de gestion de flottes publiques."
+        "desc": "Projets de sécurité routière, de surveillance d'infrastructures ou de gestion de flottes publiques."
       },
       {
         "title": "Partenaires technologiques",

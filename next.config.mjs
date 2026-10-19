@@ -20,6 +20,10 @@ const csp = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // The Montreal purification project was withdrawn; old links go to the home page.
+  async redirects() {
+    return [{ source: "/:lang(fr|en)/epuration", destination: "/:lang", permanent: true }];
+  },
   async headers() {
     return [
       {

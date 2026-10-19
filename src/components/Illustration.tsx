@@ -5,7 +5,6 @@ import { BogolanTexture } from "./AfricanPatterns";
 // never presented as photos of actual operations.
 export type Scene =
   | "geolocalisation"
-  | "epuration"
   | "evenement"
   | "gps-install"
   | "sensor"
@@ -112,28 +111,6 @@ function SceneContent({ scene }: { scene: Scene }) {
           <Truck x={180} y={150} s={0.95} />
           <Pin x={236} y={98} s={0.9} />
           <SignalArcs x={236} y={60} />
-        </>
-      );
-    case "epuration":
-      return (
-        <>
-          <Sky />
-          <g fill="#0E1530">
-            <rect x="20" y="112" width="26" height="58" />
-            <rect x="50" y="94" width="22" height="76" />
-            <rect x="76" y="120" width="30" height="50" />
-            <rect x="110" y="104" width="18" height="66" />
-            <path d="M150 170 L190 112 L232 170Z" />
-            <rect x="250" y="126" width="34" height="44" />
-          </g>
-          <rect x="0" y="168" width="400" height="72" fill={C.water} />
-          <g fill="none" stroke={C.water2} strokeWidth="3" strokeLinecap="round" opacity="0.8">
-            <path d="M20 190 q15 -8 30 0 t30 0 t30 0" />
-            <path d="M200 206 q15 -8 30 0 t30 0 t30 0" />
-            <path d="M90 222 q15 -8 30 0 t30 0" />
-          </g>
-          <path d="M318 118 C318 118 284 156 284 178 a34 34 0 0 0 68 0 C352 156 318 118 318 118Z" fill={C.water2} stroke={C.cream} strokeWidth="3" />
-          <path d="M306 186 C306 166 322 158 336 156 C334 172 326 186 306 186Z M306 186 L326 166" fill={C.kola} stroke={C.kola} strokeWidth="2" />
         </>
       );
     case "evenement":
