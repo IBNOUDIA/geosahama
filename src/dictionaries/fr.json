@@ -544,6 +544,34 @@
         ]
       },
       {
+        "id": "gardiennage",
+        "kicker": "Gardiennage",
+        "title": "Une présence humaine sur vos sites",
+        "intro": "La technologie détecte, les agents agissent : nos équipes de gardiennage complètent vos systèmes de sécurité, de jour comme de nuit.",
+        "items": [
+          {
+            "icon": "UserCheck",
+            "title": "Agents de sécurité",
+            "desc": "Des agents formés pour surveiller vos locaux, vos chantiers et vos entrepôts.",
+            "points": [
+              "Postes fixes, de jour comme de nuit",
+              "Accueil et contrôle des visiteurs",
+              "Main courante et rapports de service"
+            ]
+          },
+          {
+            "icon": "Footprints",
+            "title": "Rondes & levée de doute",
+            "desc": "Des rondes régulières et une vérification sur place quand une alarme se déclenche.",
+            "points": [
+              "Rondes planifiées sur le site",
+              "Vérification rapide des alertes",
+              "Coordination avec la vidéosurveillance"
+            ]
+          }
+        ]
+      },
+      {
         "id": "incendie",
         "kicker": "Sécurité incendie",
         "title": "Détecter tôt, alerter, évacuer",
@@ -635,6 +663,34 @@
               "Notifications en temps réel",
               "Accès partagé avec la famille ou l'équipe",
               "Pilotage à distance, où que vous soyez"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reseau",
+        "kicker": "Câblage réseau",
+        "title": "Des réseaux solides pour tous vos équipements",
+        "intro": "Caméras, contrôle d'accès, ordinateurs et téléphonie reposent sur un câblage bien conçu : nous le réalisons proprement, et nous le documentons.",
+        "items": [
+          {
+            "icon": "Network",
+            "title": "Câblage structuré",
+            "desc": "Câblage cuivre et fibre optique pour vos bureaux, vos bâtiments et vos sites industriels.",
+            "points": [
+              "Baies de brassage et prises réseau",
+              "Fibre optique entre bâtiments",
+              "Tests et repérage de chaque liaison"
+            ]
+          },
+          {
+            "icon": "Cable",
+            "title": "Réseaux pour la sécurité",
+            "desc": "Un réseau dédié et fiable pour vos caméras, lecteurs de badges et alarmes.",
+            "points": [
+              "Alimentation des caméras par le câble réseau",
+              "Séparation du réseau bureautique",
+              "Raccordement au tableau de bord Sahama"
             ]
           }
         ]

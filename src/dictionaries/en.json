@@ -544,6 +544,34 @@
         ]
       },
       {
+        "id": "gardiennage",
+        "kicker": "Guarding",
+        "title": "A human presence on your sites",
+        "intro": "Technology detects, guards act: our guarding teams complement your security systems, day and night.",
+        "items": [
+          {
+            "icon": "UserCheck",
+            "title": "Security guards",
+            "desc": "Trained guards to watch over your offices, construction sites and warehouses.",
+            "points": [
+              "Fixed posts, day and night",
+              "Visitor reception and screening",
+              "Daily log and shift reports"
+            ]
+          },
+          {
+            "icon": "Footprints",
+            "title": "Patrols & alarm verification",
+            "desc": "Regular patrols and on-site checks whenever an alarm goes off.",
+            "points": [
+              "Scheduled site patrols",
+              "Fast verification of alerts",
+              "Coordinated with video surveillance"
+            ]
+          }
+        ]
+      },
+      {
         "id": "incendie",
         "kicker": "Fire safety",
         "title": "Detect early, alert, evacuate",
@@ -635,6 +663,34 @@
               "Real-time notifications",
               "Shared access for family or team",
               "Remote control wherever you are"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reseau",
+        "kicker": "Network cabling",
+        "title": "Solid networks for all your equipment",
+        "intro": "Cameras, access control, computers and phones all depend on well-designed cabling: we install it cleanly and document it.",
+        "items": [
+          {
+            "icon": "Network",
+            "title": "Structured cabling",
+            "desc": "Copper and fibre-optic cabling for your offices, buildings and industrial sites.",
+            "points": [
+              "Patch panels and network outlets",
+              "Fibre optic between buildings",
+              "Every link tested and labelled"
+            ]
+          },
+          {
+            "icon": "Cable",
+            "title": "Networks for security systems",
+            "desc": "A dedicated, reliable network for your cameras, badge readers and alarms.",
+            "points": [
+              "Cameras powered over the network cable",
+              "Kept separate from the office network",
+              "Connected to the Sahama dashboard"
             ]
           }
         ]

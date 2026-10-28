@@ -9,6 +9,7 @@ import PresentationReel from "@/components/PresentationReel";
 import VideoShowcase from "@/components/VideoShowcase";
 import CtaBand from "@/components/CtaBand";
 import EnergyScene from "@/components/EnergyScene";
+import Testimonials, { type Testimonial } from "@/components/Testimonials";
 
 // Energy has no field photo yet: its card shows the vector scene instead.
 const SERVICES: Array<{
@@ -30,6 +31,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
   const dict = await getDictionary(lang);
   const s = dict.services as Record<string, string>;
   const cases = dict.realisationsPage;
+  const testimonials: Testimonial[] = dict.partenairesPage.testimonials;
 
   return (
     <main className="bg-darkBg text-white relative">
@@ -220,6 +222,11 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
       </div>
 
       <PresentationReel reel={dict.home.reel as Parameters<typeof PresentationReel>[0]["reel"]} />
+
+      {/* Client quotes appear here as soon as they are added to the dictionaries. */}
+      {testimonials.length > 0 && (
+        <Testimonials lang={lang} dict={dict} items={testimonials} empty={{ title: "", text: "", button: "" }} />
+      )}
 
       <CtaBand lang={lang} dict={dict} />
     </main>
