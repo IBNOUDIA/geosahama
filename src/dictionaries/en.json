@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Sahama Services - Geolocation & Security in West Africa",
-    "description": "Fleet geolocation, site security and risk prevention in West Africa, with hubs in Dakar, Abidjan, Conakry and Bamako."
+    "description": "Fleet geolocation, security and prevention, smart buildings and energy in West Africa, with hubs in Dakar, Abidjan, Conakry and Bamako."
   },
   "nav": {
     "home": "Home",
     "geoloc": "Geolocation",
-    "security": "Security",
-    "prevention": "Prevention",
+    "security": "Security & Prevention",
+    "energy": "Energy",
     "news": "News",
     "contact": "Contact",
     "clientSpace": "Client Portal",
@@ -21,12 +21,12 @@
     "badge": "Operating in Dakar, Abidjan, Conakry and Bamako",
     "title1": "Geolocation & security ",
     "title2": "for your fleets in West Africa",
-    "subtitle": "Real-time GPS tracking, site monitoring and incident prevention: our teams equip, monitor and protect your vehicles and equipment in the field.",
+    "subtitle": "Real-time GPS tracking, site security and reliable power: our teams equip, monitor and protect your vehicles, buildings and installations in the field.",
     "ctaPrimary": "Explore Solutions",
     "ctaSecondary": "See our case studies"
   },
   "footer": {
-    "tagline": "Geolocation, security and risk prevention across West Africa.",
+    "tagline": "Geolocation, security and energy across West Africa.",
     "servicesTitle": "Services",
     "companyTitle": "Company",
     "contactTitle": "Contact",
@@ -65,17 +65,17 @@
     "servicesKicker": "Our expertise",
     "servicesTitle": "From Dakar to Abidjan, one chain of trust",
     "learnMore": "Learn more",
-    "ctaTitle": "A fleet, security or prevention project?",
+    "ctaTitle": "A fleet, security or energy project?",
     "ctaDesc": "Tell us what you need: our team will reply with a tailored quote within 48 hours.",
     "ctaButton": "Request a quote"
   },
   "services": {
     "geolocTitle": "Geolocation & Fleets",
     "geolocDesc": "Real-time tracking of industrial assets and vehicles powered by high-definition Google Maps & Earth.",
-    "securityTitle": "Security & Monitoring",
-    "securityDesc": "Preventive alerts, risk management, and advanced telemetry to secure critical assets.",
-    "preventionTitle": "Prevention & Risk Control",
-    "preventionDesc": "Predictive analytics for equipment failures and operational anomalies to minimize downtime."
+    "securityTitle": "Security & Prevention",
+    "securityDesc": "Access control, video surveillance, fire safety, home automation and predictive analysis to protect your people and property.",
+    "energyTitle": "Energy",
+    "energyDesc": "Solar, batteries, generators and hybrid systems for reliable power, even during outages."
   },
   "contact": {
     "title": "Contact Sahama Services",
@@ -156,57 +156,6 @@
     "openLabel": "Open the Sahama AI assistant",
     "closeLabel": "Close the assistant",
     "sendLabel": "Send"
-  },
-  "securitePage": {
-    "kicker": "Security & monitoring",
-    "featuresKicker": "Our solutions",
-    "featuresTitle": "Protecting your sites, teams and equipment",
-    "featuresIntro": "Connected sensors, telemetry and video surveillance work together to detect, verify and alert — day and night, across all your sites in West Africa.",
-    "title1": "Security & ",
-    "title2": "Asset Monitoring",
-    "subtitle": "Telemetry and industrial facility security solutions, designed to protect your sites, teams, and equipment around the clock.",
-    "statusTitle": "24/7 Active Monitoring",
-    "statusDesc": "Real-time telemetry across all your sites and sensitive assets.",
-    "statusBadge": "Network Operational",
-    "panelTitle": "Network Surveillance",
-    "panelStatus": "Active",
-    "panelFooter": "Real-time telemetry & alerts",
-    "features": [
-      { "title": "Real-Time Monitoring", "desc": "Continuous tracking of facilities and risk zones via connected sensors and cameras." },
-      { "title": "Preventive Alerts", "desc": "Immediate notifications for intrusions, anomalies, or critical threshold breaches." },
-      { "title": "Industrial Telemetry", "desc": "Continuous collection and transmission of field data for centralized risk management." },
-      { "title": "Access Control", "desc": "Access management for sensitive sites and traceability of personnel and equipment movements." },
-      { "title": "Connected Video Surveillance", "desc": "Cameras integrated into the telemetry network for instant visual verification of alerts." },
-      { "title": "Facility Security", "desc": "Protocols tailored to each industrial site to reduce material and human risks." }
-    ]
-  },
-  "preventionPage": {
-    "kicker": "Prevention & anticipation",
-    "processKicker": "Our method",
-    "processTitle": "From weak signal to action, in four steps",
-    "featuresKicker": "Our capabilities",
-    "featuresTitle": "Anticipate rather than react",
-    "featuresIntro": "Our teams and sensors continuously monitor your equipment, sites and fleets. Every anomaly is analysed, prioritised and handled before it becomes a costly incident.",
-    "title1": "Risk Prevention & ",
-    "title2": "Predictive Analytics",
-    "subtitle": "Rapid alert systems and prevention of material or environmental incidents, anticipating issues before they happen.",
-    "steps": [
-      { "num": "01", "title": "Detection", "desc": "Sensors and field data continuously monitored to spot the earliest warning signs." },
-      { "num": "02", "title": "Predictive Analysis", "desc": "Cross-referencing history and trends to estimate the likelihood of a failure or incident." },
-      { "num": "03", "title": "Rapid Alert", "desc": "Immediate notification to the relevant teams as soon as a risk threshold is crossed." },
-      { "num": "04", "title": "Corrective Action", "desc": "Targeted intervention before the incident occurs, with full traceability of measures taken." }
-    ],
-    "features": [
-      { "title": "Anomaly Detection", "desc": "Automatic identification of behavioral deviations in equipment and facilities." },
-      { "title": "Predictive Maintenance", "desc": "Scheduling interventions before failure occurs, reducing unplanned downtime." },
-      { "title": "Early Alerts", "desc": "Notifications sent to relevant teams at the first signs of risk." },
-      { "title": "Risk Reports", "desc": "Consolidated dashboards to track the evolution of material and environmental risks." },
-      { "title": "Continuous Analysis", "desc": "Ongoing monitoring of key indicators to adjust alert thresholds in real time." },
-      { "title": "Incident Prevention", "desc": "Reducing material, human, and environmental losses through anticipation." }
-    ],
-    "panelTitle": "Predictive Analysis",
-    "panelStatus": "Monitoring active",
-    "panelFooter": "Continuous monitoring of key indicators"
   },
   "geolocalisationPage": {
     "kicker": "Geolocation & fleets",
@@ -375,8 +324,7 @@
           "Regular risk reports"
         ],
         "services": [
-          "security",
-          "prevention"
+          "security"
         ]
       },
       {
@@ -400,7 +348,7 @@
         ],
         "services": [
           "geoloc",
-          "prevention"
+          "security"
         ]
       }
     ],
@@ -488,5 +436,469 @@
     "emptyTitle": "Our first testimonials are coming soon",
     "emptyText": "We are currently gathering feedback from our clients. Already working with us? Share your experience: it will help other companies get to know us.",
     "emptyButton": "Share my experience"
+  },
+  "securitePage": {
+    "kicker": "Security & prevention",
+    "title1": "Security, prevention & ",
+    "title2": "smart buildings",
+    "subtitle": "Access control, video surveillance, fire safety, home automation and predictive analysis: we design, install and maintain solutions that protect your people, property and operations, from homes to industrial sites.",
+    "panelTitle": "Network Surveillance",
+    "panelStatus": "Active",
+    "panelFooter": "Real-time telemetry & alerts",
+    "navLabel": "Page sections",
+    "groups": [
+      {
+        "id": "acces",
+        "kicker": "Access control",
+        "title": "Control who comes in, where and when",
+        "intro": "Solutions for every door, from the front gate to the server room, with a full log of every entry.",
+        "items": [
+          {
+            "icon": "CreditCard",
+            "title": "Key cards & badges",
+            "desc": "Contactless access for staff, visitors and contractors, managed from central software.",
+            "points": [
+              "Access rights by person, zone and time",
+              "Lost badges disabled in one click",
+              "Full entry and exit history"
+            ]
+          },
+          {
+            "icon": "Fingerprint",
+            "title": "Biometric locks",
+            "desc": "Unlock with a fingerprint or facial recognition: nothing to lose, nothing to lend.",
+            "points": [
+              "Fingerprint and face readers",
+              "Smart locks for doors and offices",
+              "Can be combined with a badge or code"
+            ]
+          },
+          {
+            "icon": "Video",
+            "title": "Intercoms & video doorphones",
+            "desc": "See who is at the door before opening, from an indoor screen or your smartphone.",
+            "points": [
+              "Audio and video door stations",
+              "Open the door or gate remotely",
+              "For homes, buildings and businesses"
+            ]
+          },
+          {
+            "icon": "DoorOpen",
+            "title": "Gates, barriers & turnstiles",
+            "desc": "Automated entrances for sites, car parks and buildings, linked to access control.",
+            "points": [
+              "Motorized gates and boom barriers",
+              "Turnstiles for staff flows",
+              "Open by badge, remote or smartphone"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "surveillance",
+        "kicker": "Surveillance & alarms",
+        "title": "See, detect and alert, day and night",
+        "intro": "Cameras, detectors and telemetry work together to verify every alert and respond fast, on one site or across a whole network.",
+        "items": [
+          {
+            "icon": "Cctv",
+            "title": "Video surveillance",
+            "desc": "High-definition indoor and outdoor cameras, viewable live and on playback.",
+            "points": [
+              "Night vision and pan-tilt cameras",
+              "On-site or cloud recording",
+              "Access from phone, tablet and computer"
+            ]
+          },
+          {
+            "icon": "Siren",
+            "title": "Intrusion alarms",
+            "desc": "Motion, door and perimeter detectors that trigger a siren and a notification.",
+            "points": [
+              "Indoor and outdoor detectors",
+              "Siren and alert on your phone",
+              "Arm and disarm remotely"
+            ]
+          },
+          {
+            "icon": "Radar",
+            "title": "Remote monitoring & telemetry",
+            "desc": "Data from your sensors and equipment flows to our platform for centralized monitoring.",
+            "points": [
+              "Round-the-clock monitoring",
+              "Custom alert thresholds",
+              "Multi-site dashboards"
+            ]
+          },
+          {
+            "icon": "Lightbulb",
+            "title": "Security lighting",
+            "desc": "Motion-activated floodlights and perimeter lighting to deter intruders and see clearly at night.",
+            "points": [
+              "Switches on automatically on detection",
+              "Lighting for fences and car parks",
+              "Solar versions with no wiring"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "incendie",
+        "kicker": "Fire safety",
+        "title": "Detect early, alert, evacuate",
+        "intro": "Detection and alarm systems sized for your building, to protect lives first.",
+        "items": [
+          {
+            "icon": "Flame",
+            "title": "Fire detection",
+            "desc": "Smoke, heat and gas detectors connected to an alarm control panel.",
+            "points": [
+              "Detectors suited to each room",
+              "Panel that pinpoints the zone in alarm",
+              "Alerts sent to your phone"
+            ]
+          },
+          {
+            "icon": "FireExtinguisher",
+            "title": "Alarm & suppression",
+            "desc": "Call points, sirens, extinguishers and automatic suppression matched to the level of risk.",
+            "points": [
+              "Call points and evacuation sirens",
+              "Extinguishers and automatic systems",
+              "Exit signs and emergency lighting"
+            ]
+          },
+          {
+            "icon": "Speaker",
+            "title": "Voice evacuation",
+            "desc": "Evacuation messages broadcast automatically throughout the building as soon as the alarm goes off.",
+            "points": [
+              "Pre-recorded or live messages",
+              "Zoned announcements",
+              "Linked to the fire alarm panel"
+            ]
+          },
+          {
+            "icon": "Wrench",
+            "title": "Maintenance & inspections",
+            "desc": "Regular checks so your equipment works on the day you need it.",
+            "points": [
+              "Periodic maintenance contracts",
+              "Detector and alarm testing",
+              "A report after every visit"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intelligent",
+        "kicker": "Smart homes & buildings",
+        "title": "Comfort, savings and security together",
+        "intro": "Home automation brings lighting, air conditioning, security and sound into a single app, for a more pleasant and efficient space.",
+        "items": [
+          {
+            "icon": "House",
+            "title": "Smart home",
+            "desc": "Control lighting, air conditioning, shutters and sockets from your smartphone, or by voice.",
+            "points": [
+              "Automatic scenes: away, night, holiday",
+              "Presence simulation while you're away",
+              "Electricity consumption tracking"
+            ]
+          },
+          {
+            "icon": "Speaker",
+            "title": "Smart sound systems",
+            "desc": "Room-by-room background music and announcements, for homes and businesses alike.",
+            "points": [
+              "Multi-room audio controlled from an app",
+              "Announcements for offices, hotels and shops",
+              "Indoor and outdoor speakers"
+            ]
+          },
+          {
+            "icon": "Lightbulb",
+            "title": "Smart lighting",
+            "desc": "Indoor and outdoor lighting that adapts to presence, time of day and daylight.",
+            "points": [
+              "Presence detectors",
+              "Scheduling and dimming",
+              "Less wasted electricity"
+            ]
+          },
+          {
+            "icon": "Smartphone",
+            "title": "Everything in one app",
+            "desc": "Cameras, alarms, access, lighting and sound in a single interface.",
+            "points": [
+              "Real-time notifications",
+              "Shared access for family or team",
+              "Remote control wherever you are"
+            ]
+          }
+        ]
+      }
+    ],
+    "prevention": {
+      "kicker": "Prevention & anticipation",
+      "processTitle": "From weak signal to action, in four steps",
+      "steps": [
+        {
+          "num": "01",
+          "title": "Detection",
+          "desc": "Sensors and field data continuously monitored to spot the first weak signals."
+        },
+        {
+          "num": "02",
+          "title": "Predictive analysis",
+          "desc": "Historical data and trends combined to estimate the likelihood of a failure or incident."
+        },
+        {
+          "num": "03",
+          "title": "Rapid alert",
+          "desc": "The right teams notified immediately when a risk threshold is crossed."
+        },
+        {
+          "num": "04",
+          "title": "Corrective action",
+          "desc": "Targeted intervention before the incident, with full traceability of the measures taken."
+        }
+      ],
+      "featuresKicker": "Our capabilities",
+      "featuresTitle": "Anticipate rather than react",
+      "featuresIntro": "Our teams and sensors continuously monitor your equipment, sites and fleets. Every anomaly is analyzed, prioritized and handled before it becomes a costly incident.",
+      "features": [
+        {
+          "title": "Anomaly detection",
+          "desc": "Automatic detection of unusual behaviour in equipment and installations."
+        },
+        {
+          "title": "Predictive maintenance",
+          "desc": "Interventions planned before failure, to reduce unplanned downtime."
+        },
+        {
+          "title": "Early warnings",
+          "desc": "Notifications sent to the right people at the first signs of risk."
+        },
+        {
+          "title": "Risk reports",
+          "desc": "Consolidated dashboards to track risk across all your sites."
+        },
+        {
+          "title": "Continuous analysis",
+          "desc": "Ongoing monitoring of key indicators to fine-tune alert thresholds."
+        },
+        {
+          "title": "Incident prevention",
+          "desc": "Fewer material and human losses through anticipation."
+        }
+      ]
+    },
+    "audiencesKicker": "Who it's for",
+    "audiencesTitle": "Solutions for every kind of place",
+    "audiences": [
+      {
+        "icon": "House",
+        "title": "Homes & residences",
+        "desc": "Alarms, intercoms and home automation to protect your family and simplify daily life."
+      },
+      {
+        "icon": "Building2",
+        "title": "Offices & shops",
+        "desc": "Badges, cameras and alarms to secure your premises, staff and customers."
+      },
+      {
+        "icon": "Factory",
+        "title": "Industrial sites & warehouses",
+        "desc": "Access control, perimeter surveillance and telemetry for critical equipment."
+      },
+      {
+        "icon": "Hotel",
+        "title": "Hotels, schools & healthcare",
+        "desc": "Fire safety, sound systems and access control suited to public buildings."
+      }
+    ]
+  },
+  "energiePage": {
+    "kicker": "Energy",
+    "title1": "Reliable, clean ",
+    "title2": "and controlled energy",
+    "subtitle": "Solar, storage, generators and hybrid systems: we design and install the power supply that keeps your operations running, even during outages, across West Africa.",
+    "navLabel": "Page sections",
+    "benefits": [
+      {
+        "title": "Continuity",
+        "desc": "Your operations no longer stop at every power cut."
+      },
+      {
+        "title": "Savings",
+        "desc": "Less fuel and electricity bills under control."
+      },
+      {
+        "title": "Clean energy",
+        "desc": "More solar, less noise and fumes."
+      },
+      {
+        "title": "Remote monitoring",
+        "desc": "Production, batteries and fuel tracked in real time."
+      }
+    ],
+    "groups": [
+      {
+        "id": "solaire",
+        "kicker": "Solar & storage",
+        "title": "Produce and store your own electricity",
+        "intro": "West Africa's sunshine is an asset: we turn it into electricity available day and night.",
+        "items": [
+          {
+            "icon": "SolarPanel",
+            "title": "Solar photovoltaics",
+            "desc": "Rooftop or ground-mounted solar panels to produce your own electricity.",
+            "points": [
+              "Homes, offices, shops and industrial sites",
+              "Grid-connected or off-grid",
+              "Solar survey and system sizing"
+            ]
+          },
+          {
+            "icon": "BatteryCharging",
+            "title": "Battery storage",
+            "desc": "Batteries and inverters that take over instantly when the power goes out.",
+            "points": [
+              "Long-life lithium batteries",
+              "Automatic, seamless switchover",
+              "Solar power available at night"
+            ]
+          },
+          {
+            "icon": "Droplets",
+            "title": "Solar water pumping",
+            "desc": "Sun-powered pumps for boreholes, irrigation and water supply.",
+            "points": [
+              "Agriculture and livestock",
+              "Villages and remote sites",
+              "No fuel and no grid connection"
+            ]
+          },
+          {
+            "icon": "UtilityPole",
+            "title": "Solar lighting",
+            "desc": "Stand-alone solar street lights and floodlights for roads, car parks, fences and sites.",
+            "points": [
+              "No wiring, no bills",
+              "Switches on automatically at dusk",
+              "Improves site security"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "secours",
+        "kicker": "Backup & hybrid",
+        "title": "Never be caught out by a power cut again",
+        "intro": "Generators and hybrid systems keep you running, using fuel only when it's really needed.",
+        "items": [
+          {
+            "icon": "Fuel",
+            "title": "Generators",
+            "desc": "Supply, installation and servicing of generators sized to the power you need.",
+            "points": [
+              "Automatic start as soon as the power fails",
+              "Scheduled preventive maintenance",
+              "Fuel level monitored remotely"
+            ]
+          },
+          {
+            "icon": "Zap",
+            "title": "Hybrid systems",
+            "desc": "Solar, batteries, grid and generator managed together for the lowest cost.",
+            "points": [
+              "Solar used first, automatically",
+              "Generator only as a last resort",
+              "Less fuel and less wear"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "efficacite",
+        "kicker": "Efficiency & monitoring",
+        "title": "Measure to consume better",
+        "intro": "Knowing what you use, where and when is the first source of savings, even before installing anything.",
+        "items": [
+          {
+            "icon": "Gauge",
+            "title": "Energy audit",
+            "desc": "Measurement of your consumption and practical recommendations to pay less for the same comfort.",
+            "points": [
+              "Consumption review",
+              "Losses and overuse identified",
+              "Tailored action plan"
+            ]
+          },
+          {
+            "icon": "Activity",
+            "title": "Energy monitoring",
+            "desc": "Solar output, battery status and fuel tracked on the same platform as your fleets.",
+            "points": [
+              "Alerts for breakdowns or fuel theft",
+              "Production and consumption reports",
+              "Maintenance triggered before failure"
+            ]
+          }
+        ]
+      }
+    ],
+    "synergyTitle": "Energy and security, one platform",
+    "synergyText": "Your energy installations are monitored by the same telemetry as your vehicles and sites: fuel theft, inverter failure or low battery, the alert reaches you in real time.",
+    "processKicker": "Our approach",
+    "processTitle": "From survey to commissioning",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Audit",
+        "desc": "Site visit, review of your needs and analysis of your bills and outages."
+      },
+      {
+        "num": "02",
+        "title": "Sizing",
+        "desc": "Choice of sources, power and storage, then a tailored quote."
+      },
+      {
+        "num": "03",
+        "title": "Installation",
+        "desc": "Installed and commissioned by our technicians, to standard."
+      },
+      {
+        "num": "04",
+        "title": "Monitoring & maintenance",
+        "desc": "Remote supervision, preventive maintenance and support."
+      }
+    ],
+    "audiencesKicker": "Who it's for",
+    "audiencesTitle": "Solutions at every scale",
+    "audiences": [
+      {
+        "icon": "House",
+        "title": "Homes & residences",
+        "desc": "Continuous power, air conditioning and hot water, even during load shedding."
+      },
+      {
+        "icon": "Store",
+        "title": "Shops & offices",
+        "desc": "Business as usual during outages, with bills under control."
+      },
+      {
+        "icon": "Factory",
+        "title": "Industry & remote sites",
+        "desc": "Reliable hybrid power for sites far from the grid."
+      },
+      {
+        "icon": "Tractor",
+        "title": "Agriculture",
+        "desc": "Solar pumping and irrigation, without depending on fuel."
+      }
+    ]
   }
 }

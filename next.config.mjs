@@ -4,7 +4,8 @@
 // by Next.js inline bootstrap scripts and by Google Maps styles.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com",
+  // React needs eval() for its debugging tools in development only.
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://maps.googleapis.com https://maps.gstatic.com`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.ggpht.com",
   "font-src 'self' data: https://fonts.gstatic.com",
@@ -20,9 +21,13 @@ const csp = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The Montreal purification project was withdrawn; old links go to the home page.
+  // Withdrawn or merged pages: the Montreal purification project went to the
+  // home page, Prevention is now a section of the Security page.
   async redirects() {
-    return [{ source: "/:lang(fr|en)/epuration", destination: "/:lang", permanent: true }];
+    return [
+      { source: "/:lang(fr|en)/epuration", destination: "/:lang", permanent: true },
+      { source: "/:lang(fr|en)/prevention", destination: "/:lang/securite#prevention", permanent: true },
+    ];
   },
   async headers() {
     return [

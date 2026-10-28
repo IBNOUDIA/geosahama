@@ -13,10 +13,10 @@ import { pageMetadata } from "@/seo";
 const STEP_COLORS = ["#FF7A00", "#F0B03F", "#2E8BC0", "#2F8F5B"];
 
 // Service keys used in the case texts, mapped to their page and menu label.
-const SERVICE_LINKS: Record<string, { href: string; navKey: "geoloc" | "security" | "prevention" }> = {
+const SERVICE_LINKS: Record<string, { href: string; navKey: "geoloc" | "security" | "energy" }> = {
   geoloc: { href: "/geolocalisation", navKey: "geoloc" },
   security: { href: "/securite", navKey: "security" },
-  prevention: { href: "/prevention", navKey: "prevention" },
+  energy: { href: "/energie", navKey: "energy" },
 };
 
 type Case = {

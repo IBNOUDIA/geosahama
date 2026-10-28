@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, MapPin, Radar, ArrowRight, type LucideIcon } from "lucide-react";
+import { ShieldCheck, MapPin, SunMedium, ArrowRight, type LucideIcon } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import type { Locale } from "@/i18n";
 import Reveal from "@/components/Reveal";
@@ -8,17 +8,19 @@ import { Adinkra, BogolanTexture, KenteBand } from "@/components/AfricanPatterns
 import PresentationReel from "@/components/PresentationReel";
 import VideoShowcase from "@/components/VideoShowcase";
 import CtaBand from "@/components/CtaBand";
+import EnergyScene from "@/components/EnergyScene";
 
+// Energy has no field photo yet: its card shows the vector scene instead.
 const SERVICES: Array<{
-  key: "geoloc" | "security" | "prevention";
+  key: "geoloc" | "security" | "energy";
   path: string;
   Icon: LucideIcon;
   accent: string;
-  photo: string;
+  photo?: string;
 }> = [
   { key: "geoloc", path: "/geolocalisation", Icon: MapPin, accent: "text-sahamaOrange", photo: "/photos/balise-gps.webp" },
-  { key: "security", path: "/securite", Icon: ShieldCheck, accent: "text-sahamaYellow", photo: "/photos/test-telemetrie.webp" },
-  { key: "prevention", path: "/prevention", Icon: Radar, accent: "text-terracotta", photo: "/photos/intervention-tech.webp" },
+  { key: "security", path: "/securite", Icon: ShieldCheck, accent: "text-terracotta", photo: "/photos/test-telemetrie.webp" },
+  { key: "energy", path: "/energie", Icon: SunMedium, accent: "text-sahamaYellow" },
 ];
 
 type CaseSummary = { example: boolean; sector: string; place: string; title: string; photo: string };
@@ -128,13 +130,17 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
                 className="group relative flex flex-col h-full bg-cardBg rounded-2xl border border-zinc-800 hover:border-sahamaOrange/60 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-sahamaOrange/10 transition-all overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={photo}
-                    alt=""
-                    fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover group-hover:scale-105 transition duration-500"
-                  />
+                  {photo ? (
+                    <Image
+                      src={photo}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover group-hover:scale-105 transition duration-500"
+                    />
+                  ) : (
+                    <EnergyScene className="absolute inset-0 w-full h-full group-hover:scale-105 transition duration-500" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-cardBg via-cardBg/20 to-transparent" />
                 </div>
                 <BogolanTexture opacity={0.035} />

@@ -10,7 +10,7 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
   const services = [
     { label: dict.nav.geoloc, href: "/geolocalisation" },
     { label: dict.nav.security, href: "/securite" },
-    { label: dict.nav.prevention, href: "/prevention" },
+    { label: dict.nav.energy, href: "/energie" },
   ];
   const company = [
     { label: dict.nav.cases, href: "/realisations" },

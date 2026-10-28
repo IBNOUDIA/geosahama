@@ -9,7 +9,7 @@ import { CONTACT_EMAIL } from "@/i18n";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const SERVICE_KEYS = ["geolocTitle", "securityTitle", "preventionTitle"] as const;
+const SERVICE_KEYS = ["geolocTitle", "securityTitle", "energyTitle"] as const;
 
 export default function QuoteForm({ dict }: { dict: any }) {
   const q = dict.contact.quote;

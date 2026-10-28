@@ -25,7 +25,8 @@ export function SectionHeading({ kicker, title, intro }: { kicker: string; title
   );
 }
 
-// Text on the left, field photo on the right with an optional floating panel.
+// Text on the left, field photo (or an illustration via `media`) on the right,
+// with an optional floating panel.
 export function ServiceHero({
   kicker,
   title1,
@@ -33,6 +34,7 @@ export function ServiceHero({
   accentClass = "text-sahamaYellow",
   subtitle,
   photo,
+  media,
   photoPosition = "center",
   cta,
   panel,
@@ -42,7 +44,8 @@ export function ServiceHero({
   title2: string;
   accentClass?: string;
   subtitle: string;
-  photo: string;
+  photo?: string;
+  media?: React.ReactNode;
   photoPosition?: string;
   cta: { href: string; label: string };
   panel?: React.ReactNode;
@@ -69,15 +72,19 @@ export function ServiceHero({
 
         <div className={`relative ${panel ? "pb-24 sm:pb-16 lg:pb-0" : ""}`}>
           <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl shadow-black/50">
-            <Image
-              src={photo}
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-              style={{ objectPosition: photoPosition }}
-            />
+            {photo ? (
+              <Image
+                src={photo}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+                style={{ objectPosition: photoPosition }}
+              />
+            ) : (
+              media
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-darkBg/60 via-transparent to-transparent" />
           </div>
           {panel && (

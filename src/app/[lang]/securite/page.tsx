@@ -1,13 +1,17 @@
-import { ShieldCheck, Eye, Bell, Radio, Lock, Camera } from "lucide-react";
+import { Activity, AlertTriangle, BarChart3, Bell, ShieldAlert, Wrench } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import CtaBand from "@/components/CtaBand";
-import { EditorialList, ServiceHero } from "@/components/ServiceSections";
+import { EditorialList, ServiceHero, Timeline } from "@/components/ServiceSections";
+import { AudienceGrid, CatalogSection, SectionNav, type CatalogGroup } from "@/components/ServiceCatalog";
 import SecurityRadarPanel from "@/components/SecurityRadarPanel";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
 
-const ICONS = [Eye, Bell, Radio, Lock, Camera, ShieldCheck];
+const PREVENTION_ICONS = [AlertTriangle, Wrench, Bell, BarChart3, Activity, ShieldAlert];
+
+// The four prevention steps read as a journey from detection (orange) to resolution (green).
+const STEP_COLORS = ["#FF7A00", "#F0B03F", "#C4532F", "#2F8F5B"];
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -19,6 +23,8 @@ export default async function SecuritePage({ params }: { params: Promise<{ lang:
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const t = dict.securitePage;
+  const groups: CatalogGroup[] = t.groups;
+  const p = t.prevention;
 
   return (
     <div>
@@ -34,20 +40,36 @@ export default async function SecuritePage({ params }: { params: Promise<{ lang:
         panel={<SecurityRadarPanel title={t.panelTitle} status={t.panelStatus} footer={t.panelFooter} />}
       />
 
-      <div className="pt-8">
-        <EditorialList
-          kicker={t.featuresKicker}
-          title={t.featuresTitle}
-          intro={t.featuresIntro}
-          photo="/photos/test-telemetrie.webp"
-          items={t.features}
-          icons={ICONS}
+      <div className="pt-8 pb-4">
+        <SectionNav
+          label={t.navLabel}
+          links={[
+            ...groups.map((g) => ({ id: g.id, label: g.kicker })),
+            { id: "prevention", label: p.kicker },
+            { id: "pour-qui", label: t.audiencesKicker },
+          ]}
         />
       </div>
 
-      <div className="pt-20">
-        <CtaBand lang={lang} dict={dict} />
-      </div>
+      {groups.map((group, i) => (
+        <CatalogSection key={group.id} group={group} index={i} tinted={i % 2 === 0} />
+      ))}
+
+      <section id="prevention" className="scroll-mt-24 border-t border-zinc-800">
+        <Timeline kicker={p.kicker} title={p.processTitle} steps={p.steps} colors={STEP_COLORS} />
+        <EditorialList
+          kicker={p.featuresKicker}
+          title={p.featuresTitle}
+          intro={p.featuresIntro}
+          photo="/photos/test-telemetrie.webp"
+          items={p.features}
+          icons={PREVENTION_ICONS}
+        />
+      </section>
+
+      <AudienceGrid id="pour-qui" kicker={t.audiencesKicker} title={t.audiencesTitle} items={t.audiences} />
+
+      <CtaBand lang={lang} dict={dict} />
     </div>
   );
 }
