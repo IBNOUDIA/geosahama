@@ -20,7 +20,7 @@ const SERVICES: Array<{
   photo?: string;
 }> = [
   { key: "geoloc", path: "/geolocalisation", Icon: MapPin, accent: "text-sahamaOrange", photo: "/photos/balise-gps.webp" },
-  { key: "security", path: "/securite", Icon: ShieldCheck, accent: "text-terracotta", photo: "/photos/test-telemetrie.webp" },
+  { key: "security", path: "/securite", Icon: ShieldCheck, accent: "text-terracotta", photo: "/photos/gardiennage.webp" },
   { key: "energy", path: "/energie", Icon: SunMedium, accent: "text-sahamaYellow" },
 ];
 

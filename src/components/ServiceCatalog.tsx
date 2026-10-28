@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Activity,
   BatteryCharging,
@@ -35,7 +36,7 @@ import {
 } from "lucide-react";
 import Reveal from "./Reveal";
 import { Kicker } from "./ServiceSections";
-import { BogolanTexture } from "./AfricanPatterns";
+import { BogolanTexture, KenteBand } from "./AfricanPatterns";
 
 // Icons the dictionaries may name for catalog items and audiences.
 const ICONS: Record<string, LucideIcon> = {
@@ -73,7 +74,7 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 export type CatalogItem = { icon: string; title: string; desc: string; points: string[] };
-export type CatalogGroup = { id: string; kicker: string; title: string; intro: string; items: CatalogItem[] };
+export type CatalogGroup = { id: string; kicker: string; title: string; intro: string; photo?: string; items: CatalogItem[] };
 export type Audience = { icon: string; title: string; desc: string };
 
 function Icon({ name, size = 22 }: { name: string; size?: number }) {
@@ -101,7 +102,7 @@ export function SectionNav({ label, links }: { label: string; links: Array<{ id:
   );
 }
 
-// One family of services: heading on the left, detailed cards on the right.
+// One family of services: heading (and optional photo) on the left, detailed cards on the right.
 // `tinted` alternates the background so consecutive families read as bands.
 export function CatalogSection({ group, index, tinted }: { group: CatalogGroup; index: number; tinted?: boolean }) {
   return (
@@ -115,6 +116,12 @@ export function CatalogSection({ group, index, tinted }: { group: CatalogGroup; 
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-cream mt-3 mb-4">{group.title}</h2>
           <p className="text-gray-400 leading-relaxed">{group.intro}</p>
+          {group.photo && (
+            <div className="relative aspect-[4/3] mt-8 rounded-2xl overflow-hidden border border-zinc-800">
+              <Image src={group.photo} alt="" fill sizes="(min-width: 1024px) 35vw, 100vw" className="object-cover" />
+              <KenteBand className="absolute bottom-0 h-1.5" />
+            </div>
+          )}
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5">

@@ -548,6 +548,7 @@
         "kicker": "Gardiennage",
         "title": "Une présence humaine sur vos sites",
         "intro": "La technologie détecte, les agents agissent : nos équipes de gardiennage complètent vos systèmes de sécurité, de jour comme de nuit.",
+        "photo": "/photos/gardiennage.webp",
         "items": [
           {
             "icon": "UserCheck",
@@ -672,6 +673,7 @@
         "kicker": "Câblage réseau",
         "title": "Des réseaux solides pour tous vos équipements",
         "intro": "Caméras, contrôle d'accès, ordinateurs et téléphonie reposent sur un câblage bien conçu : nous le réalisons proprement, et nous le documentons.",
+        "photo": "/photos/cablage-reseau.webp",
         "items": [
           {
             "icon": "Network",

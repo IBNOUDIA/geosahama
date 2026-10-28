@@ -548,6 +548,7 @@
         "kicker": "Guarding",
         "title": "A human presence on your sites",
         "intro": "Technology detects, guards act: our guarding teams complement your security systems, day and night.",
+        "photo": "/photos/gardiennage.webp",
         "items": [
           {
             "icon": "UserCheck",
@@ -672,6 +673,7 @@
         "kicker": "Network cabling",
         "title": "Solid networks for all your equipment",
         "intro": "Cameras, access control, computers and phones all depend on well-designed cabling: we install it cleanly and document it.",
+        "photo": "/photos/cablage-reseau.webp",
         "items": [
           {
             "icon": "Network",
