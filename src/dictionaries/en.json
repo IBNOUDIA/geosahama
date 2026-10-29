@@ -46,9 +46,12 @@
     ],
     "video": {
       "kicker": "Sahama on video",
-      "title": "Discover Sahama Services in 30 seconds",
-      "subtitle": "From the Senegalese savanna to West Africa's ports: our mission in pictures.",
-      "play": "Play the video"
+      "title": "24 hours with Sahama Services",
+      "subtitle": "From dawn to night, from Conakry across West Africa: what we do, in 50 seconds.",
+      "play": "Play the video",
+      "src": "/video/sahama-24h-en.mp4",
+      "poster": "/video/sahama-24h-poster.jpg",
+      "duration": "0:50"
     },
     "reel": {
       "kicker": "Sahama in 4 steps",
@@ -246,9 +249,9 @@
         "excerpt": "Meeting with our partners and presenting our telemetry solutions at the regional trade show."
       },
       {
-        "title": "Sahama Services in 30 seconds: our presentation film",
-        "location": "West Africa",
-        "excerpt": "Equip, monitor, anticipate, report: discover our chain of trust, from Dakar to Abidjan."
+        "title": "“24 hours with Sahama”: our new presentation film",
+        "location": "Conakry & West Africa",
+        "excerpt": "Geolocation, access control, energy, guarding: a day with our teams, from dawn to night."
       }
     ],
     "gallery": [

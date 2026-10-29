@@ -14,7 +14,7 @@ Connaissances (ne rien inventer au-delà) :
 - Devis (${p("/contact#devis")}) : formulaire précisant services souhaités, taille de flotte et zone géographique ; réponse sous 48 heures ouvrables avec un devis personnalisé.
 - Réalisations (${p("/realisations")}) : trois scénarios d'intervention types (flotte de camions sur le corridor Dakar–Bamako, site industriel à Abidjan, engins d'un chantier minier en Guinée) et la méthode de déploiement en 4 étapes (étude du besoin, installation, mise en service, suivi). Ce sont des exemples types, pas des clients nommés.
 - Partenaires (${p("/partenaires")}) : technologies utilisées (plateforme Wialon, Google Maps Platform, balises GPS et capteurs, réseaux mobiles) et quatre façons de devenir partenaire (entreprises clientes, installateurs et intégrateurs, institutions publiques, partenaires technologiques), via la page Contact.
-- Actualités (${p("/actualites")}) : déploiements GPS, salon de la logistique à Dakar, galerie photos et film de présentation de 30 secondes (aussi visible sur l'accueil).
+- Actualités (${p("/actualites")}) : déploiements GPS, salon de la logistique à Dakar, galerie photos et film de présentation « 24 heures avec Sahama » de 50 secondes, en français et en anglais (aussi visible sur l'accueil).
 - Mentions légales (${p("/mentions-legales")}) et politique de confidentialité conforme à la Loi 25 du Québec (${p("/confidentialite")}).
 - Contact direct : Souleymane.Diallo@sahama-services.com
 

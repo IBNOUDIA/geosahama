@@ -46,9 +46,12 @@
     ],
     "video": {
       "kicker": "Sahama en vidéo",
-      "title": "Découvrez Sahama Services en 30 secondes",
-      "subtitle": "De la savane sénégalaise aux ports d'Afrique de l'Ouest : notre mission en images.",
-      "play": "Lancer la vidéo"
+      "title": "24 heures avec Sahama Services",
+      "subtitle": "De l'aube à la nuit, de Conakry à toute l'Afrique de l'Ouest : nos métiers en 50 secondes.",
+      "play": "Lancer la vidéo",
+      "src": "/video/sahama-24h-fr.mp4",
+      "poster": "/video/sahama-24h-poster.jpg",
+      "duration": "0:50"
     },
     "reel": {
       "kicker": "Sahama en 4 étapes",
@@ -246,9 +249,9 @@
         "excerpt": "Rencontre avec nos partenaires et présentation de nos solutions de télémétrie sur le salon régional."
       },
       {
-        "title": "Sahama Services en 30 secondes : notre film de présentation",
-        "location": "Afrique de l'Ouest",
-        "excerpt": "Équiper, surveiller, anticiper, rendre compte : découvrez notre chaîne de confiance, de Dakar à Abidjan."
+        "title": "« 24 heures avec Sahama » : notre nouveau film de présentation",
+        "location": "Conakry & Afrique de l'Ouest",
+        "excerpt": "Géolocalisation, contrôle d'accès, énergie, gardiennage : une journée avec nos équipes, de l'aube à la nuit."
       }
     ],
     "gallery": [

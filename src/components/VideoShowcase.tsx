@@ -4,12 +4,11 @@ import { useRef, useState } from "react";
 import { Play } from "lucide-react";
 import { Adinkra, KenteBand } from "./AfricanPatterns";
 
-export const PRESENTATION_VIDEO = "/video/presentation-sahama.mp4";
-export const PRESENTATION_POSTER = "/video/presentation-poster.jpg";
+export type PresentationVideo = { kicker: string; title: string; subtitle: string; play: string; src: string; poster: string; duration: string };
 
-// Presentation film: only the poster loads with the page; the 10 MB video is
-// fetched when the visitor presses play.
-export default function VideoShowcase({ video }: { video: { kicker: string; title: string; subtitle: string; play: string } }) {
+// Presentation film (one file per language): only the poster loads with the
+// page; the video is fetched when the visitor presses play.
+export default function VideoShowcase({ video }: { video: PresentationVideo }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
 
@@ -31,8 +30,8 @@ export default function VideoShowcase({ video }: { video: { kicker: string; titl
       <div className="relative rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl shadow-black/50 bg-black">
         <video
           ref={ref}
-          src={PRESENTATION_VIDEO}
-          poster={PRESENTATION_POSTER}
+          src={video.src}
+          poster={video.poster}
           preload="none"
           playsInline
           controls={started}
@@ -48,7 +47,7 @@ export default function VideoShowcase({ video }: { video: { kicker: string; titl
               <span className="absolute inset-0 rounded-full bg-sahamaOrange/40 animate-ping motion-reduce:animate-none" />
               <Play size={34} fill="currentColor" className="relative ml-1" />
             </span>
-            <span className="absolute bottom-5 left-6 text-cream font-semibold text-sm md:text-base">{video.play} · 0:30</span>
+            <span className="absolute bottom-5 left-6 text-cream font-semibold text-sm md:text-base">{video.play} · {video.duration}</span>
           </button>
         )}
         <KenteBand className="h-1.5" />

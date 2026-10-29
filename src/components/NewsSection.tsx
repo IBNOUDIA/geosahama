@@ -4,7 +4,6 @@ import { useState } from "react";
 import { MapPin, Video, CalendarDays, Camera, X, Play } from "lucide-react";
 import Image from "next/image";
 import Illustration from "./Illustration";
-import { PRESENTATION_POSTER, PRESENTATION_VIDEO } from "./VideoShowcase";
 
 // Field photos, in the same order as the gallery captions in the dictionary.
 const GALLERY_PHOTOS = [
@@ -35,10 +34,8 @@ const ARTICLE_META = [
   {
     id: 4,
     category: "video" as const,
-    date: "2026-10-16",
+    date: "2026-10-29",
     mediaType: "video" as const,
-    image: PRESENTATION_POSTER,
-    videoUrl: PRESENTATION_VIDEO,
   },
 ];
 
@@ -71,6 +68,8 @@ export default function NewsSection({ dict, lang }: { dict: any; lang: "fr" | "e
     title: t.articles[i].title,
     location: t.articles[i].location,
     excerpt: t.articles[i].excerpt,
+    // The film article plays the presentation video in the visitor's language.
+    ...(meta.mediaType === "video" && { image: dict.home.video.poster, videoUrl: dict.home.video.src }),
   })).sort((a, b) => b.date.localeCompare(a.date)); // newest first
 
   const galleryPhotos = t.gallery.map((g: { title: string }, i: number) => ({ id: i + 1, title: g.title, src: GALLERY_PHOTOS[i] }));
