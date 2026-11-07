@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Sahama Services - Geolocation & Security in West Africa",
-    "description": "Fleet geolocation, security and prevention, smart buildings and energy in West Africa, with hubs in Dakar, Abidjan, Conakry and Bamako."
+    "description": "Fleet geolocation, security and prevention, smart buildings and energy in West Africa, from our Guinea branch in Conakry."
   },
   "nav": {
     "home": "Home",
@@ -18,7 +18,7 @@
     "partners": "Partners"
   },
   "hero": {
-    "badge": "Operating in Dakar, Abidjan, Conakry and Bamako",
+    "badge": "Guinea branch · Dakar, Banjul and Nouakchott coming soon",
     "title1": "Geolocation & security ",
     "title2": "for your fleets in West Africa",
     "subtitle": "Real-time GPS tracking, site security and reliable power: our teams equip, monitor and protect your vehicles, buildings and installations in the field.",
@@ -30,7 +30,9 @@
     "servicesTitle": "Services",
     "companyTitle": "Company",
     "contactTitle": "Contact",
-    "zones": "Dakar · Abidjan · Conakry · Bamako",
+    "location": "Guinea branch",
+    "upcoming": "Coming soon: Dakar · Banjul · Nouakchott",
+    "contactLink": "Contact us",
     "rights": "All rights reserved.",
     "developedBy": "Web Architect:",
     "legalNotice": "Legal notice",
@@ -39,7 +41,7 @@
   },
   "home": {
     "stats": [
-      { "value": "4", "label": "Hubs across West Africa" },
+      { "value": "1 + 3", "label": "Guinea branch + 3 coming soon" },
       { "value": "3", "label": "Complementary areas of expertise" },
       { "value": "24/7", "label": "Asset monitoring" },
       { "value": "48h", "label": "Quote response time" }
@@ -59,14 +61,14 @@
       "pause": "Pause",
       "play": "Play the presentation",
       "slides": [
-        { "scene": "gps-install", "title": "Equip", "text": "Our teams fit GPS trackers on your vehicles and equipment, from Dakar to Bamako." },
+        { "scene": "gps-install", "title": "Equip", "text": "Our teams fit GPS trackers on your vehicles and equipment, across Guinea." },
         { "scene": "telemetry", "title": "Monitor", "text": "Position and telemetry data flow to our platform in real time, around the clock." },
         { "scene": "technician", "title": "Anticipate", "text": "Predictive analysis spots anomalies and triggers action before an incident happens." },
         { "scene": "geolocalisation", "title": "Report", "text": "Trip history, reports and alerts are available at any time from your Client Portal." }
       ]
     },
     "servicesKicker": "Our expertise",
-    "servicesTitle": "From Dakar to Abidjan, one chain of trust",
+    "servicesTitle": "From Conakry across West Africa, one chain of trust",
     "learnMore": "Learn more",
     "ctaTitle": "A fleet, security or energy project?",
     "ctaDesc": "Tell us what you need: our team will reply with a tailored quote within 48 hours.",
@@ -92,9 +94,10 @@
       "title": "Contact details",
       "emailLabel": "Direct email",
       "officesLabel": "Offices & areas of operation",
-      "officesValue": "Dakar · Abidjan · Conakry · Bamako",
+      "officesValue": "Conakry · Coming soon: Dakar, Banjul, Nouakchott",
       "domainLabel": "Official website:",
-    "hubsLabel": "Our hubs",
+    "hubsLabel": "Our branches",
+    "comingSoon": "Coming soon",
     "responseLabel": "Quote response time",
     "responseValue": "48 business hours",
     "questionKicker": "A question?"
@@ -108,9 +111,9 @@
     },
     "bridge": {
       "badge": "West Africa network",
-      "title1": "A connected network, ",
-      "title2": "from Dakar to Abidjan",
-      "subtitle": "From our hubs in Dakar, Abidjan, Conakry and Bamako, our teams coordinate your fleet tracking and site security across West Africa.",
+      "title1": "A growing network, ",
+      "title2": "from Conakry",
+      "subtitle": "From our Conakry branch, our teams coordinate your fleet tracking and site security. Next branches: Dakar, Banjul and Nouakchott.",
       "cta1": "Client Portal",
       "cta2": "Write to Us",
       "panelTitle": "Sahama Network",
@@ -129,10 +132,10 @@
       "fleetSizeLabel": "Approximate number of vehicles / assets to track",
       "zoneLabel": "Geographic Zone",
       "zoneOptions": {
-        "senegal": "Senegal",
-        "coteIvoire": "Côte d'Ivoire",
         "guinea": "Guinea",
-        "mali": "Mali",
+        "senegal": "Senegal",
+        "gambia": "The Gambia",
+        "mauritania": "Mauritania",
         "other": "Other West African country"
       },
       "messageLabel": "Additional details (optional)",
@@ -164,11 +167,11 @@
     "kicker": "Geolocation & fleets",
     "mapKicker": "Interactive map",
     "mapTitle": "Try our live mapping",
-    "mapIntro": "Search an address, locate yourself relative to our hubs and calculate a detailed road route.",
+    "mapIntro": "Search an address, locate yourself relative to our branch and calculate a detailed road route.",
     "highlights": [
       { "title": "Address search", "desc": "Find a place and get its GPS coordinates with a click on the map." },
-      { "title": "Nearest hub", "desc": "Locate yourself and see the distance to our nearest hub." },
-      { "title": "Detailed directions", "desc": "Calculate a road route with its steps, between two addresses or to a hub." }
+      { "title": "Distance to our branch", "desc": "Locate yourself and see the distance to our Conakry branch." },
+      { "title": "Detailed directions", "desc": "Calculate a road route with its steps, between two addresses or to our branch." }
     ],
     "portalTitle": "Your vehicles in real time",
     "portalText": "Our clients track their fleets around the clock from the Client Portal, on the Wialon partner platform.",
@@ -186,7 +189,7 @@
     "myLocationTitle": "My location",
     "locateError": "Unable to get your location.",
     "geoNotSupported": "Geolocation is not supported by your browser.",
-    "nearestHubLabel": "Nearest hub:",
+    "nearestHubLabel": "Our branch:",
     "coordinatesLabel": "Coordinates",
     "copyLabel": "Copy",
     "copiedLabel": "Copied",
@@ -286,7 +289,7 @@
       {
         "example": true,
         "sector": "Road transport",
-        "place": "Dakar – Bamako corridor",
+        "place": "Conakry – Dakar corridor",
         "title": "Securing a truck fleet on an international corridor",
         "photo": "/photos/geolocalisation.webp",
         "challenge": "Multi-day trips, unplanned stops and unexplained fuel losses, with no visibility between departure and arrival.",
@@ -310,7 +313,7 @@
       {
         "example": true,
         "sector": "Industry & energy",
-        "place": "Abidjan",
+        "place": "Conakry",
         "title": "Protecting an industrial site and its equipment, day and night",
         "photo": "/photos/test-telemetrie.webp",
         "challenge": "A large site, valuable equipment and breakdowns that halt production without warning.",
@@ -366,7 +369,7 @@
       {
         "num": "02",
         "title": "Installation",
-        "desc": "Our technicians fit the trackers and sensors, on your site or at one of our hubs."
+        "desc": "Our technicians fit the trackers and sensors, on your site or at our Conakry branch."
       },
       {
         "num": "03",

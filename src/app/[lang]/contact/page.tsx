@@ -6,12 +6,10 @@ import { BogolanTexture, KenteBand } from "@/components/AfricanPatterns";
 import { Kicker } from "@/components/ServiceSections";
 import WestAfricaMap from "@/components/WestAfricaMap";
 import type { Metadata } from "next";
-import { CONTACT_EMAIL, type Locale } from "@/i18n";
+import { CONTACT_EMAIL, MAIN_OFFICE, UPCOMING_OFFICES, type Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
 import ContactForm from "@/components/ContactForm";
 import QuoteForm from "@/components/QuoteForm";
-
-const HUBS = ["Dakar", "Abidjan", "Conakry", "Bamako"];
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -28,7 +26,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
 
   return (
     <div>
-      {/* Hero: the West Africa hub network */}
+      {/* Hero: the Guinea branch and the branches to come */}
       <section className="relative overflow-hidden pt-14 pb-16 md:pt-20 md:pb-20">
         <BogolanTexture opacity={0.04} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_55%_at_75%_50%,rgba(255,122,0,0.08),transparent_70%)]" />
@@ -55,7 +53,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
               </a>
             </div>
           </div>
-          <WestAfricaMap className="w-full h-auto drop-shadow-2xl" />
+          <WestAfricaMap className="w-full h-auto drop-shadow-2xl" legend={{ active: dict.footer.location, upcoming: info.comingSoon }} />
         </div>
       </section>
 
@@ -89,9 +87,10 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
 
               <InfoRow icon={<MapPin size={18} />} label={info.hubsLabel}>
                 <div className="flex flex-wrap gap-1.5 mt-1">
-                  {HUBS.map((hub) => (
-                    <span key={hub} className="px-2.5 py-1 rounded-full border border-zinc-700 text-xs text-gray-300">
-                      {hub}
+                  <span className="px-2.5 py-1 rounded-full border border-sahamaOrange/60 text-xs font-semibold text-cream">{MAIN_OFFICE}</span>
+                  {UPCOMING_OFFICES.map((office) => (
+                    <span key={office} className="px-2.5 py-1 rounded-full border border-dashed border-zinc-700 text-xs text-gray-400">
+                      {office} · {info.comingSoon}
                     </span>
                   ))}
                 </div>

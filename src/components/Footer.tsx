@@ -3,7 +3,7 @@ import { Mail, MapPin } from "lucide-react";
 import Logo, { Wordmark } from "./Logo";
 import SocialLinks from "./SocialLinks";
 import { BogolanTexture, KenteBand } from "./AfricanPatterns";
-import { CONTACT_EMAIL, type Locale } from "@/i18n";
+import type { Locale } from "@/i18n";
 
 export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
   const f = dict.footer;
@@ -43,14 +43,17 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: any }) {
             <h3 className="text-cream font-semibold text-sm mb-4">{f.contactTitle}</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2.5 text-gray-400">
-                <Mail size={16} className="text-sahamaOrange mt-0.5 shrink-0" />
-                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-sahamaYellow transition break-all">
-                  {CONTACT_EMAIL}
-                </a>
+                <MapPin size={16} className="text-sahamaOrange mt-0.5 shrink-0" />
+                <span>
+                  {f.location}
+                  <span className="block text-xs text-gray-500 mt-1">{f.upcoming}</span>
+                </span>
               </li>
               <li className="flex items-start gap-2.5 text-gray-400">
-                <MapPin size={16} className="text-sahamaOrange mt-0.5 shrink-0" />
-                <span>{f.zones}</span>
+                <Mail size={16} className="text-sahamaOrange mt-0.5 shrink-0" />
+                <Link href={`/${lang}/contact`} className="hover:text-sahamaYellow transition">
+                  {f.contactLink}
+                </Link>
               </li>
             </ul>
           </div>

@@ -2,21 +2,21 @@
 
 import { useEffect, useState } from "react";
 
-// Stylized, animated map of the West African coast with the Sahama hubs.
+// Stylized, animated map of the West African coast with the Sahama branch and
+// the branches to come.
 // Coordinates come from a simple equirectangular
 // projection: x = (lon + 20) * 40, y = (22 - lat) * 40.
 const HUBS = [
-  { name: "Dakar", x: 102, y: 292, main: true, labelDx: 18, labelDy: -14 },
-  { name: "Conakry", x: 252, y: 500, labelDx: -96, labelDy: 6 },
-  { name: "Bamako", x: 480, y: 374, labelDx: 18, labelDy: -12 },
-  { name: "Abidjan", x: 640, y: 652, labelDx: 18, labelDy: -10 },
+  { name: "Conakry", x: 252, y: 500, upcoming: false, labelDx: -116, labelDy: 6 },
+  { name: "Banjul", x: 137, y: 342, upcoming: true, labelDx: 18, labelDy: 10 },
+  { name: "Dakar", x: 102, y: 292, upcoming: true, labelDx: 18, labelDy: -10 },
+  { name: "Nouakchott", x: 161, y: 157, upcoming: true, labelDx: 18, labelDy: 6 },
 ];
 
 const ROUTES = [
-  "M102 292 Q300 220 480 374",
-  "M480 374 Q610 470 640 652",
-  "M252 500 Q360 380 480 374",
-  "M102 292 Q140 420 252 500",
+  "M252 500 Q180 440 137 342",
+  "M137 342 Q130 310 102 292",
+  "M102 292 Q90 220 161 157",
 ];
 
 const COAST =
@@ -26,7 +26,7 @@ const COAST =
 // loaded and settled keeps the phone free while the page becomes interactive.
 const ANIMATION_DELAY_MS = 3000;
 
-export default function WestAfricaMap({ className }: { className?: string }) {
+export default function WestAfricaMap({ className, legend }: { className?: string; legend: { active: string; upcoming: string } }) {
   const [live, setLive] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function WestAfricaMap({ className }: { className?: string }) {
   }, []);
 
   return (
-    <svg viewBox="0 0 1040 760" className={`${className ?? ""} ${live ? "wa-live" : ""}`} role="img" aria-label="Dakar · Conakry · Bamako · Abidjan">
+    <svg viewBox="0 0 1040 760" className={`${className ?? ""} ${live ? "wa-live" : ""}`} role="img" aria-label={`${legend.active} · ${legend.upcoming} : Dakar · Banjul · Nouakchott`}>
       <style>{`
         .wa-route { stroke-dasharray: 10 12; }
         .wa-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
@@ -97,19 +97,19 @@ export default function WestAfricaMap({ className }: { className?: string }) {
         <path d="M120 40 L140 100 L160 160 L140 220 L100 292 L128 340 L132 388 L180 420 L212 452 L252 500 L272 540 L320 584 L360 608 L420 656 L496 704 L560 688 L640 672 L720 684 L800 656 L860 632 L920 624 L980 640 L1040 650" fill="none" stroke="#F0B03F" strokeOpacity="0.6" strokeWidth="2.5" strokeLinejoin="round" />
       </g>
 
-      {/* Routes between hubs */}
+      {/* Routes between branches */}
       {ROUTES.map((d) => (
         <path key={d} d={d} fill="none" stroke="#FF7A00" strokeOpacity="0.85" strokeWidth="3" strokeLinecap="round" className="wa-route" />
       ))}
 
-      {/* Tracked vehicle travelling Dakar -> Bamako -> Abidjan */}
+      {/* Tracked vehicle travelling up the coast from Conakry */}
       {live && (
       <g className="wa-moving">
         <circle r="16" fill="url(#waGlow)">
-          <animateMotion dur="9s" repeatCount="indefinite" path="M102 292 Q300 220 480 374 Q610 470 640 652" />
+          <animateMotion dur="9s" repeatCount="indefinite" path="M252 500 Q180 440 137 342 Q130 310 102 292 Q90 220 161 157" />
         </circle>
         <circle r="6" fill="#F6EEE1" stroke="#FF7A00" strokeWidth="3">
-          <animateMotion dur="9s" repeatCount="indefinite" path="M102 292 Q300 220 480 374 Q610 470 640 652" />
+          <animateMotion dur="9s" repeatCount="indefinite" path="M252 500 Q180 440 137 342 Q130 310 102 292 Q90 220 161 157" />
         </circle>
       </g>
       )}
@@ -117,12 +117,18 @@ export default function WestAfricaMap({ className }: { className?: string }) {
       {/* Hubs */}
       {HUBS.map((hub) => (
         <g key={hub.name} transform={`translate(${hub.x} ${hub.y})`}>
-          <circle r="12" fill="#FF7A00" opacity="0.5" className="wa-pulse" />
-          <circle r={hub.main ? 9 : 7} fill="#F0B03F" stroke="#0B1024" strokeWidth="3" />
+          {!hub.upcoming && <circle r="12" fill="#FF7A00" opacity="0.5" className="wa-pulse" />}
+          <circle
+            r={hub.upcoming ? 7 : 10}
+            fill={hub.upcoming ? "#0B1024" : "#F0B03F"}
+            stroke={hub.upcoming ? "#F0B03F" : "#0B1024"}
+            strokeWidth="3"
+          />
           <text
             x={hub.labelDx}
             y={hub.labelDy}
             fill="#F6EEE1"
+            fillOpacity={hub.upcoming ? 0.7 : 1}
             fontSize="22"
             fontWeight="600"
             fontFamily="var(--font-sora), sans-serif"
@@ -131,6 +137,14 @@ export default function WestAfricaMap({ className }: { className?: string }) {
           </text>
         </g>
       ))}
+
+      {/* Legend */}
+      <g fontSize="20" fontFamily="var(--font-sora), sans-serif" fill="#F6EEE1">
+        <circle cx="640" cy="60" r="8" fill="#F0B03F" stroke="#0B1024" strokeWidth="3" />
+        <text x="660" y="67" fontWeight="600">{legend.active}</text>
+        <circle cx="640" cy="100" r="7" fill="#0B1024" stroke="#F0B03F" strokeWidth="3" />
+        <text x="660" y="107" fillOpacity="0.7">{legend.upcoming}</text>
+      </g>
     </svg>
   );
 }

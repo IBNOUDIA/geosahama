@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Sahama Services - Géolocalisation & Sécurité en Afrique de l'Ouest",
-    "description": "Géolocalisation de flottes, sécurité et prévention, bâtiments intelligents et énergie en Afrique de l'Ouest, avec des hubs à Dakar, Abidjan, Conakry et Bamako."
+    "description": "Géolocalisation de flottes, sécurité et prévention, bâtiments intelligents et énergie en Afrique de l'Ouest, depuis notre antenne de Guinée à Conakry."
   },
   "nav": {
     "home": "Accueil",
@@ -18,7 +18,7 @@
     "partners": "Partenaires"
   },
   "hero": {
-    "badge": "Opérationnel à Dakar, Abidjan, Conakry et Bamako",
+    "badge": "Antenne de Guinée · Dakar, Banjul et Nouakchott à venir",
     "title1": "Géolocalisation & sécurité ",
     "title2": "de vos flottes en Afrique de l'Ouest",
     "subtitle": "Suivi GPS en temps réel, sécurité de vos sites et énergie fiable : nos équipes équipent, surveillent et protègent vos véhicules, vos bâtiments et vos installations sur le terrain.",
@@ -30,7 +30,9 @@
     "servicesTitle": "Services",
     "companyTitle": "Entreprise",
     "contactTitle": "Contact",
-    "zones": "Dakar · Abidjan · Conakry · Bamako",
+    "location": "Antenne de Guinée",
+    "upcoming": "À venir : Dakar · Banjul · Nouakchott",
+    "contactLink": "Contactez-nous",
     "rights": "Tous droits réservés.",
     "developedBy": "Architecte Web :",
     "legalNotice": "Mentions légales",
@@ -39,7 +41,7 @@
   },
   "home": {
     "stats": [
-      { "value": "4", "label": "Hubs en Afrique de l'Ouest" },
+      { "value": "1 + 3", "label": "Antenne en Guinée + 3 à venir" },
       { "value": "3", "label": "Expertises complémentaires" },
       { "value": "24/7", "label": "Surveillance des actifs" },
       { "value": "48h", "label": "Réponse aux demandes de devis" }
@@ -59,14 +61,14 @@
       "pause": "Mettre en pause",
       "play": "Lire la présentation",
       "slides": [
-        { "scene": "gps-install", "title": "Équiper", "text": "Nos équipes installent des balises GPS sur vos véhicules et équipements, de Dakar à Bamako." },
+        { "scene": "gps-install", "title": "Équiper", "text": "Nos équipes installent des balises GPS sur vos véhicules et équipements, partout en Guinée." },
         { "scene": "telemetry", "title": "Surveiller", "text": "Les données de position et de télémétrie remontent en temps réel vers notre plateforme, 24h/24." },
         { "scene": "technician", "title": "Anticiper", "text": "L'analyse prédictive détecte les anomalies et déclenche l'intervention avant l'incident." },
         { "scene": "geolocalisation", "title": "Rendre compte", "text": "Historiques, rapports et alertes restent accessibles à tout moment depuis votre Espace Client." }
       ]
     },
     "servicesKicker": "Nos expertises",
-    "servicesTitle": "De Dakar à Abidjan, une seule chaîne de confiance",
+    "servicesTitle": "De Conakry à toute l'Afrique de l'Ouest, une seule chaîne de confiance",
     "learnMore": "En savoir plus",
     "ctaTitle": "Un projet de flotte, de sécurité ou d'énergie ?",
     "ctaDesc": "Décrivez-nous votre besoin : notre équipe vous répond avec un devis personnalisé sous 48 heures.",
@@ -92,9 +94,10 @@
       "title": "Coordonnées",
       "emailLabel": "Courriel direct",
       "officesLabel": "Bureaux & zones d'activités",
-      "officesValue": "Dakar · Abidjan · Conakry · Bamako",
+      "officesValue": "Conakry · À venir : Dakar, Banjul, Nouakchott",
       "domainLabel": "Site officiel :",
-    "hubsLabel": "Nos hubs",
+    "hubsLabel": "Nos antennes",
+    "comingSoon": "À venir",
     "responseLabel": "Délai de réponse aux devis",
     "responseValue": "48 heures ouvrables",
     "questionKicker": "Une question ?"
@@ -108,9 +111,9 @@
     },
     "bridge": {
       "badge": "Réseau Afrique de l'Ouest",
-      "title1": "Un réseau connecté, ",
-      "title2": "de Dakar à Abidjan",
-      "subtitle": "Depuis nos hubs de Dakar, Abidjan, Conakry et Bamako, nos équipes coordonnent le suivi de vos flottes et la sécurité de vos sites, partout en Afrique de l'Ouest.",
+      "title1": "Un réseau en expansion, ",
+      "title2": "depuis Conakry",
+      "subtitle": "Depuis notre antenne de Conakry, nos équipes coordonnent le suivi de vos flottes et la sécurité de vos sites. Prochaines antennes : Dakar, Banjul et Nouakchott.",
       "cta1": "Espace Client",
       "cta2": "Nous écrire",
       "panelTitle": "Réseau Sahama",
@@ -129,10 +132,10 @@
       "fleetSizeLabel": "Nombre approximatif de véhicules / actifs à suivre",
       "zoneLabel": "Zone géographique",
       "zoneOptions": {
-        "senegal": "Sénégal",
-        "coteIvoire": "Côte d'Ivoire",
         "guinea": "Guinée",
-        "mali": "Mali",
+        "senegal": "Sénégal",
+        "gambia": "Gambie",
+        "mauritania": "Mauritanie",
         "other": "Autre pays d'Afrique de l'Ouest"
       },
       "messageLabel": "Détails supplémentaires (optionnel)",
@@ -164,11 +167,11 @@
     "kicker": "Géolocalisation & flottes",
     "mapKicker": "Carte interactive",
     "mapTitle": "Testez notre cartographie en direct",
-    "mapIntro": "Recherchez une adresse, localisez-vous par rapport à nos hubs et calculez un itinéraire routier détaillé.",
+    "mapIntro": "Recherchez une adresse, localisez-vous par rapport à notre antenne et calculez un itinéraire routier détaillé.",
     "highlights": [
       { "title": "Recherche d'adresse", "desc": "Trouvez un lieu et obtenez ses coordonnées GPS d'un clic sur la carte." },
-      { "title": "Hub le plus proche", "desc": "Localisez-vous et découvrez la distance jusqu'à notre hub le plus proche." },
-      { "title": "Itinéraire détaillé", "desc": "Calculez un trajet routier avec ses étapes, entre deux adresses ou vers un hub." }
+      { "title": "Distance à notre antenne", "desc": "Localisez-vous et découvrez la distance jusqu'à notre antenne de Conakry." },
+      { "title": "Itinéraire détaillé", "desc": "Calculez un trajet routier avec ses étapes, entre deux adresses ou vers notre antenne." }
     ],
     "portalTitle": "Vos véhicules en temps réel",
     "portalText": "Nos clients suivent leurs flottes 24 h/24 depuis l'Espace Client, sur la plateforme partenaire Wialon.",
@@ -186,7 +189,7 @@
     "myLocationTitle": "Ma position",
     "locateError": "Impossible d'obtenir votre position.",
     "geoNotSupported": "La géolocalisation n'est pas supportée par votre navigateur.",
-    "nearestHubLabel": "Hub le plus proche :",
+    "nearestHubLabel": "Notre antenne :",
     "coordinatesLabel": "Coordonnées",
     "copyLabel": "Copier",
     "copiedLabel": "Copié",
@@ -286,7 +289,7 @@
       {
         "example": true,
         "sector": "Transport routier",
-        "place": "Corridor Dakar – Bamako",
+        "place": "Corridor Conakry – Dakar",
         "title": "Sécuriser une flotte de camions sur un corridor international",
         "photo": "/photos/geolocalisation.webp",
         "challenge": "Des trajets de plusieurs jours, des arrêts imprévus et des pertes de carburant difficiles à expliquer, sans aucune visibilité entre le départ et l'arrivée.",
@@ -310,7 +313,7 @@
       {
         "example": true,
         "sector": "Industrie & énergie",
-        "place": "Abidjan",
+        "place": "Conakry",
         "title": "Protéger un site industriel et ses équipements, jour et nuit",
         "photo": "/photos/test-telemetrie.webp",
         "challenge": "Un site étendu, des équipements de valeur et des pannes qui arrêtent la production sans signe avant-coureur.",
@@ -366,7 +369,7 @@
       {
         "num": "02",
         "title": "Installation",
-        "desc": "Pose des balises et des capteurs par nos techniciens, sur votre site ou dans l'un de nos hubs."
+        "desc": "Pose des balises et des capteurs par nos techniciens, sur votre site ou dans notre antenne de Conakry."
       },
       {
         "num": "03",

@@ -37,7 +37,7 @@ export default async function SecuritePage({ params }: { params: Promise<{ lang:
         photo="/photos/gardiennage.webp"
         photoPosition="35% center"
         cta={{ href: `/${lang}/contact#devis`, label: dict.home.ctaButton }}
-        panel={<SecurityRadarPanel title={t.panelTitle} status={t.panelStatus} footer={t.panelFooter} />}
+        panel={<SecurityRadarPanel title={t.panelTitle} status={t.panelStatus} footer={t.panelFooter} upcoming={dict.contact.info.comingSoon} />}
       />
 
       <div className="pt-8 pb-4">

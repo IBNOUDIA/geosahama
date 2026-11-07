@@ -13,10 +13,7 @@ import {
 import { MapPin, Search, Crosshair, Copy, Check, Loader2, Navigation, List, X } from "lucide-react";
 
 const HUBS = [
-  { name: "Dakar", lat: 14.6928, lng: -17.4467 },
-  { name: "Abidjan", lat: 5.36, lng: -4.0083 },
   { name: "Conakry", lat: 9.6412, lng: -13.5784 },
-  { name: "Bamako", lat: 12.6392, lng: -8.0029 },
 ];
 
 // Dark map theme so the embed matches the site instead of a stock white map

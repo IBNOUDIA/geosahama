@@ -1,10 +1,9 @@
 import { Camera, Eye } from "lucide-react";
-
-const WATCHED_SITES = ["Dakar", "Abidjan", "Conakry", "Bamako"];
+import { MAIN_OFFICE, UPCOMING_OFFICES } from "@/i18n";
 
 // Decorative surveillance card (illustrative, see the legal notice): a sweeping
-// radar next to the list of monitored hubs.
-export default function SecurityRadarPanel({ title, status, footer }: { title: string; status: string; footer: string }) {
+// radar next to the list of branches.
+export default function SecurityRadarPanel({ title, status, footer, upcoming }: { title: string; status: string; footer: string; upcoming: string }) {
   return (
     <div className="bg-darkBg/80 backdrop-blur border border-zinc-800 rounded-2xl p-5 shadow-2xl shadow-black/40">
       <style>{`
@@ -33,12 +32,18 @@ export default function SecurityRadarPanel({ title, status, footer }: { title: s
           <span className="absolute w-1.5 h-1.5 rounded-full bg-sahamaYellow radar-blip" style={{ top: "64%", left: "34%", animationDelay: "1s" }} />
         </div>
         <ul className="flex-1 space-y-1.5">
-          {WATCHED_SITES.map((site) => (
-            <li key={site} className="flex items-center justify-between text-xs text-gray-300">
+          <li className="flex items-center justify-between text-xs text-gray-300">
+            <span className="flex items-center gap-2">
+              <Camera size={12} className="text-sahamaOrange" /> {MAIN_OFFICE}
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-kola" />
+          </li>
+          {UPCOMING_OFFICES.map((site) => (
+            <li key={site} className="flex items-center justify-between gap-2 text-xs text-gray-500">
               <span className="flex items-center gap-2">
-                <Camera size={12} className="text-sahamaOrange" /> {site}
+                <Camera size={12} /> {site}
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-kola" />
+              <span className="text-[10px]">{upcoming}</span>
             </li>
           ))}
         </ul>

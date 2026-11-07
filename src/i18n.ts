@@ -4,6 +4,8 @@ export const defaultLocale: Locale = "fr";
 
 export const SITE_URL = "https://sahama-services.com";
 export const CONTACT_EMAIL = "Souleymane.Diallo@sahama-services.com";
+export const MAIN_OFFICE = "Conakry";
+export const UPCOMING_OFFICES = ["Dakar", "Banjul", "Nouakchott"];
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
