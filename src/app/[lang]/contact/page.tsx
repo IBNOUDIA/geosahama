@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Globe, LogIn, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Clock, Globe, LogIn, MapPin } from "lucide-react";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import { BogolanTexture, KenteBand } from "@/components/AfricanPatterns";
 import { Kicker } from "@/components/ServiceSections";
 import WestAfricaMap from "@/components/WestAfricaMap";
 import type { Metadata } from "next";
-import { CONTACT_EMAIL, MAIN_OFFICE, UPCOMING_OFFICES, type Locale } from "@/i18n";
+import { MAIN_OFFICE, UPCOMING_OFFICES, type Locale } from "@/i18n";
 import { pageMetadata } from "@/seo";
 import ContactForm from "@/components/ContactForm";
 import QuoteForm from "@/components/QuoteForm";
@@ -75,12 +75,6 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
             <div className="p-7 space-y-6">
               <h3 className="text-xl font-semibold text-cream">{info.title}</h3>
 
-              <InfoRow icon={<Mail size={18} />} label={info.emailLabel}>
-                <a href={`mailto:${CONTACT_EMAIL}`} className="text-cream font-semibold hover:text-sahamaOrange transition break-all">
-                  {CONTACT_EMAIL}
-                </a>
-              </InfoRow>
-
               <InfoRow icon={<Clock size={18} />} label={info.responseLabel}>
                 <span className="text-cream font-semibold">{info.responseValue}</span>
               </InfoRow>
@@ -120,10 +114,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           <div>
             <Kicker>{info.questionKicker}</Kicker>
             <h2 className="text-3xl md:text-4xl font-bold text-cream mt-3 mb-4">{dict.contact.title}</h2>
-            <p className="text-gray-400 leading-relaxed mb-6">{dict.contact.subtitle}</p>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 text-sahamaOrange font-semibold hover:text-sahamaYellow transition break-all">
-              <Mail size={18} /> {CONTACT_EMAIL}
-            </a>
+            <p className="text-gray-400 leading-relaxed">{dict.contact.subtitle}</p>
           </div>
           <ContactForm dict={dict} />
         </div>
